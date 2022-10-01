@@ -44,6 +44,31 @@ export async function getPreviewPost(id, idType = "DATABASE_ID") {
   return data.post;
 }
 
+export async function getPagesForHomePage() {
+  const data = await fetchAPI(
+    `
+    query PagesForHomePage {
+      pages(where: { in: [737, 739, 741, 743] }) {
+        edges {
+          node {
+            featuredImageId
+            featuredImageDatabaseId
+            featuredImage {
+              node {
+                id
+              }
+            }
+            slug
+            title
+            content
+          }
+        }
+      }
+    }`
+  );
+  return data.pages;
+}
+
 export async function getAllPostsWithSlug() {
   const data = await fetchAPI(`
     {

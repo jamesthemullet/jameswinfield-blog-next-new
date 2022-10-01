@@ -4,11 +4,12 @@ import Container from "../components/container";
 import Nav from "../components/nav";
 import Intro from "../components/intro";
 import Layout from "../components/layout";
-import { getAllPostsForHome } from "../lib/api";
+import { getPagesForHomePage } from "../lib/api";
+import HomePageSection from "../components/home-page-section";
 
-export default function Index({ allPosts: { edges }, preview }) {
+export default function Index({ allPosts: { edges } }) {
   return (
-    <Layout preview={preview}>
+    <Layout preview={null}>
       <Head>
         <title>
           Portfolio of James Winfield - a front-end software engineer in London.
@@ -17,16 +18,19 @@ export default function Index({ allPosts: { edges }, preview }) {
       <Container>
         <Nav />
         <Intro />
+        {edges.map((section) => {
+          return <HomePageSection {...section?.node} />;
+        })}
       </Container>
     </Layout>
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const allPosts = await getAllPostsForHome(preview);
+export const getStaticProps: GetStaticProps = async () => {
+  const allPosts = await getPagesForHomePage();
 
   return {
-    props: { allPosts, preview },
+    props: { allPosts },
     revalidate: 10,
   };
 };
