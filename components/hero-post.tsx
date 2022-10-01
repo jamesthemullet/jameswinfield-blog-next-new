@@ -1,7 +1,7 @@
-import Avatar from './avatar'
-import Date from './date'
-import CoverImage from './cover-image'
-import Link from 'next/link'
+import Avatar from "./avatar";
+import Date from "./date";
+import CoverImage from "./cover-image";
+import Link from "next/link";
 
 export default function HeroPost({
   title,
@@ -11,6 +11,8 @@ export default function HeroPost({
   author,
   slug,
 }) {
+  console.log(1, title);
+  console.log(2, coverImage);
   return (
     <section>
       <div className="mb-8 md:mb-16">
@@ -41,5 +43,5 @@ export default function HeroPost({
         </div>
       </div>
     </section>
-  )
+  );
 }
