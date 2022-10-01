@@ -11,8 +11,6 @@ export default function Index({ allPosts: { edges }, preview, socials }) {
   const heroPost = edges[0]?.node;
   const morePosts = edges.slice(1);
 
-  console.log(4, heroPost);
-
   return (
     <Layout preview={preview} socials={socials}>
       <Head>
@@ -41,8 +39,6 @@ export default function Index({ allPosts: { edges }, preview, socials }) {
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const allPosts = await getAllPostsForHome(preview);
   const socials = await getSocials();
-
-  console.log(60, socials);
 
   return {
     props: { allPosts, preview, socials },

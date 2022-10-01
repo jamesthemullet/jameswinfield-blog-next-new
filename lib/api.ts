@@ -81,7 +81,6 @@ export async function getSocials() {
       }
     }`
   );
-  console.log(10, data);
   return data.page;
 }
 
