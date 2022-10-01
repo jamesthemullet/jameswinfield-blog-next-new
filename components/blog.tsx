@@ -7,19 +7,19 @@ import Nav from "../components/nav";
 import Layout from "../components/layout";
 import { getAllPostsForHome } from "../lib/api";
 
-export default function Index({ allPosts: { edges }, preview }) {
+export default function Index({ allPosts: { edges }, preview, socials }) {
   const heroPost = edges[0]?.node;
   const morePosts = edges.slice(1);
 
   return (
-    <Layout preview={preview}>
+    <Layout preview={preview} socials={socials}>
       <Head>
         <title>
           Portfolio of James Winfield - a front-end software engineer in London.
         </title>
       </Head>
+      <Nav />
       <Container>
-        <Nav />
         {heroPost && (
           <HeroPost
             title={heroPost.title}

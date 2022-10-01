@@ -102,3 +102,11 @@
 .wp-block-media-text {
   @apply grid grid-cols-2 gap-4;
 }
+
+.flexbox-row ul {
+  @apply flex flex-wrap justify-center items-center mt-4 mb-4;
+}
+
+.flexbox-row li {
+  @apply p-1;
+}

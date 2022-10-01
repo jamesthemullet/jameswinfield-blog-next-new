@@ -48,7 +48,7 @@ export async function getPagesForHomePage() {
   const data = await fetchAPI(
     `
     query PagesForHomePage {
-      pages(where: { in: [737, 739, 741, 743] }) {
+      pages(where: { in: [737, 739, 751, 741] }) {
         edges {
           node {
             featuredImageId
@@ -61,12 +61,28 @@ export async function getPagesForHomePage() {
             slug
             title
             content
+            id
           }
         }
       }
     }`
   );
   return data.pages;
+}
+
+export async function getSocials() {
+  const data = await fetchAPI(
+    `
+    query Socials {
+      page(id: 743, idType: DATABASE_ID) {
+        slug
+        content
+        title
+      }
+    }`
+  );
+  console.log(10, data);
+  return data.page;
 }
 
 export async function getAllPostsWithSlug() {

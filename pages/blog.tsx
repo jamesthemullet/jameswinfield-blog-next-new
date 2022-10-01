@@ -5,23 +5,23 @@ import MoreStories from "../components/more-stories";
 import HeroPost from "../components/hero-post";
 import Nav from "../components/nav";
 import Layout from "../components/layout";
-import { getAllPostsForHome } from "../lib/api";
+import { getAllPostsForHome, getSocials } from "../lib/api";
 
-export default function Index({ allPosts: { edges }, preview }) {
+export default function Index({ allPosts: { edges }, preview, socials }) {
   const heroPost = edges[0]?.node;
   const morePosts = edges.slice(1);
 
   console.log(4, heroPost);
 
   return (
-    <Layout preview={preview}>
+    <Layout preview={preview} socials={socials}>
       <Head>
         <title>
           Portfolio of James Winfield - a front-end software engineer in London.
         </title>
       </Head>
+      <Nav />
       <Container>
-        <Nav />
         {heroPost && (
           <HeroPost
             title={heroPost.title}
@@ -40,9 +40,12 @@ export default function Index({ allPosts: { edges }, preview }) {
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const allPosts = await getAllPostsForHome(preview);
+  const socials = await getSocials();
+
+  console.log(60, socials);
 
   return {
-    props: { allPosts, preview },
+    props: { allPosts, preview, socials },
     revalidate: 10,
   };
 };

@@ -11,8 +11,6 @@ export default function HeroPost({
   author,
   slug,
 }) {
-  console.log(1, title);
-  console.log(2, coverImage);
   return (
     <section>
       <div className="mb-8 md:mb-16">
