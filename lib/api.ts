@@ -44,6 +44,21 @@ export async function getPreviewPost(id, idType = "DATABASE_ID") {
   return data.post;
 }
 
+export async function getAllPostsWithSlug() {
+  const data = await fetchAPI(`
+    {
+      posts(first: 10000) {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `);
+  return data?.posts;
+}
+
 export async function getAllPostsForHome(preview) {
   const data = await fetchAPI(
     `
@@ -82,8 +97,6 @@ export async function getAllPostsForHome(preview) {
       },
     }
   );
-
-  console.log(200, data.posts.edges);
 
   return data?.posts;
 }
