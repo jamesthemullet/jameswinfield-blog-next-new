@@ -48,7 +48,7 @@ export async function getPagesForHomePage() {
   const data = await fetchAPI(
     `
     query PagesForHomePage {
-      pages(where: { in: [737, 739, 751, 741] }) {
+      pages(where: { in: [737, 739, 751, 741, 761] }) {
         edges {
           node {
             featuredImageId
