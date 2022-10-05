@@ -56,6 +56,10 @@ export async function getPagesForHomePage() {
             featuredImage {
               node {
                 id
+                mediaDetails {
+                  height
+                  width
+                }
               }
             }
             slug
@@ -113,6 +117,10 @@ export async function getAllPostsForHome(preview) {
             featuredImage {
               node {
                 sourceUrl
+                mediaDetails {
+                  height
+                  width
+                }
               }
             }
             author {
@@ -168,6 +176,10 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
       featuredImage {
         node {
           sourceUrl
+          mediaDetails {
+            height
+            width
+          }
         }
       }
       author {

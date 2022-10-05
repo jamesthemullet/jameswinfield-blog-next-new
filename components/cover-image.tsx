@@ -7,6 +7,10 @@ interface Props {
   coverImage: {
     node: {
       sourceUrl: string;
+      mediaDetails: {
+        width: number;
+        height: number;
+      };
     };
   };
   slug?: string;
@@ -15,8 +19,8 @@ interface Props {
 export default function CoverImage({ title, coverImage, slug }: Props) {
   const image = (
     <Image
-      width={2000}
-      height={1000}
+      width={coverImage?.node.mediaDetails.width}
+      height={coverImage?.node.mediaDetails.height}
       alt={`Cover Image for ${title}`}
       src={coverImage?.node.sourceUrl}
       className={cn("shadow-small", {
@@ -24,6 +28,7 @@ export default function CoverImage({ title, coverImage, slug }: Props) {
       })}
     />
   );
+
   return (
     <div className="sm:mx-0">
       {slug ? (
