@@ -8,6 +8,7 @@ type PostPreviewProps = {
   coverImage: {
     node: {
       sourceUrl: string;
+      featuredImage: string;
       mediaDetails: {
         width: number;
         height: number;
@@ -21,7 +22,9 @@ type PostPreviewProps = {
       firstName: string;
       lastName: string;
       name: string;
-      avatar: string;
+      avatar: {
+        url: string;
+      };
     };
   };
   slug: string;

@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 
 type ContainerProps = {
-  children: ReactElement;
+  children: ReactElement[];
 };
 
 export default function Container({ children }: ContainerProps) {

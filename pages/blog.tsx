@@ -9,10 +9,45 @@ import { getAllPostsForHome, getSocials } from '../lib/api';
 
 type AllPostsProps = {
   allPosts: {
-    edges: string[];
+    edges: {
+      node: {
+        featuredImage: {
+          node: {
+            sourceUrl: string;
+            mediaDetails: { width: number; height: number };
+            featuredImage: string;
+          };
+        };
+        title: string;
+        coverImage: {
+          node: {
+            sourceUrl: string;
+            mediaDetails: {
+              width: number;
+              height: number;
+            };
+          };
+        };
+        date: string;
+        excerpt: string;
+        author: {
+          node: {
+            firstName: string;
+            lastName: string;
+            name: string;
+            avatar: {
+              url: string;
+            };
+          };
+        };
+        slug: string;
+      };
+    }[];
   };
   preview: string;
-  socials: string;
+  socials: {
+    content: string;
+  };
 };
 
 export default function Index({ allPosts: { edges }, preview, socials }: AllPostsProps) {
@@ -36,7 +71,7 @@ export default function Index({ allPosts: { edges }, preview, socials }: AllPost
             excerpt={heroPost.excerpt}
           />
         )}
-        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+        {Array.isArray(morePosts) && <MoreStories posts={morePosts} />}
       </Container>
     </Layout>
   );

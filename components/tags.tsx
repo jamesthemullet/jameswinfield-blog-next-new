@@ -1,5 +1,11 @@
 type TagsProps = {
-  tags: string[];
+  tags: {
+    edges: {
+      node: {
+        name: string;
+      };
+    }[];
+  };
 };
 
 export default function Tags({ tags }: TagsProps) {
@@ -7,11 +13,12 @@ export default function Tags({ tags }: TagsProps) {
     <div className="max-w-2xl mx-auto">
       <p className="mt-8 text-lg font-bold">
         Tagged
-        {tags.edges.map((tag, index) => (
-          <span key={index} className="ml-4 font-normal">
-            {tag.node.name}
-          </span>
-        ))}
+        {Array.isArray(tags.edges) &&
+          tags.edges.map((tag, index) => (
+            <span key={index} className="ml-4 font-normal">
+              {tag.node.name}
+            </span>
+          ))}
       </p>
     </div>
   );

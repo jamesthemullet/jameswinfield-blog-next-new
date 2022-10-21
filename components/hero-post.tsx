@@ -12,6 +12,7 @@ type HeroPostProps = {
         width: number;
         height: number;
       };
+      featuredImage: string;
     };
   };
   date: string;

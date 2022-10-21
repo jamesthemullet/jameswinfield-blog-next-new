@@ -20,6 +20,11 @@ type PostProps = {
     slug: string;
     title: string;
     featuredImage: {
+      node: {
+        sourceUrl: string;
+        featuredImage: string;
+        mediaDetails: { width: number; height: number };
+      };
       sourceUrl: string;
     };
     date: string;
@@ -28,20 +33,29 @@ type PostProps = {
         firstName: string;
         lastName: string;
         name: string;
-        avatar: string;
+        avatar: {
+          url: string;
+        };
       };
     };
-    categories: string;
+    categories: { edges: { length: number; node: { name: string } } };
     content: string;
     tags: {
-      edges: string[];
+      edges: {
+        node: {
+          name: string;
+        };
+      }[];
     };
   };
   posts: {
-    edges: string;
+    edges: { edges: string };
   };
-  preview: string;
-  socials: string;
+  preview?: string;
+  children: string;
+  socials: {
+    content: string;
+  };
 };
 
 export default function Post({ post, posts, preview, socials }: PostProps) {
@@ -80,7 +94,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
             </article>
 
             <SectionSeparator />
-            {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+            {Array.isArray(morePosts) && <MoreStories posts={morePosts} />}
           </>
         )}
       </Container>

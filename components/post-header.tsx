@@ -9,6 +9,7 @@ type PostHeaderProps = {
   coverImage: {
     node: {
       sourceUrl: string;
+      featuredImage: string;
       mediaDetails: {
         width: number;
         height: number;
@@ -21,7 +22,9 @@ type PostHeaderProps = {
       firstName: string;
       lastName: string;
       name: string;
-      avatar: string;
+      avatar: {
+        url: string;
+      };
     };
   };
   categories: {

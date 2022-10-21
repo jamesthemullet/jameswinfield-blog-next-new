@@ -1,7 +1,45 @@
 import PostPreview from './post-preview';
 
 type MoreStoriesProps = {
-  posts: string[];
+  posts: {
+    edges: string[];
+    node: {
+      title: string;
+      coverImage: {
+        node: {
+          sourceUrl: string;
+          featuredImage: string;
+          mediaDetails: {
+            width: number;
+            height: number;
+          };
+        };
+      };
+      date: string;
+      excerpt: string;
+      author: {
+        node: {
+          firstName: string;
+          lastName: string;
+          name: string;
+          avatar: {
+            url: string;
+          };
+        };
+      };
+      slug: string;
+      featuredImage: {
+        node: {
+          sourceUrl: string;
+          featuredImage: string;
+          mediaDetails: {
+            width: number;
+            height: number;
+          };
+        };
+      };
+    };
+  }[];
 };
 
 export default function MoreStories({ posts }: MoreStoriesProps) {
