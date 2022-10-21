@@ -9,10 +9,49 @@ import { getAllPostsForHome } from '../lib/api';
 
 type IndexProps = {
   allPosts: {
-    edges: string[];
+    edges: {
+      node: {
+        title: string;
+        featuredImage: {
+          node: {
+            sourceUrl: string;
+            featuredImage: string;
+            mediaDetails: {
+              width: number;
+              height: number;
+            };
+          };
+        };
+        coverImage: {
+          node: {
+            sourceUrl: string;
+            mediaDetails: {
+              width: number;
+              height: number;
+            };
+            featuredImage: string;
+          };
+        };
+        date: string;
+        excerpt: string;
+        author: {
+          node: {
+            firstName: string;
+            lastName: string;
+            name: string;
+            avatar: {
+              url: string;
+            };
+          };
+        };
+        slug: string;
+      };
+    }[];
   };
   preview: string;
-  socials: string;
+  socials: {
+    content: string;
+  };
 };
 
 export default function Index({ allPosts: { edges }, preview, socials }: IndexProps) {
