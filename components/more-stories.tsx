@@ -2,19 +2,10 @@ import PostPreview from './post-preview';
 
 type MoreStoriesProps = {
   posts: {
-    edges: string[];
+    edges?: string[];
     node: {
       title: string;
-      coverImage: {
-        node: {
-          sourceUrl: string;
-          featuredImage: string;
-          mediaDetails: {
-            width: number;
-            height: number;
-          };
-        };
-      };
+
       date: string;
       excerpt: string;
       author: {

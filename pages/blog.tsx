@@ -10,18 +10,14 @@ import { getAllPostsForHome, getSocials } from '../lib/api';
 type AllPostsProps = {
   allPosts: {
     edges: {
+      edges?: string[];
       node: {
+        title: string;
+        slug: string;
         featuredImage: {
           node: {
             sourceUrl: string;
-            mediaDetails: { width: number; height: number };
             featuredImage: string;
-          };
-        };
-        title: string;
-        coverImage: {
-          node: {
-            sourceUrl: string;
             mediaDetails: {
               width: number;
               height: number;
@@ -40,7 +36,6 @@ type AllPostsProps = {
             };
           };
         };
-        slug: string;
       };
     }[];
   };
