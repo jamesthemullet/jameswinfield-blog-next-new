@@ -1,7 +1,15 @@
-import Footer from "./footer";
-import Meta from "./meta";
+import Footer from './footer';
+import Meta from './meta';
 
-export default function Layout({ preview, children, socials }) {
+type LayoutProps = {
+  preview?: string;
+  children: string;
+  socials: {
+    content: string;
+  };
+};
+
+export default function Layout({ preview, children, socials }: LayoutProps) {
   return (
     <>
       <Meta />

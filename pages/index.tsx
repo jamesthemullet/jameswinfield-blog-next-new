@@ -1,19 +1,24 @@
-import Head from "next/head";
-import { GetStaticProps } from "next";
-import Container from "../components/container";
-import Nav from "../components/nav";
-import Intro from "../components/intro";
-import Layout from "../components/layout";
-import { getPagesForHomePage, getSocials } from "../lib/api";
-import HomePageSection from "../components/home-page-section";
+import Head from 'next/head';
+import { GetStaticProps } from 'next';
+import Container from '../components/container';
+import Nav from '../components/nav';
+import Intro from '../components/intro';
+import Layout from '../components/layout';
+import { getPagesForHomePage, getSocials } from '../lib/api';
+import HomePageSection from '../components/home-page-section';
 
-export default function Index({ allPosts: { edges }, socials }) {
+type AllPostsProps = {
+  allPosts: {
+    edges: string[];
+  };
+  socials: string;
+};
+
+export default function Index({ allPosts: { edges }, socials }: AllPostsProps) {
   return (
     <Layout preview={null} socials={socials}>
       <Head>
-        <title>
-          Portfolio of James Winfield - a front-end software engineer in London.
-        </title>
+        <title>Portfolio of James Winfield - a front-end software engineer in London.</title>
       </Head>
       <Nav />
       <Container>

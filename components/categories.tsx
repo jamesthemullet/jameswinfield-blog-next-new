@@ -1,4 +1,15 @@
-export default function Categories({ categories }) {
+type CategoriesProps = {
+  categories: {
+    edges: {
+      length: number;
+      node: {
+        name: string;
+      };
+    };
+  };
+};
+
+export default function Categories({ categories }: CategoriesProps[]) {
   return (
     <span className="ml-1">
       under
@@ -12,5 +23,5 @@ export default function Categories({ categories }) {
         <span className="ml-1">{categories.edges.node.name}</span>
       )}
     </span>
-  )
+  );
 }

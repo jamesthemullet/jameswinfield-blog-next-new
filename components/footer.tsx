@@ -1,7 +1,13 @@
-import Container from "./container";
-import Alert from "./alert";
+import Container from './container';
+import Alert from './alert';
 
-export default function Footer({ socials }) {
+type FooterProps = {
+  socials: {
+    content: string;
+  };
+};
+
+export default function Footer({ socials }: FooterProps) {
   return (
     <footer className="bg-accent-1 border-t border-accent-2 bg-my-blue">
       <Container>

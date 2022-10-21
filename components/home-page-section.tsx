@@ -1,6 +1,11 @@
-import PostBody from "./post-body";
+import PostBody from './post-body';
 
-export default function HomePageSection({ title, content }) {
+type HomePageSectionProps = {
+  title: string;
+  content: string;
+};
+
+export default function HomePageSection({ title, content }: HomePageSectionProps) {
   return (
     <section>
       <div className="md:block md:mt-8">

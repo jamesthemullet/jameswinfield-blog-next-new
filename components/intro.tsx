@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 export default function Intro() {
   return (
@@ -9,8 +9,7 @@ export default function Intro() {
         </h1>
         <p
           className="text-center md:text-left text-lg mt-5 md:pl-8"
-          aria-roledescription="subtitle"
-        >
+          aria-roledescription="subtitle">
           A front-end software engineer in London
         </p>
       </section>

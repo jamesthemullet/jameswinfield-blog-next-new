@@ -1,4 +1,8 @@
-export default function Tags({ tags }) {
+type TagsProps = {
+  tags: string[];
+};
+
+export default function Tags({ tags }: TagsProps) {
   return (
     <div className="max-w-2xl mx-auto">
       <p className="mt-8 text-lg font-bold">
@@ -10,5 +14,5 @@ export default function Tags({ tags }) {
         ))}
       </p>
     </div>
-  )
+  );
 }

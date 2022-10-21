@@ -1,8 +1,16 @@
-import Avatar from './avatar'
-import Date from './date'
-import CoverImage from './cover-image'
-import PostTitle from './post-title'
-import Categories from './categories'
+import Avatar from './avatar';
+import Date from './date';
+import CoverImage from './cover-image';
+import PostTitle from './post-title';
+import Categories from './categories';
+
+type PostHeaderProps = {
+  title: string;
+  coverImage: string;
+  date: string;
+  author: string;
+  categories: string;
+};
 
 export default function PostHeader({
   title,
@@ -10,7 +18,7 @@ export default function PostHeader({
   date,
   author,
   categories,
-}) {
+}: PostHeaderProps) {
   return (
     <>
       <PostTitle>{title}</PostTitle>
@@ -30,5 +38,5 @@ export default function PostHeader({
         </div>
       </div>
     </>
-  )
+  );
 }
