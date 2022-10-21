@@ -5,10 +5,27 @@ import Link from 'next/link';
 
 type HeroPostProps = {
   title: string;
-  coverImage: string;
+  coverImage: {
+    node: {
+      sourceUrl: string;
+      mediaDetails: {
+        width: number;
+        height: number;
+      };
+    };
+  };
   date: string;
   excerpt: string;
-  author: string;
+  author: {
+    node: {
+      firstName: string;
+      lastName: string;
+      name: string;
+      avatar: {
+        url: string;
+      };
+    };
+  };
   slug: string;
 };
 

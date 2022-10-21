@@ -6,7 +6,9 @@ type AvatarProps = {
       firstName: string;
       lastName: string;
       name: string;
-      avatar: string;
+      avatar: {
+        url: string;
+      };
     };
   };
 };

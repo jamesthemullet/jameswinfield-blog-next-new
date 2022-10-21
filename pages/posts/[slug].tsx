@@ -23,7 +23,14 @@ type PostProps = {
       sourceUrl: string;
     };
     date: string;
-    author: string;
+    author: {
+      node: {
+        firstName: string;
+        lastName: string;
+        name: string;
+        avatar: string;
+      };
+    };
     categories: string;
     content: string;
     tags: {

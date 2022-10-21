@@ -5,10 +5,25 @@ import Link from 'next/link';
 
 type PostPreviewProps = {
   title: string;
-  coverImage: string;
+  coverImage: {
+    node: {
+      sourceUrl: string;
+      mediaDetails: {
+        width: number;
+        height: number;
+      };
+    };
+  };
   date: string;
   excerpt: string;
-  author: string;
+  author: {
+    node: {
+      firstName: string;
+      lastName: string;
+      name: string;
+      avatar: string;
+    };
+  };
   slug: string;
 };
 

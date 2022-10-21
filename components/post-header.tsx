@@ -6,10 +6,32 @@ import Categories from './categories';
 
 type PostHeaderProps = {
   title: string;
-  coverImage: string;
+  coverImage: {
+    node: {
+      sourceUrl: string;
+      mediaDetails: {
+        width: number;
+        height: number;
+      };
+    };
+  };
   date: string;
-  author: string;
-  categories: string;
+  author: {
+    node: {
+      firstName: string;
+      lastName: string;
+      name: string;
+      avatar: string;
+    };
+  };
+  categories: {
+    edges: {
+      length: number;
+      node: {
+        name: string;
+      };
+    };
+  };
 };
 
 export default function PostHeader({

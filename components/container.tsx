@@ -1,5 +1,7 @@
+import { ReactElement } from 'react';
+
 type ContainerProps = {
-  children: string;
+  children: ReactElement;
 };
 
 export default function Container({ children }: ContainerProps) {

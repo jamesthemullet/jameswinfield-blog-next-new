@@ -9,7 +9,7 @@ type CategoriesProps = {
   };
 };
 
-export default function Categories({ categories }: CategoriesProps[]) {
+export default function Categories({ categories }: CategoriesProps) {
   return (
     <span className="ml-1">
       under
