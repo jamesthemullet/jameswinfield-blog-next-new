@@ -15,13 +15,31 @@ jobs:
       #     vercel-project-id: ${{ secrets.PROJECT_ID}}
       #     # comment this out if not using vercel teams
       #     scope: ${{ secrets.VERCEL_SCOPE }}
+      - name: Add comment to PR
+        id: loading_lighthouse_comment_to_pr
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ github.event.pull_request.number }}
+          header: lighthouse
+          message: |
+            🚦 Running Lighthouse audit...
+      - name: Add comment to PR
+        id: loading_budget_comment_to_pr
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ github.event.pull_request.number }}
+          header: budget
+          message: |
+            ⏱ Running budget checks...
       - name: Audit URLs using Lighthouse
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v7
         with:
           # add as many urls here as you wish to audit
           # prefixed by the preview-url
-          urls: ['https://www.jameswinfield.co.uk']
+          urls: 'https://www.jameswinfield.co.uk'
           budgetPath: '.github/lighthouse/budget.json'
           uploadArtifacts: true
           temporaryPublicStorage: true
@@ -33,7 +51,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const links = ${{ steps.lighthouse_audit.outputs.links }};
+            const links = ${{ steps.lighthouse_audit.outputs.links }}
             const results = (${{ steps.lighthouse_audit.outputs.manifest }}).filter(result => result.isRepresentativeRun);
             const score = res => res >= 90 ? '🟢' : res >= 50 ? '🟠' : '🔴';
             const comment = results.map((result) => {
