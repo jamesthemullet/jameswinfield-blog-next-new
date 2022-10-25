@@ -4,15 +4,15 @@
     "timings": [
       {
         "metric": "interactive",
-        "budget": 0
+        "budget": 2000
       },
       {
         "metric": "first-contentful-paint",
-        "budget": 0
+        "budget": 1000
       },
       {
         "metric": "largest-contentful-paint",
-        "budget": 0
+        "budget": 2000
       }
     ],
     "resourceSizes": [
