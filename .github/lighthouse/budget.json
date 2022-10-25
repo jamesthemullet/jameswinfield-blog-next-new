@@ -8,7 +8,7 @@
       },
       {
         "metric": "first-contentful-paint",
-        "budget": 0
+        "budget": 10
       },
       {
         "metric": "largest-contentful-paint",
