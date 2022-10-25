@@ -7,6 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Vercel Action
+        id: vercel_action
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-org-id: ${{ secrets.ORG_ID}}
+          vercel-project-id: ${{ secrets.PROJECT_ID}}
       - name: Audit URLs using Lighthouse
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v7
@@ -51,4 +59,4 @@ jobs:
       - name: Show Lighthouse outputs
         run: |
           # All results by URL:
-          echo '${{ steps.lighthouse_audit.outputs.manifest }}' | jq -r '.[] | (.summary|tostring) + " - " + .url'
+          echo '${{ steps.lighthouse_audit.outputs.manifest }}'
