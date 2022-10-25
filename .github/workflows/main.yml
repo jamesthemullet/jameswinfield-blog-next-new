@@ -53,7 +53,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const links = ${{ steps.lighthouse_audit.outputs.links }}
+            const links = ${{ steps.lighthouse_audit.outputs.links }};
             const results = (${{ steps.lighthouse_audit.outputs.manifest }}).filter(result => result.isRepresentativeRun);
             const score = res => res >= 90 ? '🟢' : res >= 50 ? '🟠' : '🔴';
             const comment = results.map((result) => {
