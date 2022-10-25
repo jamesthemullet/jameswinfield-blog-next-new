@@ -12,6 +12,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
+      - name: Set config
+        run: npm config set WORDPRESS_API_URL=${{ secrets.WORDPRESS_API_URL }}
       - name: npm install, build
         run: |
           npm install
