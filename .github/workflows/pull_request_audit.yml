@@ -14,7 +14,8 @@ jobs:
             https://jameswinfield-blog-next-new.vercel.app/
             https://www.jameswinfield.co.uk
           budgetPath: '.github/lighthouse/budget.json'
-          runs: 3
+          uploadArtifacts: true
+          runs: 1
 
       - name: Add comment to PR
         id: loading_lighthouse_comment_to_pr
