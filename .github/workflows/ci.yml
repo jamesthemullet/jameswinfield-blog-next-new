@@ -4,6 +4,8 @@ jobs:
   lhci:
     name: Lighthouse
     runs-on: ubuntu-latest
+    env:
+      GreeEEEEEEEEEEEEEEEEEEEEting: Hello
     steps:
       - uses: actions/checkout@v2
         with:
