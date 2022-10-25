@@ -11,8 +11,8 @@ jobs:
         uses: treosh/lighthouse-ci-action@v7
         with:
           urls: |
-            ${{ steps.vercel_action.outputs.preview-url }}
-            ${{ steps.vercel_action.outputs.preview-url }}/blog
+            jameswinfield-blog-next-new.vercel.app
+            jameswinfield.co.uk
           budgetPath: '.github/lighthouse/budget.json'
           uploadArtifacts: true
           temporaryPublicStorage: true
