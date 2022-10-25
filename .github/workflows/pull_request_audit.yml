@@ -34,3 +34,28 @@ jobs:
           header: budget
           message: |
             ⏱ Running budget checks...
+      - name: Format lighthouse result
+        id: lighthouse_result
+        if: ${{ always() }}
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const links = ${{ steps.lighthouse_audit.outputs.links }}
+            const results = (${{ steps.lighthouse_audit.outputs.manifest }}).filter(result => result.isRepresentativeRun);
+            const score = res => res >= 90 ? '🟢' : res >= 50 ? '🟠' : '🔴';
+            const comment = results.map((result) => {
+              const summary = result.summary;
+              const url = result.url;
+              return `
+              🌎 [${url}](${url})
+              ⚡️ [Lighthouse report](${links[url]})
+              | Category | Score |
+              | --- | --- |
+              ${Object.keys(summary).map((key) => {
+                const percentage = Math.round(summary[key] * 100);
+                return `| ${score(percentage)} ${key} | ${percentage} |`;
+              }).join('\n')}
+              `;
+            }).join('---');
+            core.setOutput("comment", comment);
