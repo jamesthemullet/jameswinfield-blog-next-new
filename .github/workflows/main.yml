@@ -8,8 +8,7 @@ jobs:
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v9
         with:
-          urls: |
-            https://jameswinfield.co.uk
+          urls: https://jameswinfield.co.uk
           budgetPath: ./lighthouse/budget.json # test performance budgets
           uploadArtifacts: true # save results as an action artifacts
           temporaryPublicStorage: true # upload lighthouse report to the temporary storage
