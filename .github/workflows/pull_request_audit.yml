@@ -10,9 +10,7 @@ jobs:
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v7
         with:
-          urls: |
-            https://jameswinfield-blog-next-new.vercel.app
-            https://www.jameswinfield.co.uk
+          urls: 'https://www.jameswinfield.co.uk'
           budgetPath: './.github/lighthouse/budget.json'
           uploadArtifacts: true
           runs: 1
