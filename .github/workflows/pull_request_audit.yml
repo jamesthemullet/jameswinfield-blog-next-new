@@ -51,4 +51,4 @@ jobs:
       - name: Show Lighthouse outputs
         run: |
           # All results by URL:
-          echo '${{ steps.LHCIAction.outputs.manifest }}' | jq -r '.[] | (.summary|tostring) + " - " + .url'
+          echo '${{ steps.lighthouse_audit.outputs.manifest }}' | jq -r '.[] | (.summary|tostring) + " - " + .url'
