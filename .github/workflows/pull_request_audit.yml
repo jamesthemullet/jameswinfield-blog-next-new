@@ -13,7 +13,7 @@ jobs:
           urls: |
             https://jameswinfield-blog-next-new.vercel.app
             https://www.jameswinfield.co.uk
-          budgetPath: '.github/lighthouse/budget.json'
+          budgetPath: '../.github/lighthouse/budget.json'
           uploadArtifacts: true
           runs: 1
       - name: Format lighthouse score
