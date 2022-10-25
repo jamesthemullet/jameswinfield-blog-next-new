@@ -20,8 +20,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v7
         with:
           urls: |
-            https://jameswinfield-blog-next-new.vercel.app
-            https://www.jameswinfield.co.uk
+            ${{ steps.vercel_action.outputs.preview-url }}
           budgetPath: '.github/lighthouse/budget.json'
           uploadArtifacts: true
           runs: 5
