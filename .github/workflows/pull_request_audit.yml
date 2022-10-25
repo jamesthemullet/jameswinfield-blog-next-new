@@ -16,7 +16,7 @@ jobs:
             https://www.jameswinfield.co.uk
           budgetPath: '.github/lighthouse/budget.json'
           uploadArtifacts: true
-          runs: 1
+          runs: 5
       - name: Format lighthouse score
         id: format_lighthouse_score
         uses: actions/github-script@v3
