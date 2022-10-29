@@ -55,7 +55,3 @@ jobs:
           header: lighthouse
           message: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
-      - name: Show Lighthouse outputs
-        run: |
-          # All results by URL:
-          echo '${{ steps.lighthouse_audit.outputs.manifest }}'
