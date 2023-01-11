@@ -61,7 +61,7 @@ export default function Index({ allPosts: { edges }, preview, socials }: IndexPr
   return (
     <Layout preview={preview} socials={socials}>
       <Head>
-        <title>Portfolio of James Winfield - a front-end software engineer in London.</title>
+        <title>Portfolio of James Winfield - a senior front-end software engineer in London.</title>
       </Head>
       <Nav />
       <Container>
