@@ -4,28 +4,21 @@ import Container from '../components/container';
 import Nav from '../components/nav';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
-import { getPagesForHomePage, getSocials } from '../lib/api';
-import HomePageSection from '../components/home-page-section';
-import { Key } from 'react';
+import PostBody from '../components/post-body';
+import { getPage, getSocials } from '../lib/api';
 
-type AllPostsProps = {
-  allPosts: {
-    edges: {
-      node: {
-        content: string;
-        id: Key;
-        title: string;
-      };
-    }[];
-  };
+type LearningProps = {
   socials: {
+    content: string;
+  };
+  learning: {
     content: string;
   };
 };
 
-export default function Index({ allPosts: { edges }, socials }: AllPostsProps) {
+export default function Learning({ socials, learning: { content } }: LearningProps) {
   return (
-    <Layout preview={null} socials={socials}>
+    <Layout socials={socials}>
       <Head>
         <title>Portfolio of James Winfield - a senior front-end software engineer in London.</title>
       </Head>
@@ -33,9 +26,7 @@ export default function Index({ allPosts: { edges }, socials }: AllPostsProps) {
       <Container>
         <>
           <Intro />
-          {edges.map((section) => {
-            return <HomePageSection {...section?.node} key={section?.node.id} />;
-          })}
+          <PostBody content={content} />
         </>
       </Container>
     </Layout>
@@ -43,11 +34,10 @@ export default function Index({ allPosts: { edges }, socials }: AllPostsProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPosts = await getPagesForHomePage();
+  const learning = await getPage('780');
   const socials = await getSocials();
-
   return {
-    props: { allPosts, socials },
+    props: { learning, socials },
     revalidate: 10,
   };
 };

@@ -9,6 +9,9 @@ export default function Nav() {
       <Link href="/blog">
         <a className="hover:underline p-2 pl-4 pr-4 text-2xl font-bold">Blog</a>
       </Link>
+      <Link href="/learning">
+        <a className="hover:underline p-2 pl-4 pr-4 text-2xl font-bold">Learning</a>
+      </Link>
     </div>
   );
 }

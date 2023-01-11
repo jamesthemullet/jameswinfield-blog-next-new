@@ -10,7 +10,7 @@ export default function Intro() {
         <p
           className="text-center md:text-left text-lg mt-5 md:pl-8"
           aria-roledescription="subtitle">
-          A front-end software engineer in London
+          A senior front-end software engineer in London
         </p>
       </section>
       <Image
