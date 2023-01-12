@@ -1,14 +1,12 @@
 import { Key } from 'react';
 
 export type AuthorProps = {
-  author: {
-    node: {
-      firstName: string;
-      lastName: string;
-      name: string;
-      avatar: {
-        url: string;
-      };
+  node: {
+    firstName: string;
+    lastName: string;
+    name: string;
+    avatar: {
+      url: string;
     };
   };
 };

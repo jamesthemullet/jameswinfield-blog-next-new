@@ -1,16 +1,17 @@
 import Image from 'next/image';
-import { AuthorProps } from '../lib/types';
+import type { AuthorProps } from '../lib/types';
 
-export default function Avatar({ author }: AuthorProps) {
-  const isAuthorHaveFullName = author?.node?.firstName && author?.node?.lastName;
-  const name = isAuthorHaveFullName
-    ? `${author.node.firstName} ${author.node.lastName}`
-    : author.node.name || null;
+export default function Avatar({ node }: AuthorProps) {
+  console.log(1, node);
+  const isAuthorHaveFullName = node?.firstName && node?.lastName;
+  const name = isAuthorHaveFullName ? `${node?.firstName} ${node?.lastName}` : node?.name || null;
 
   return (
     <div className="flex items-center">
       <div className="w-12 h-12 relative mr-4">
-        <Image src={author.node.avatar.url} layout="fill" className="rounded-full" alt={name} />
+        {node?.avatar.url && (
+          <Image src={node?.avatar.url} layout="fill" className="rounded-full" alt={name} />
+        )}
       </div>
       <div className="text-xl font-bold">{name}</div>
     </div>
