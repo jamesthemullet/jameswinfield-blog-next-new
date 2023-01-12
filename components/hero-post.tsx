@@ -2,33 +2,7 @@ import Avatar from './avatar';
 import Date from './date';
 import CoverImage from './cover-image';
 import Link from 'next/link';
-
-type HeroPostProps = {
-  title: string;
-  coverImage: {
-    node: {
-      sourceUrl: string;
-      mediaDetails: {
-        width: number;
-        height: number;
-      };
-      featuredImage: string;
-    };
-  };
-  date: string;
-  excerpt: string;
-  author: {
-    node: {
-      firstName: string;
-      lastName: string;
-      name: string;
-      avatar: {
-        url: string;
-      };
-    };
-  };
-  slug: string;
-};
+import { HeroPostProps } from '../lib/types';
 
 export default function HeroPost({
   title,

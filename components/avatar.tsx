@@ -1,19 +1,7 @@
 import Image from 'next/image';
+import { AuthorProps } from '../lib/types';
 
-type AvatarProps = {
-  author: {
-    node: {
-      firstName: string;
-      lastName: string;
-      name: string;
-      avatar: {
-        url: string;
-      };
-    };
-  };
-};
-
-export default function Avatar({ author }: AvatarProps) {
+export default function Avatar({ author }: AuthorProps) {
   const isAuthorHaveFullName = author?.node?.firstName && author?.node?.lastName;
   const name = isAuthorHaveFullName
     ? `${author.node.firstName} ${author.node.lastName}`

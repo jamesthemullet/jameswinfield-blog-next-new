@@ -1,12 +1,4 @@
-type TagsProps = {
-  tags: {
-    edges: {
-      node: {
-        name: string;
-      };
-    }[];
-  };
-};
+import type { TagsProps } from '../lib/types';
 
 export default function Tags({ tags }: TagsProps) {
   return (

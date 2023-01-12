@@ -3,39 +3,7 @@ import Date from './date';
 import CoverImage from './cover-image';
 import PostTitle from './post-title';
 import Categories from './categories';
-
-type PostHeaderProps = {
-  title: string;
-  coverImage: {
-    node: {
-      sourceUrl: string;
-      featuredImage: string;
-      mediaDetails: {
-        width: number;
-        height: number;
-      };
-    };
-  };
-  date: string;
-  author: {
-    node: {
-      firstName: string;
-      lastName: string;
-      name: string;
-      avatar: {
-        url: string;
-      };
-    };
-  };
-  categories: {
-    edges: {
-      length: number;
-      node: {
-        name: string;
-      };
-    };
-  };
-};
+import { PostHeaderProps } from '../lib/types';
 
 export default function PostHeader({
   title,

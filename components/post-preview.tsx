@@ -2,33 +2,7 @@ import Avatar from './avatar';
 import Date from './date';
 import CoverImage from './cover-image';
 import Link from 'next/link';
-
-type PostPreviewProps = {
-  title: string;
-  coverImage: {
-    node: {
-      sourceUrl: string;
-      featuredImage: string;
-      mediaDetails: {
-        width: number;
-        height: number;
-      };
-    };
-  };
-  date: string;
-  excerpt: string;
-  author: {
-    node: {
-      firstName: string;
-      lastName: string;
-      name: string;
-      avatar: {
-        url: string;
-      };
-    };
-  };
-  slug: string;
-};
+import type { PostPreviewProps } from '../lib/types';
 
 export default function PostPreview({
   title,

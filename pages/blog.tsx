@@ -6,44 +6,7 @@ import HeroPost from '../components/hero-post';
 import Nav from '../components/nav';
 import Layout from '../components/layout';
 import { getAllPostsForHome, getSocials } from '../lib/api';
-
-type AllPostsProps = {
-  allPosts: {
-    edges: {
-      edges?: string[];
-      node: {
-        title: string;
-        slug: string;
-        featuredImage: {
-          node: {
-            sourceUrl: string;
-            featuredImage: string;
-            mediaDetails: {
-              width: number;
-              height: number;
-            };
-          };
-        };
-        date: string;
-        excerpt: string;
-        author: {
-          node: {
-            firstName: string;
-            lastName: string;
-            name: string;
-            avatar: {
-              url: string;
-            };
-          };
-        };
-      };
-    }[];
-  };
-  preview: string;
-  socials: {
-    content: string;
-  };
-};
+import { AllPostsProps } from '../lib/types';
 
 export default function Index({ allPosts: { edges }, preview, socials }: AllPostsProps) {
   const heroPost = edges[0]?.node;
