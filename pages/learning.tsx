@@ -6,15 +6,7 @@ import Intro from '../components/intro';
 import Layout from '../components/layout';
 import PostBody from '../components/post-body';
 import { getPage, getSocials } from '../lib/api';
-
-type LearningProps = {
-  socials: {
-    content: string;
-  };
-  learning: {
-    content: string;
-  };
-};
+import type { LearningProps } from '../lib/types';
 
 export default function Learning({ socials, learning: { content } }: LearningProps) {
   return (

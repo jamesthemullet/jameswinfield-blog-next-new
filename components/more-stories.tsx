@@ -1,37 +1,5 @@
 import PostPreview from './post-preview';
-
-type MoreStoriesProps = {
-  posts: {
-    edges?: string[];
-    node: {
-      title: string;
-
-      date: string;
-      excerpt: string;
-      author: {
-        node: {
-          firstName: string;
-          lastName: string;
-          name: string;
-          avatar: {
-            url: string;
-          };
-        };
-      };
-      slug: string;
-      featuredImage: {
-        node: {
-          sourceUrl: string;
-          featuredImage: string;
-          mediaDetails: {
-            width: number;
-            height: number;
-          };
-        };
-      };
-    };
-  }[];
-};
+import { MoreStoriesProps } from '../lib/types';
 
 export default function MoreStories({ posts }: MoreStoriesProps) {
   return (

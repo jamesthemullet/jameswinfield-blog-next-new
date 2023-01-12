@@ -6,22 +6,7 @@ import Intro from '../components/intro';
 import Layout from '../components/layout';
 import { getPagesForHomePage, getSocials } from '../lib/api';
 import HomePageSection from '../components/home-page-section';
-import { Key } from 'react';
-
-type AllPostsProps = {
-  allPosts: {
-    edges: {
-      node: {
-        content: string;
-        id: Key;
-        title: string;
-      };
-    }[];
-  };
-  socials: {
-    content: string;
-  };
-};
+import type { AllPostsProps } from '../lib/types';
 
 export default function Index({ allPosts: { edges }, socials }: AllPostsProps) {
   return (

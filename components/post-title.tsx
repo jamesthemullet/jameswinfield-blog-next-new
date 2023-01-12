@@ -1,6 +1,4 @@
-type PostTitle = {
-  children: string;
-};
+import type { PostTitle } from '../lib/types';
 
 export default function PostTitle({ children }: PostTitle) {
   return (
