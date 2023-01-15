@@ -26,7 +26,7 @@ export default function Learning({ socials, page: { content } }: PageProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const page = await getPage('780');
+  const page = await getPage('783');
   const socials = await getSocials();
   return {
     props: { page, socials },

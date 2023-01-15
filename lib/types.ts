@@ -82,11 +82,11 @@ export type IndexProps = {
   };
 };
 
-export type LearningProps = {
-  socials: {
+export type PageProps = {
+  page: {
     content: string;
   };
-  learning: {
+  socials: {
     content: string;
   };
 };
