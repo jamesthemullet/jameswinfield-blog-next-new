@@ -8,7 +8,7 @@ import PostBody from '../components/post-body';
 import { getPage, getSocials } from '../lib/api';
 import type { PageProps } from '../lib/types';
 
-export default function Learning({ socials, page: { content } }: PageProps) {
+export default function Timeline({ socials, page: { content } }: PageProps) {
   return (
     <Layout socials={socials}>
       <Head>
@@ -26,7 +26,7 @@ export default function Learning({ socials, page: { content } }: PageProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const page = await getPage('780');
+  const page = await getPage('786');
   const socials = await getSocials();
   return {
     props: { page, socials },

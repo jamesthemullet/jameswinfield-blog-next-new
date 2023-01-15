@@ -12,6 +12,12 @@ export default function Nav() {
       <Link href="/learning">
         <a className="hover:underline p-2 pl-4 pr-4 text-2xl font-bold">Learning</a>
       </Link>
+      <Link href="/projects">
+        <a className="hover:underline p-2 pl-4 pr-4 text-2xl font-bold">Projects</a>
+      </Link>
+      <Link href="/timeline">
+        <a className="hover:underline p-2 pl-4 pr-4 text-2xl font-bold">Timeline</a>
+      </Link>
     </div>
   );
 }
