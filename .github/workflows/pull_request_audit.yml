@@ -55,7 +55,16 @@ jobs:
           header: lighthouse
           message: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
-      - name: Run axe tests
-        run: |
-          yarn add axe-core
-          yarn run axe-core .
+  axe-core:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        run: yarn i
+      - name: Run Axe-core
+        run: yarn axe-core .
