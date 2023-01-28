@@ -57,4 +57,4 @@ jobs:
             ${{ steps.format_lighthouse_score.outputs.comment }}
       - name: Run axe tests
         run: |
-          npx axe-core
+          yarn axe-core
