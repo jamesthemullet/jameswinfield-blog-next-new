@@ -65,6 +65,6 @@ jobs:
         with:
           node-version: 16
       - name: Install Dependencies
-        run: yarn i
+        run: yarn
       - name: Run Axe-core
         run: yarn axe-core .
