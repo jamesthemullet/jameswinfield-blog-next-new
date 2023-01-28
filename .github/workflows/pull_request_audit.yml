@@ -71,4 +71,4 @@ jobs:
         run: |
           echo "## Pa11y Results" >> output.txt
           cat output.txt
-          npx github-actions-comments -r "output.txt"
+          yarn github-actions-comments -r "output.txt"
