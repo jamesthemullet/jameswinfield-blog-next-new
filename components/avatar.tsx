@@ -9,7 +9,7 @@ export default function Avatar({ node }: AuthorProps) {
     <div className="flex items-center">
       <div className="w-12 h-12 relative mr-4">
         {node?.avatar.url && (
-          <Image src={node?.avatar.url} layout="fill" className="rounded-full" alt={name} />
+          <Image src={node?.avatar.url} layout="fill" className="rounded-full" />
         )}
       </div>
       <div className="text-xl font-bold">{name}</div>
