@@ -56,5 +56,5 @@ jobs:
           message: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
       - name: Run axe tests
-      run: |
-        npx axe-core
+        run: |
+          npx axe-core
