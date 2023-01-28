@@ -64,3 +64,16 @@ jobs:
         run: yarn install
       - name: Run Pa11y
         run: yarn pa11y
+        - name: Run pa11y tests
+        run: |
+          yarn install
+          yarn pa11y > output.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Post results as comment
+        if: always()
+        run: |
+          echo "## Pa11y Results" >> output.txt
+          cat output.txt
+          npx github-actions-comments -r "output.txt"
+
