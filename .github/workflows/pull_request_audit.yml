@@ -63,7 +63,8 @@ jobs:
       - name: Install Dependencies
         run: |
           yarn install
-          yarn pa11y > output.txt
+      - name: Run pa11y
+        run: yarn pa11y
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Post results as comment
@@ -71,4 +72,4 @@ jobs:
         run: |
           echo "## Pa11y Results" >> output.txt
           cat output.txt
-          yarn github-actions-comments -r "output.txt"
+          yarn @actions/github-script post-results-as-comment -r "output.txt"
