@@ -7,10 +7,24 @@ import Nav from '../components/nav';
 import Layout from '../components/layout';
 import { getAllPostsForHome, getSocials } from '../lib/api';
 import { AllPostsProps } from '../lib/types';
+import { useState, useEffect } from 'react';
 
 export default function Index({ allPosts: { edges }, preview, socials }: AllPostsProps) {
+  const [showAllPosts, setShowAllPosts] = useState(false);
+  const [postsToShow, setPostsToShow] = useState([]);
+  useEffect(() => {
+    if (showAllPosts) {
+      setPostsToShow(edges.slice(1));
+    } else {
+      const now = new Date();
+      const TwoYearsAgo = new Date(now.getFullYear() - 2, now.getMonth(), now.getDate());
+      setPostsToShow(
+        edges.slice(1).filter((a) => new Date(a.node.date).getTime() > TwoYearsAgo.getTime())
+      );
+    }
+  }, [showAllPosts]);
+
   const heroPost = edges[0]?.node;
-  const morePosts = edges.slice(1);
 
   return (
     <Layout preview={preview} socials={socials}>
@@ -29,7 +43,16 @@ export default function Index({ allPosts: { edges }, preview, socials }: AllPost
             excerpt={heroPost.excerpt}
           />
         )}
-        {Array.isArray(morePosts) && <MoreStories posts={morePosts} />}
+        {Array.isArray(postsToShow) && <MoreStories posts={postsToShow} />}
+        {!showAllPosts && (
+          <div className="flex flex-col items-center">
+            <button
+              className="bg-my-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-16"
+              onClick={() => setShowAllPosts(true)}>
+              Show Older Blog Posts
+            </button>
+          </div>
+        )}
       </Container>
     </Layout>
   );
