@@ -26,7 +26,7 @@ export default function CoverImage({ title, coverImage, slug }: Props) {
       className={cn('shadow-small', {
         'hover:shadow-medium transition-shadow duration-200': slug,
       })}
-      priority
+      priority={true}
     />
   );
 
