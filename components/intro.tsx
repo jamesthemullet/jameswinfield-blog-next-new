@@ -7,9 +7,7 @@ export default function Intro() {
         <h1 className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight md:pr-8">
           James Winfield.
         </h1>
-        <p
-          className="text-center md:text-left text-lg mt-5 md:pl-8"
-          aria-roledescription="subtitle">
+        <p className="text-center md:text-left text-lg mt-5 md:pl-8">
           A senior front-end software engineer in London
         </p>
       </section>
