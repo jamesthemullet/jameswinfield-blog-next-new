@@ -64,6 +64,7 @@ jobs:
         with:
           node-version: 14.x
       - run: yarn install
+      - run: yarn run build
       - run: yarn dev & npx wait-on http://localhost:3000
       - name: Run axe
         run: |
