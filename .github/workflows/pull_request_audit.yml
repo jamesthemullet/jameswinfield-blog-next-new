@@ -70,5 +70,5 @@ jobs:
       - run: yarn dev & npx wait-on http://localhost:3000
       - name: Run axe
         run: |
-          yarn add -g @axe-core/cli
+          yarn add @axe-core/cli
           axe http://localhost:3000 --exit
