@@ -57,10 +57,10 @@ jobs:
             ${{ steps.format_lighthouse_score.outputs.comment }}
   axe:
     runs-on: ubuntu-latest
+    env:
+      WORDPRESS_API_URL: https://blog.jameswinfield.co.uk/graphql
     steps:
       - uses: actions/checkout@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
