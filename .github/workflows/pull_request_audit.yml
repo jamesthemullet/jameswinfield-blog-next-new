@@ -68,6 +68,7 @@ jobs:
       - run: yarn install
       - run: yarn run build
       - run: yarn dev & npx wait-on http://localhost:3000
+      - run: export PATH=$PATH:$(yarn global bin)
       - name: Run axe
         run: |
           yarn add @axe-core/cli
