@@ -75,6 +75,7 @@ jobs:
           echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
           sudo apt-get update
           sudo apt-get install google-chrome-stable -y
+          echo "export PATH=$PATH:/usr/bin/google-chrome" >> $GITHUB_ENV
       - name: Update Chrome driver
         run: |
           LATEST_CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
