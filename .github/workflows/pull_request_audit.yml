@@ -1,4 +1,4 @@
-name: Lighthouse CI
+name: CI Tests For James Winfield
 on:
   pull_request:
     branches: [main]
