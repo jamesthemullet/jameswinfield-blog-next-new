@@ -68,7 +68,12 @@ jobs:
       - run: yarn install
       - run: yarn run build
       - run: yarn dev & npx wait-on http://localhost:3000
-      - run: export PATH=$PATH:$(yarn global bin)
+      - name: Install chromedriver
+        run: |
+          yarn add chromedriver
+      - name: Update PATH
+        run: |
+          export PATH=$PATH:$(yarn bin)/chromedriver
       - name: Run axe
         run: |
           yarn add @axe-core/cli
