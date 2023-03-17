@@ -61,6 +61,19 @@ jobs:
       WORDPRESS_API_URL: https://blog.jameswinfield.co.uk/graphql
     steps:
       - uses: actions/checkout@v2
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      - name: Install ChromeDriver
+        run: |
+          CHROME_VERSION=$(google-chrome --version | grep -oP "Google Chrome \K\S+")
+          CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION%.*}")
+          curl -L "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" -o chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          chmod +x chromedriver
+          sudo mv chromedriver /usr/local/bin/
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
