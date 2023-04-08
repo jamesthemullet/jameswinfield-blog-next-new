@@ -14,11 +14,13 @@ import Tags from '../../components/tags';
 import { getAllPostsWithSlug, getPostAndMorePosts, getSocials } from '../../lib/api';
 import { CMS_NAME } from '../../lib/constants';
 import Nav from '../../components/nav';
+import Comments from '../../components/comments';
 
 type PostProps = {
   post: {
     slug: string;
     title: string;
+    databaseId: number;
     featuredImage: {
       node: {
         sourceUrl: string;
@@ -44,6 +46,23 @@ type PostProps = {
       edges: {
         node: {
           name: string;
+        };
+      }[];
+    };
+    comments?: {
+      edges: {
+        node: {
+          author: {
+            node: {
+              name: string;
+              avatar: {
+                url: string;
+              };
+            };
+          };
+          id: number;
+          content: string;
+          date: string;
         };
       }[];
     };
@@ -91,6 +110,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
               />
               <PostBody content={post.content} />
               <footer>{post.tags.edges.length > 0 && <Tags tags={post.tags} />}</footer>
+              <Comments comments={post.comments} id={post.databaseId} />
             </article>
 
             <SectionSeparator />

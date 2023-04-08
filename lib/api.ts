@@ -186,12 +186,28 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
       excerpt
       slug
       date
+      databaseId
       featuredImage {
         node {
           sourceUrl
           mediaDetails {
             height
             width
+          }
+        }
+      }
+      comments {
+        edges {
+          node {
+            id
+            date
+            content
+            author {
+              node {
+                id
+                name
+              }
+            }
           }
         }
       }
@@ -274,4 +290,60 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
   if (data.posts.edges.length > 2) data.posts.edges.pop();
 
   return data;
+}
+
+export async function createComment(postId, name, email, authorUrl, content) {
+  const query = `
+    mutation CreateComment($input: CreateCommentInput!) {
+      createComment(input: $input) {
+        clientMutationId
+        comment {
+          author {
+            node {
+              email
+              id
+              name
+              url
+            }
+          }
+          content
+          commentId
+          databaseId
+          date
+          id
+        }
+        success
+      }
+    }
+  `;
+  const variables = {
+    input: {
+      author: name,
+      authorEmail: email,
+      authorUrl,
+      content: content.toString(),
+      commentOn: parseInt(postId),
+    },
+  };
+  const headers = { 'Content-Type': 'application/json' };
+
+  if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
+    headers['Authorization'] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
+  }
+
+  const res = await fetch('https://blog.jameswinfield.co.uk/graphql', {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({
+      query,
+      variables,
+    }),
+  });
+  const json = await res.json();
+  if (json.errors) {
+    console.error(json.errors);
+    throw new Error('Failed to create comment');
+  }
+
+  return json.data.createComment.comment;
 }
