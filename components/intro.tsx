@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function Intro() {
   return (
     <div>
-      <section className="flex-col md:flex-row flex items-center md:justify-between mt-8 mb-8 md:mb-12">
+      <section className="flex-col md:flex-row flex items-center md:justify-between md:mt-[100px] mt-4 mb-8 md:mb-12">
         <h1 className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight md:pr-8">
           James Winfield.
         </h1>
