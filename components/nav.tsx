@@ -32,11 +32,11 @@ export default function Nav() {
       <div
         className={`${
           isNavExpanded ? 'flex' : 'hidden lg:flex'
-        } bg-my-blue sticky top-0 z-50 justify-center`}>
+        } mt-[-1px] bg-my-blue sticky top-0 z-50 justify-center`}>
         <ul
           className={`${
             isNavExpanded ? 'flex' : 'hidden lg:flex'
-          } flex flex-col flex-col md:flex-row p-4 flex-wrap justify-center bg-my-blue absolute w-full transition ease-in-out `}>
+          } flex-col md:flex-row p-4 flex-wrap justify-center bg-my-blue absolute w-full transition ease-in-out `}>
           <Link href="/">
             <a
               className={`hover:underline p-2 pl-4 pr-4 text-2xl font-bold text-white ${
