@@ -3,6 +3,8 @@ import { createComment } from '../lib/api';
 
 type CommentFormProps = {
   postId: number;
+  setCommentData: (comment) => void;
+  newCommentPosted: boolean;
 };
 
 type CommentFormErrors = {
@@ -11,9 +13,12 @@ type CommentFormErrors = {
   content?: string;
 };
 
-export default function CommentForm({ postId }: CommentFormProps) {
+export default function CommentForm({
+  postId,
+  setCommentData,
+  newCommentPosted,
+}: CommentFormProps) {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     authorName: '',
@@ -56,7 +61,7 @@ export default function CommentForm({ postId }: CommentFormProps) {
           formData.content
         );
         console.log('Created comment', comment);
-        setData(comment);
+        setCommentData(comment);
       } catch (error) {
         console.error(error);
         setError(error);
@@ -76,7 +81,7 @@ export default function CommentForm({ postId }: CommentFormProps) {
       <h3 className="mb-4 text-2xl md:text-2xl font-bold tracking-tighter leading-tight">
         Add a Comment
       </h3>
-      {data && data.createComment.success && <p>Thank you for your comment!</p>}
+      {newCommentPosted && <p>Thank you for your comment!</p>}
       {error && <p>There was an error submitting your comment. Please try again later.</p>}
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

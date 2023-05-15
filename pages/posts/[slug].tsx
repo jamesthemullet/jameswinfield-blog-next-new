@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Head from 'next/head';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { useState } from 'react';
 import Container from '../../components/container';
 import PostBody from '../../components/post-body';
 import MoreStories from '../../components/more-stories';
@@ -15,6 +16,7 @@ import { getAllPostsWithSlug, getPostAndMorePosts, getSocials } from '../../lib/
 import { CMS_NAME } from '../../lib/constants';
 import Nav from '../../components/nav';
 import Comments from '../../components/comments';
+import CommentForm from '../../components/commentForm';
 
 type PostProps = {
   post: {
@@ -78,8 +80,24 @@ type PostProps = {
 };
 
 export default function Post({ post, posts, preview, socials }: PostProps) {
+  const [commentData, setCommentData] = useState(post?.comments?.edges);
+  const [newCommentPosted, setNewCommentPosted] = useState(false);
   const router = useRouter();
   const morePosts = posts?.edges;
+
+  const handleCommentDataChange = (newData) => {
+    const newComment = {
+      node: {
+        author: newData.author,
+        id: newData.id,
+        content: newData.content,
+        date: newData.date,
+      },
+    };
+    const data = [newComment, ...commentData];
+    setCommentData(data);
+    setNewCommentPosted(true);
+  };
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -110,7 +128,12 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
               />
               <PostBody content={post.content} />
               <footer>{post.tags.edges.length > 0 && <Tags tags={post.tags} />}</footer>
-              <Comments comments={post.comments} id={post.databaseId} />
+              <Comments comments={commentData} />
+              <CommentForm
+                postId={post.databaseId}
+                setCommentData={handleCommentDataChange}
+                newCommentPosted={newCommentPosted}
+              />
             </article>
 
             <SectionSeparator />
