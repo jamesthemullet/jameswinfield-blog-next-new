@@ -80,7 +80,7 @@ type PostProps = {
 };
 
 export default function Post({ post, posts, preview, socials }: PostProps) {
-  const [commentData, setCommentData] = useState(post.comments.edges);
+  const [commentData, setCommentData] = useState(post?.comments?.edges);
   const [newCommentPosted, setNewCommentPosted] = useState(false);
   const router = useRouter();
   const morePosts = posts?.edges;
