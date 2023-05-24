@@ -17,27 +17,7 @@ import { CMS_NAME } from '../../lib/constants';
 import Nav from '../../components/nav';
 import Comments from '../../components/comments';
 import CommentForm from '../../components/commentForm';
-
-type seoProps = {
-  canonical: string;
-  focuskw: string;
-  metaDesc: string;
-  metaKeywords: string;
-  opengraphDescription: string;
-  opengraphImage: {
-    uri: string;
-    altText: string;
-    mediaItemUrl: string;
-    mediaDetails: {
-      width: string;
-      height: string;
-    };
-  };
-  opengraphTitle: string;
-  opengraphUrl: string;
-  opengraphSiteName: string;
-  title: string;
-};
+import type { seoProps } from '../../lib/types';
 
 type PostProps = {
   post: {
