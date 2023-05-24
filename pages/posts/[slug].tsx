@@ -18,6 +18,27 @@ import Nav from '../../components/nav';
 import Comments from '../../components/comments';
 import CommentForm from '../../components/commentForm';
 
+type seoProps = {
+  canonical: string;
+  focuskw: string;
+  metaDesc: string;
+  metaKeywords: string;
+  opengraphDescription: string;
+  opengraphImage: {
+    uri: string;
+    altText: string;
+    mediaItemUrl: string;
+    mediaDetails: {
+      width: string;
+      height: string;
+    };
+  };
+  opengraphTitle: string;
+  opengraphUrl: string;
+  opengraphSiteName: string;
+  title: string;
+};
+
 type PostProps = {
   post: {
     slug: string;
@@ -68,6 +89,7 @@ type PostProps = {
         };
       }[];
     };
+    seo: seoProps;
   };
   posts: {
     edges: { edges: string };
@@ -84,7 +106,6 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
   const [newCommentPosted, setNewCommentPosted] = useState(false);
   const router = useRouter();
   const morePosts = posts?.edges;
-
   const handleCommentDataChange = (newData) => {
     const newComment = {
       node: {
@@ -104,7 +125,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
   }
 
   return (
-    <Layout preview={preview} socials={socials}>
+    <Layout preview={preview} socials={socials} seo={post?.seo}>
       <Nav />
       <Container>
         <Header />
@@ -147,7 +168,6 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false, previewData }) => {
   const data = await getPostAndMorePosts(params?.slug, preview, previewData);
-
   const socials = await getSocials();
 
   return {
