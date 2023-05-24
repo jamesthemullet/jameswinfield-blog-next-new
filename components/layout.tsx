@@ -1,6 +1,7 @@
 import Footer from './footer';
 import Meta from './meta';
 import { ReactElement } from 'react';
+import type { seoProps } from '../lib/types';
 
 type LayoutProps = {
   preview?: string;
@@ -8,12 +9,13 @@ type LayoutProps = {
   socials: {
     content: string;
   };
+  seo: seoProps;
 };
 
-export default function Layout({ preview, children, socials }: LayoutProps) {
+export default function Layout({ preview, children, socials, seo }: LayoutProps) {
   return (
     <>
-      <Meta />
+      <Meta seo={seo} />
       <div className="min-h-screen">
         <main>{children}</main>
       </div>

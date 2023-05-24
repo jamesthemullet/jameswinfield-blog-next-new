@@ -17,6 +17,7 @@ import { CMS_NAME } from '../../lib/constants';
 import Nav from '../../components/nav';
 import Comments from '../../components/comments';
 import CommentForm from '../../components/commentForm';
+import type { seoProps } from '../../lib/types';
 
 type PostProps = {
   post: {
@@ -68,6 +69,7 @@ type PostProps = {
         };
       }[];
     };
+    seo: seoProps;
   };
   posts: {
     edges: { edges: string };
@@ -84,7 +86,6 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
   const [newCommentPosted, setNewCommentPosted] = useState(false);
   const router = useRouter();
   const morePosts = posts?.edges;
-
   const handleCommentDataChange = (newData) => {
     const newComment = {
       node: {
@@ -104,7 +105,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
   }
 
   return (
-    <Layout preview={preview} socials={socials}>
+    <Layout preview={preview} socials={socials} seo={post?.seo}>
       <Nav />
       <Container>
         <Header />
@@ -147,7 +148,6 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false, previewData }) => {
   const data = await getPostAndMorePosts(params?.slug, preview, previewData);
-
   const socials = await getSocials();
 
   return {

@@ -50,6 +50,29 @@ export async function getPage(id, idType = 'DATABASE_ID') {
         slug
         content
         title
+        seo {
+          metaDesc
+          focuskw
+          title
+          canonical
+          metaKeywords
+          opengraphTitle
+          opengraphDescription
+          opengraphUrl
+          opengraphSiteName
+          opengraphImage {
+            uri
+            altText
+            mediaDetails {
+              file
+              height
+              width
+            }
+            mediaItemUrl
+            sourceUrl
+            srcSet
+          }
+        }
       }
     }`,
     {
@@ -230,11 +253,58 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
           }
         }
       }
+      seo {
+        metaDesc
+        focuskw
+        title
+        canonical
+        metaKeywords
+        opengraphTitle
+        opengraphDescription
+        opengraphUrl
+        opengraphSiteName
+        opengraphImage {
+          uri
+          altText
+          mediaDetails {
+            file
+            height
+            width
+          }
+          mediaItemUrl
+          sourceUrl
+          srcSet
+        }
+        
+      }
     }
     query PostBySlug($id: ID!, $idType: PostIdType!) {
       post(id: $id, idType: $idType) {
         ...PostFields
         content
+        seo {
+          metaDesc
+          focuskw
+          title
+          canonical
+          metaKeywords
+          opengraphTitle
+          opengraphDescription
+          opengraphUrl
+          opengraphSiteName
+          opengraphImage {
+            uri
+            altText
+            mediaDetails {
+              file
+              height
+              width
+            }
+            mediaItemUrl
+            sourceUrl
+            srcSet
+          }
+        }
         ${
           // Only some of the fields of a revision are considered as there are some inconsistencies
           isRevision

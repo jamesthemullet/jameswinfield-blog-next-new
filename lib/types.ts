@@ -85,6 +85,7 @@ export type IndexProps = {
 export type PageProps = {
   page: {
     content: string;
+    seo: seoProps;
   };
   socials: {
     content: string;
@@ -129,4 +130,25 @@ export type HeroPostProps = {
   excerpt: string;
   author: AuthorProps;
   slug: string;
+};
+
+export type seoProps = {
+  canonical: string;
+  focuskw: string;
+  metaDesc: string;
+  metaKeywords: string;
+  opengraphDescription: string;
+  opengraphImage: {
+    uri: string;
+    altText: string;
+    mediaItemUrl: string;
+    mediaDetails: {
+      width: string;
+      height: string;
+    };
+  };
+  opengraphTitle: string;
+  opengraphUrl: string;
+  opengraphSiteName: string;
+  title: string;
 };

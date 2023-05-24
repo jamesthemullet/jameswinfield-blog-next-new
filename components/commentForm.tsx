@@ -60,7 +60,6 @@ export default function CommentForm({
           formData.authorUrl,
           formData.content
         );
-        console.log('Created comment', comment);
         setCommentData(comment);
       } catch (error) {
         console.error(error);

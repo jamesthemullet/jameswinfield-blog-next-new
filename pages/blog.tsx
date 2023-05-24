@@ -27,7 +27,7 @@ export default function Index({ allPosts: { edges }, preview, socials }: AllPost
   const heroPost = edges[0]?.node;
 
   return (
-    <Layout preview={preview} socials={socials}>
+    <Layout preview={preview} socials={socials} seo={null}>
       <Head>
         <title>Portfolio of James Winfield - a senior front-end software engineer in London.</title>
       </Head>
