@@ -1,6 +1,6 @@
 const API_URL = process.env.WORDPRESS_API_URL;
 const GITHUB_API_URL = 'https://api.github.com/graphql';
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const GITHUB_API_SECRET = process.env.GITHUB_API_SECRET;
 
 async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
   const headers = { 'Content-Type': 'application/json' };
@@ -423,7 +423,7 @@ export async function createComment(postId, name, email, authorUrl, content) {
 async function fetchGithubAPI(query = '') {
   const headers = {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${GITHUB_TOKEN}`,
+    Authorization: `Bearer ${GITHUB_API_SECRET}`,
   };
 
   const res = await fetch(GITHUB_API_URL, {
