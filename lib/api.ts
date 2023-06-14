@@ -450,12 +450,14 @@ export async function getGithubProjects() {
         repositories(first: 10) {
           edges {
             node {
+              id
               name
               description
               url
               isPrivate
               createdAt
               updatedAt
+              homepageUrl
             }
           }
         }
