@@ -9,6 +9,8 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
     headers['Authorization'] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
   }
 
+  console.log(10, API_URL);
+
   // WPGraphQL Plugin must be enabled
   const res = await fetch(API_URL, {
     headers,
