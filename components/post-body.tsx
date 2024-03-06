@@ -1,3 +1,5 @@
+import styles from './post-body.module.css';
+
 type PostBodyProps = {
   content: string;
 };
@@ -5,7 +7,7 @@ type PostBodyProps = {
 export default function PostBody({ content }: PostBodyProps) {
   return (
     <div className="max-w-4xl mx-auto">
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+      <div className={styles.content} dangerouslySetInnerHTML={{ __html: content }} />
     </div>
   );
 }
