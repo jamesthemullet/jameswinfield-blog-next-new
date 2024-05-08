@@ -7,9 +7,16 @@ import Layout from '../components/layout';
 import PostBody from '../components/post-body';
 import { getPage, getSocials, getGithubProjects } from '../lib/api';
 import type { PageProps } from '../lib/types';
+import data from '../projects.json';
 
 export default function Projects({ page, socials, projects }: PageProps) {
   const { content, seo } = page;
+  console.log(2, projects);
+  console.log(3, data);
+  console.log(
+    4,
+    data.filter((project) => project.name === 'djmix2022')
+  );
   const projectsToDisplay = projects
     .filter((project) => !project.isPrivate)
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
@@ -49,6 +56,7 @@ export default function Projects({ page, socials, projects }: PageProps) {
                 <p className="mt-2">Coming soon...</p>
                 <h3 className="text-xl font-bold mt-4">What would I do differently next time?</h3>
                 <p className="mt-2">Coming soon...</p>
+                {/* {data.filter((data) => data.name === project.name).length > 0 && <p>test</p>} */}
               </div>
             ))}
           </div>
