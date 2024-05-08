@@ -10,11 +10,10 @@ import type { PageProps } from '../lib/types';
 
 export default function Projects({ page, socials, projects }: PageProps) {
   const { content, seo } = page;
-  console.log(1, projects);
   const projectsToDisplay = projects
     .filter((project) => !project.isPrivate)
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-  console.log(2, projectsToDisplay);
+
   return (
     <Layout socials={socials} seo={seo}>
       <Head>
@@ -25,10 +24,10 @@ export default function Projects({ page, socials, projects }: PageProps) {
         <>
           <Intro />
           <PostBody content={content} />
-          <div className="grid grid-cols-1 gap-4 mb-12 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 gap-4 mb-12 max-w-4xl mx-auto mt-8">
             {projectsToDisplay.map((project) => (
-              <div key={project.id} className="p-4 border border-2 border-my-blue rounded">
-                <h2 className="text-2xl font-bold mb-2">{project.name}</h2>
+              <div key={project.id} className="pt-4 border-t-2 border-my-blue ">
+                <h2 className="text-3xl font-bold mb-2">{project.name}</h2>
                 <p className="text-black mb-2">{project.description}</p>
                 <a
                   href={project.url}
@@ -44,6 +43,12 @@ export default function Projects({ page, socials, projects }: PageProps) {
                   className="text-gray-500 block">
                   {project.homepageUrl}
                 </a>
+                <h3 className="text-xl font-bold mt-4">Why did I build it?</h3>
+                <p className="mt-2">Coming soon...</p>
+                <h3 className="text-xl font-bold mt-4">What did I learn?</h3>
+                <p className="mt-2">Coming soon...</p>
+                <h3 className="text-xl font-bold mt-4">What would I do differently next time?</h3>
+                <p className="mt-2">Coming soon...</p>
               </div>
             ))}
           </div>
