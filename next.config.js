@@ -15,6 +15,7 @@ module.exports = {
       '2.gravatar.com',
       'secure.gravatar.com',
       'blog.jameswinfield.co.uk',
+      'awesomescreenshot.s3.amazonaws.com',
     ],
   },
 };
