@@ -1,6 +1,44 @@
 [
   {
     "name": "djmix2022",
-    "test": "test"
+    "why": "I was looking for a way to rebuild my blog, and also practice my React skills. I read about Frontity and decided this would be a good way to do both.",
+    "learn": "I learnt about headless architecture, and how to use React with WordPress.  I also learnt about the Frontity framework, and how to use it to build a blog...and the drawbacks of it.",
+    "different": "Well, I would use NextJS as it is easier to use, and actually supported - Frontity is no longer supported by the developers.  Plus NextJS has much more functionality and is more flexible.  I ended up doing some pretty hacky things to get pages/functionality that require data from all 150+ pages (eg promise.all that runs 16 times on one particular page)...plus some basic things are simply not supported like sitemaps.  It looks pretty though...in my opinion.",
+    "screenshot": "https://awesomescreenshot.s3.amazonaws.com/image/518843/48099627-7afe62ae49298491aa3af21d5230754e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20240511%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240511T125626Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=7c0060958a5bdf9b14c0b16f197fbd6dd12bddb39e0d05c148a8b5b5866120f3"
+  },
+  {
+    "name": "jameswinfield-blog-next-new",
+    "why": "I got a bit annoyed at M&S for some reason I forget now, but realised that my portfolio was the same one as before I was ever an engineer",
+    "learn": "I didn't do anything crazy for this, I just took a NextJS template and redesigned it a bit.  It was my second NextJS project, the other being a work project that was already set up, so I learnt a bit about how to set up a NextJS project from scratch.",
+    "different": "Not sure I would have done much differently.  It was really good practice for the technologies we were moving to at M&S.  I realised that I wasn't a Tailwind convert as I was forever having to look up classnames which slowed me down.",
+    "screenshot": "https://awesomescreenshot.s3.amazonaws.com/image/518843/48099706-ce9237e38189226ecf6da66d0456c760.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20240511%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240511T130946Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=19d15fdae059ad5a090ba6a7c4e1c59999a18264c9d6161edd3c16c21ded9bb7"
+  },
+  {
+    "name": "random-recipe-generator",
+    "why": "We were doing a hackathon at work, and I decided my priority was to help a junior engineer upskill on the new tech stack we were moving to.",
+    "learn": "Nothing really, I was just helping someone else learn.",
+    "different": "Maybe I should have been more selfish and took the opportunity to learn something myself...like Remix or Svelte for example.",
+    "screenshot": "https://awesomescreenshot.s3.amazonaws.com/image/518843/48099721-63852e54efb6e6e206378e7a13d4d71e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20240511%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240511T131130Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=5c8b656a894b056ce17edaf65c970da77f3186d5e4ec57a7bde38ad138fb4d1f"
+  },
+  {
+    "name": "worldofwinfield-nextjs",
+    "why": "I wanted to redesign my personal blog, as it was pretty dull-looking and I'm quite colourful in real life.",
+    "learn": "This was the project where I started using Github Actions for my pipeline checks, and also using Husky for pre-commit checks.",
+    "different": "Not sure I would do anything differently, though I think I did rush to try to complete it...I do need to do a little cleaning up.",
+    "screenshot": "https://awesomescreenshot.s3.amazonaws.com/image/518843/48099726-b3f153a18d38f933099869e532a62936.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20240511%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240511T131231Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=febe995138bf46bc99fa7d26e43a2ed70a4c13f78f2887d01be25f314cdd4817"
+  },
+  {
+    "name": "20TwentyScore",
+    "why": "This started because I thought it might be a cool little app, and perhaps something I could publish for people to use.",
+    "learn": "My idea is that you could keep scores in a database, so I learnt how to hook up postgres to a NextJS app.  Granted I've mostly only done UI, but I do have the auth established, using NextAuth.  Also used it as an opportunity to practice writing unit tests, along with React Context which is something I'd used but not set-up previously.",
+    "different": "Well, there's still plenty to do, but I did make my life harder by not thinking in advance about how to keep state across the different components - not entirely sure the context is split most efficiently, but it works!",
+    "screenshot": null
+  },
+  {
+    "name": "londonlist",
+    "why": "I wanted an app that would allow me to create shareable to-do lists for my active London life, and from a technical perspective to use Strapi and postgres.",
+    "learn": "Well I've learnt how to use Strapi, how to set it up with dev/prod, and how to read from it.  Otherwise, mostly I've done very little on this project so far, but am using CSS Modules which is new to me.",
+    "different": "Ask me in 2025...",
+    "screenshot": null
   }
 ]
