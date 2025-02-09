@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import Container from '../components/container';
 import Nav from '../components/nav';
