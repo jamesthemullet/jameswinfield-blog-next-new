@@ -105,7 +105,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
   }
 
   return (
-    <Layout preview={preview} socials={socials} seo={post?.seo} title={post.title}>
+    <Layout preview={preview} socials={socials} seo={post?.seo} title={post?.title}>
       <Nav />
       <Container>
         <Header />
