@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
-import Head from 'next/head';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useState } from 'react';
 import Container from '../../components/container';
@@ -13,7 +12,6 @@ import Layout from '../../components/layout';
 import PostTitle from '../../components/post-title';
 import Tags from '../../components/tags';
 import { getAllPostsWithSlug, getPostAndMorePosts, getSocials } from '../../lib/api';
-import { CMS_NAME } from '../../lib/constants';
 import Nav from '../../components/nav';
 import Comments from '../../components/comments';
 import CommentForm from '../../components/commentForm';
@@ -104,7 +102,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
     return <ErrorPage statusCode={404} />;
   }
 
-  console.log(10, post.title);
+  console.log(10, post);
 
   return (
     <Layout preview={preview} socials={socials} seo={post?.seo} title={post?.title}>
@@ -117,7 +115,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
           <>
             <article>
               <PostHeader
-                title={post.title}
+                title={post?.title}
                 coverImage={post.featuredImage}
                 date={post.date}
                 author={post.author}
