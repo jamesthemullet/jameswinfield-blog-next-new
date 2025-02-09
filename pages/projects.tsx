@@ -24,7 +24,6 @@ type ProjectProps = {
 
 export default function Projects({ page, socials, projects }: PageProps) {
   const { content, seo } = page;
-  console.log(2, projects);
   const projectsToDisplay = projects
     .filter((project) => !project.isPrivate)
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
@@ -60,7 +59,7 @@ export default function Projects({ page, socials, projects }: PageProps) {
                 </a>
                 {(() => {
                   const projectData = data.find((d) => d.name === project.name);
-                  console.log(10, projectData);
+
                   return (
                     projectData.screenshot && (
                       <div className="mt-4">
