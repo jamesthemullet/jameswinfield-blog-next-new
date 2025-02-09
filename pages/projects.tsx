@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import Container from '../components/container';
 import Nav from '../components/nav';
@@ -24,16 +23,12 @@ type ProjectProps = {
 
 export default function Projects({ page, socials, projects }: PageProps) {
   const { content, seo } = page;
-  console.log(2, projects);
   const projectsToDisplay = projects
     .filter((project) => !project.isPrivate)
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 
   return (
     <Layout socials={socials} seo={seo}>
-      <Head>
-        <title>Portfolio of James Winfield - a senior front-end software engineer in London.</title>
-      </Head>
       <Nav />
       <Container>
         <>
@@ -63,7 +58,7 @@ export default function Projects({ page, socials, projects }: PageProps) {
                 </a>
                 {(() => {
                   const projectData = data.find((d) => d.name === project.name);
-                  console.log(10, projectData);
+
                   return (
                     projectData.screenshot && (
                       <div className="mt-4">

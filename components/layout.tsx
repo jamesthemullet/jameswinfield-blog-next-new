@@ -10,12 +10,13 @@ type LayoutProps = {
     content: string;
   };
   seo: seoProps;
+  title?: string;
 };
 
-export default function Layout({ preview, children, socials, seo }: LayoutProps) {
+export default function Layout({ preview, children, socials, seo, title }: LayoutProps) {
   return (
     <>
-      <Meta seo={seo} />
+      <Meta seo={seo} title={title} />
       <div className="min-h-screen">
         <main>{children}</main>
       </div>

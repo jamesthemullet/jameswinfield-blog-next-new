@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import Container from '../components/container';
 import Nav from '../components/nav';
@@ -11,9 +10,6 @@ import type { AllPostsProps } from '../lib/types';
 export default function Index({ allPosts: { edges }, socials }: AllPostsProps) {
   return (
     <Layout preview={null} socials={socials} seo={null}>
-      <Head>
-        <title>Portfolio of James Winfield - a senior front-end software engineer in London.</title>
-      </Head>
       <Nav />
       <Container>
         <>

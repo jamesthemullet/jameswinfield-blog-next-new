@@ -22,17 +22,25 @@ type seoProps = {
     opengraphSiteName: string;
     title: string;
   };
+  title?: string;
 };
 
-export default function Meta({ seo }: seoProps) {
+export default function Meta({ seo, title }: seoProps) {
   const router = useRouter();
   const currentUrl = router.asPath;
   const siteAddress = 'https://www.jameswinfield.co.uk';
   const defaultImageUrl = '/images/jameswinfieldcover.png';
 
+  console.log(11, title);
+
   const { opengraphImage, opengraphTitle, opengraphDescription, opengraphSiteName } = seo || {};
   return (
     <Head>
+      <title>
+        {title
+          ? title
+          : 'Portfolio of James Winfield - a senior front-end software engineer in London.'}
+      </title>
       <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
@@ -46,7 +54,11 @@ export default function Meta({ seo }: seoProps) {
       <meta property="og:type" content="article" />
       <meta
         property="og:title"
-        content={opengraphTitle ? opengraphTitle : 'James Winfield Software Engineering Portfolio'}
+        content={
+          opengraphTitle
+            ? opengraphTitle
+            : 'Portfolio of James Winfield - a senior front-end software engineer in London.'
+        }
       />
       <meta
         property="og:description"

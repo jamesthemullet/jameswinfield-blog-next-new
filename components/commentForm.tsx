@@ -62,7 +62,6 @@ export default function CommentForm({
         );
         setCommentData(comment);
       } catch (error) {
-        console.error(error);
         setError(error);
       }
       setFormData({
