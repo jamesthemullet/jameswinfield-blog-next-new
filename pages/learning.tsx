@@ -12,9 +12,6 @@ export default function Learning({ socials, page }: PageProps) {
   const { content, seo } = page;
   return (
     <Layout socials={socials} seo={seo}>
-      <Head>
-        <title>Portfolio of James Winfield - a senior front-end software engineer in London.</title>
-      </Head>
       <Nav />
       <Container>
         <>

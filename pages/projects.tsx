@@ -31,9 +31,6 @@ export default function Projects({ page, socials, projects }: PageProps) {
 
   return (
     <Layout socials={socials} seo={seo}>
-      <Head>
-        <title>Portfolio of James Winfield - a senior front-end software engineer in London.</title>
-      </Head>
       <Nav />
       <Container>
         <>

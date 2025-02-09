@@ -105,7 +105,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
   }
 
   return (
-    <Layout preview={preview} socials={socials} seo={post?.seo}>
+    <Layout preview={preview} socials={socials} seo={post?.seo} title={post.title}>
       <Nav />
       <Container>
         <Header />
@@ -114,12 +114,6 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
         ) : (
           <>
             <article>
-              <Head>
-                <title>
-                  {post.title} | Next.js Blog Example with {CMS_NAME}
-                </title>
-                <meta property="og:image" content={post.featuredImage?.sourceUrl} />
-              </Head>
               <PostHeader
                 title={post.title}
                 coverImage={post.featuredImage}
