@@ -31,8 +31,6 @@ export default function Meta({ seo, title }: seoProps) {
   const siteAddress = 'https://www.jameswinfield.co.uk';
   const defaultImageUrl = '/images/jameswinfieldcover.png';
 
-  console.log(11, title);
-
   const { opengraphImage, opengraphTitle, opengraphDescription, opengraphSiteName } = seo || {};
   return (
     <Head>
