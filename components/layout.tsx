@@ -13,7 +13,7 @@ type LayoutProps = {
   title?: string;
 };
 
-export default function Layout({ preview, children, socials, seo, title }: LayoutProps) {
+export default function Layout({ children, socials, seo, title }: LayoutProps) {
   return (
     <>
       <Meta seo={seo} title={title} />

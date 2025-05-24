@@ -102,8 +102,6 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
     return <ErrorPage statusCode={404} />;
   }
 
-  console.log(10, post);
-
   return (
     <Layout preview={preview} socials={socials} seo={post?.seo} title={post?.title}>
       <Nav />
