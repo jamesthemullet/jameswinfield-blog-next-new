@@ -32,8 +32,8 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.7",
     "@types/jest": "^29.4.0",
-    "@typescript-eslint/eslint-plugin": "5.38.0",
-    "@typescript-eslint/parser": "5.38.0",
+    "@typescript-eslint/eslint-plugin": "5.62.0",
+    "@typescript-eslint/parser": "5.62.0",
     "autoprefixer": "10.4.21",
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^10.0.0",
