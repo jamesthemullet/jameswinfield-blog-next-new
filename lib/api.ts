@@ -2,6 +2,7 @@ const API_URL = process.env.WORDPRESS_API_URL;
 const GITHUB_API_URL = 'https://api.github.com/graphql';
 const GITHUB_API_SECRET = process.env.GITHUB_API_SECRET;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
   const headers = { 'Content-Type': 'application/json' };
 
