@@ -18,11 +18,26 @@ const compat = new FlatCompat({
 
 export default defineConfig([
   {
+    ignores: [
+      'node_modules/**',
+      '.next/**',
+      'out/**',
+      'dist/**',
+      'build/**',
+      '.cache/**',
+      'coverage/**',
+      '*.log',
+      '.env',
+      '.env.local',
+      '.env.*.local',
+    ],
+  },
+  {
     extends: compat.extends(
       'eslint:recommended',
       'plugin:react/recommended',
       'plugin:@typescript-eslint/recommended',
-      'plugin:prettier/recommended'
+      'plugin:prettier/recommended',
     ),
     settings: {
       react: {
