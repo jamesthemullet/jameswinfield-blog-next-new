@@ -40,7 +40,7 @@ export async function getPreviewPost(id, idType = 'DATABASE_ID') {
     }`,
     {
       variables: { id, idType },
-    }
+    },
   );
   return data.post;
 }
@@ -80,7 +80,7 @@ export async function getPage(id, idType = 'DATABASE_ID') {
     }`,
     {
       variables: { id, idType },
-    }
+    },
   );
   return data.page;
 }
@@ -110,7 +110,7 @@ export async function getPagesForHomePage() {
           }
         }
       }
-    }`
+    }`,
   );
   return data.pages;
 }
@@ -124,7 +124,7 @@ export async function getSocials() {
         content
         title
       }
-    }`
+    }`,
   );
   return data.page;
 }
@@ -184,7 +184,7 @@ export async function getAllPostsForHome(preview) {
         onlyEnabled: !preview,
         preview,
       },
-    }
+    },
   );
 
   return data?.posts;
@@ -344,7 +344,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
         id: isDraft ? postPreview.id : slug,
         idType: isDraft ? 'DATABASE_ID' : 'SLUG',
       },
-    }
+    },
   );
 
   // Draft posts may not have an slug

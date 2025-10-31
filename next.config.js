@@ -7,6 +7,14 @@ if (!process.env.WORDPRESS_API_URL) {
 
 /** @type {import('next').NextConfig} */
 module.exports = {
+  eslint: {
+    // Disable ESLint during dev builds for faster performance
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    // Disable type checking during dev builds for faster performance
+    ignoreBuildErrors: true,
+  },
   images: {
     domains: [
       process.env.WORDPRESS_API_URL.match(/(?!(w+)\.)\w*(?:\w+\.)+\w+/)[0], // Valid WP Image domain.

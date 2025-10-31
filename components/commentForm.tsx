@@ -58,7 +58,7 @@ export default function CommentForm({
           formData.authorName,
           formData.authorEmail,
           formData.authorUrl,
-          formData.content
+          formData.content,
         );
         setCommentData(comment);
       } catch (error) {

@@ -18,7 +18,7 @@ export default function Index({ allPosts: { edges }, preview, socials }: AllPost
       const now = new Date();
       const TwoYearsAgo = new Date(now.getFullYear() - 2, now.getMonth(), now.getDate());
       setPostsToShow(
-        edges.slice(1).filter((a) => new Date(a.node.date).getTime() > TwoYearsAgo.getTime())
+        edges.slice(1).filter((a) => new Date(a.node.date).getTime() > TwoYearsAgo.getTime()),
       );
     }
   }, [showAllPosts]);
