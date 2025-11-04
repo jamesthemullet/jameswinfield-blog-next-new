@@ -1,5 +1,4 @@
 import Container from './container';
-import Alert from './alert';
 
 type FooterProps = {
   socials: {
@@ -16,8 +15,6 @@ export default function Footer({ socials }: FooterProps) {
           dangerouslySetInnerHTML={{ __html: socials?.content }}
         />
       </Container>
-
-      <Alert preview={null} />
     </footer>
   );
 }
