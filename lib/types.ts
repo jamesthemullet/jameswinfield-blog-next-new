@@ -74,14 +74,6 @@ export type AllPostsProps = {
   }[];
 };
 
-export type IndexProps = {
-  allPosts: AllPostsProps;
-  preview: string;
-  socials: {
-    content: string;
-  };
-};
-
 export type PageProps = {
   page: {
     content: string;
