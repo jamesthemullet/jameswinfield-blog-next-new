@@ -5,12 +5,7 @@
     "type": true
   },
   "ignoreBinaries": ["wait-on"],
-  "ignore": [
-    "lighthouserc.js"
-  ],
-  "ignoreDependencies": [
-    "eslint-config-prettier",
-    "eslint-plugin-prettier"
-  ],
+  "ignore": ["lighthouserc.js"],
+  "ignoreDependencies": ["eslint-config-prettier", "eslint-plugin-prettier"],
   "tags": ["-lintignore"]
 }
