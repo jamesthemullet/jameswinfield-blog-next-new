@@ -467,5 +467,10 @@ export async function getGithubProjects() {
     }
   `);
 
+  if (!data || !data.viewer) {
+    console.error('Error: Unexpected API response', data);
+    throw new Error('Failed to fetch GitHub projects. Viewer is undefined.');
+  }
+
   return data.viewer.repositories.edges.map((edge) => edge.node);
 }
