@@ -103,11 +103,25 @@ export default function Projects({ page, socials, projects }: PageProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const page = await getPage('783');
-  const socials = await getSocials();
-  const projects = await getGithubProjects();
-  return {
-    props: { page, socials, projects },
-    revalidate: 10,
-  };
+  try {
+    const page = await getPage('783');
+    const socials = await getSocials();
+    const projects = await getGithubProjects();
+
+    return {
+      props: { page, socials, projects },
+      revalidate: 10,
+    };
+  } catch (error) {
+    console.error('Error fetching data for /projects:', error);
+
+    return {
+      props: {
+        page: { content: '', seo: {} },
+        socials: [],
+        projects: [],
+      },
+      revalidate: 10,
+    };
+  }
 };
