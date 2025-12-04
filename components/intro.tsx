@@ -14,7 +14,7 @@ export default function Intro() {
       <Image
         width={1920}
         height={808}
-        layout="responsive"
+        style={{ width: '100%', height: 'auto' }}
         src="/images/jameswinfieldcover.png"
         alt="Heading Image for James Winfield, showing AI generated software engineers in the style of Gustav Klimt"
       />
