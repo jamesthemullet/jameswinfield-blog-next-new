@@ -25,8 +25,8 @@
     "husky": "^9.0.0",
     "lint-staged": "^16.0.0",
     "next": "latest",
-    "react": "19.2.1",
-    "react-dom": "19.2.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
     "tsc-files": "1.1.4",
     "typescript": "5.9.3"
   },
