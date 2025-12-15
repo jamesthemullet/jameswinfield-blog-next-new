@@ -37,41 +37,42 @@ export default function Nav() {
           className={`${
             isNavExpanded ? 'flex' : 'hidden lg:flex'
           } flex-col md:flex-row p-4 flex-wrap justify-center bg-my-blue absolute w-full transition ease-in-out `}>
-          <Link
-            href="/"
-            className={`hover:underline p-2 pl-4 pr-4 text-2xl font-bold text-white ${
-              router.pathname == '/' ? 'text-my-yellow' : ''
-            }`}>
-            Me
-          </Link>
-          <Link
-            href="/blog"
-            className={`hover:underline p-2 pl-4 pr-4 text-2xl font-bold text-white ${
-              router.pathname == '/blog' ? 'text-my-yellow' : ''
-            }`}>
-            Blog
-          </Link>
-          <Link
-            href="/learning"
-            className={`hover:underline p-2 pl-4 pr-4 text-2xl font-bold text-white ${
-              router.pathname == '/learning' ? 'text-my-yellow' : ''
-            }`}>
-            Learning
-          </Link>
-          <Link
-            href="/projects"
-            className={`hover:underline p-2 pl-4 pr-4 text-2xl font-bold text-white ${
-              router.pathname == '/projects' ? 'text-my-yellow' : ''
-            }`}>
-            Projects
-          </Link>
-          <Link
-            href="/timeline"
-            className={`hover:underline p-2 pl-4 pr-4 text-2xl font-bold text-white ${
-              router.pathname == '/timeline' ? 'text-my-yellow' : ''
-            }`}>
-            Timeline
-          </Link>
+          <li>
+            <Link
+              href="/"
+              className={`hover:underline p-2 pl-4 pr-4 text-2xl font-bold text-white ${
+                router.pathname == '/' ? 'text-my-yellow' : ''
+              }`}>
+              Me
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/blog"
+              className={`hover:underline p-2 pl-4 pr-4 text-2xl font-bold text-white ${
+                router.pathname == '/blog' ? 'text-my-yellow' : ''
+              }`}>
+              Blog
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/projects"
+              className={`hover:underline p-2 pl-4 pr-4 text-2xl font-bold text-white ${
+                router.pathname == '/projects' ? 'text-my-yellow' : ''
+              }`}>
+              Projects
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/timeline"
+              className={`hover:underline p-2 pl-4 pr-4 text-2xl font-bold text-white ${
+                router.pathname == '/timeline' ? 'text-my-yellow' : ''
+              }`}>
+              Timeline
+            </Link>
+          </li>
         </ul>
       </div>
     </>
