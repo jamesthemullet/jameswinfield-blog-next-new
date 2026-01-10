@@ -41,7 +41,7 @@
     "eslint-config-prettier": "^10.0.0",
     "eslint-plugin-prettier": "5.5.4",
     "eslint-plugin-react": "^7.37.5",
-    "globals": "^16.2.0",
+    "globals": "^17.0.0",
     "jest": "^30.0.0",
     "knip": "^5.67.1",
     "postcss": "8.5.6",
