@@ -82,16 +82,6 @@ export type PageProps = {
   socials: {
     content: string;
   };
-  projects: {
-    id: string;
-    name: string;
-    description: string;
-    url: string;
-    isPrivate: string;
-    createdAt: string;
-    updatedAt: string;
-    homepageUrl: string;
-  }[];
 };
 
 export type PostPreviewProps = {

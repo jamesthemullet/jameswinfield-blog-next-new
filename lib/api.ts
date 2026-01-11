@@ -1,6 +1,4 @@
 const API_URL = process.env.WORDPRESS_API_URL;
-const GITHUB_API_URL = 'https://api.github.com/graphql';
-const GITHUB_API_SECRET = process.env.GITHUB_API_SECRET;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
@@ -420,57 +418,4 @@ export async function createComment(postId, name, email, authorUrl, content) {
   }
 
   return json.data.createComment.comment;
-}
-
-async function fetchGithubAPI(query = '') {
-  const headers = {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${GITHUB_API_SECRET}`,
-  };
-
-  const res = await fetch(GITHUB_API_URL, {
-    headers,
-    method: 'POST',
-    body: JSON.stringify({
-      query,
-    }),
-  });
-
-  const json = await res.json();
-
-  if (json.errors) {
-    console.error(json.errors);
-    throw new Error('Failed to fetch API');
-  }
-  return json.data;
-}
-
-export async function getGithubProjects() {
-  const data = await fetchGithubAPI(`
-    query MyProjects {
-      viewer {
-        repositories(first: 10) {
-          edges {
-            node {
-              id
-              name
-              description
-              url
-              isPrivate
-              createdAt
-              updatedAt
-              homepageUrl
-            }
-          }
-        }
-      }
-    }
-  `);
-
-  if (!data || !data.viewer) {
-    console.error('Error: Unexpected API response', data);
-    throw new Error('Failed to fetch GitHub projects. Viewer is undefined.');
-  }
-
-  return data.viewer.repositories.edges.map((edge) => edge.node);
 }
