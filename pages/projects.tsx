@@ -4,28 +4,39 @@ import Nav from '../components/nav';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
 import PostBody from '../components/post-body';
-import { getPage, getSocials, getGithubProjects } from '../lib/api';
+import { getPage, getSocials } from '../lib/api';
 import type { PageProps } from '../lib/types';
 import data from '../projects.json';
 import Image from 'next/image';
 
 type ProjectProps = {
-  id: string;
   name: string;
-  description: string;
-  url: string;
-  isPrivate: string;
-  createdAt: string;
-  updatedAt: string;
-  homepageUrl: string;
-  screenshot: string;
+  builtAt?: string;
+  why: string;
+  learn: string;
+  different: string;
+  screenshot?: string;
+  technologies?: string[];
 };
 
-export default function Projects({ page, socials, projects }: PageProps) {
+export default function Projects({ page, socials }: PageProps) {
   const { content, seo } = page;
-  const projectsToDisplay = projects
-    .filter((project) => !project.isPrivate)
-    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  const projectsToDisplay = [...(data as ProjectProps[])].sort((a, b) => {
+    const getTime = (value?: string) => {
+      if (!value) return 0;
+      const parsed = new Date(value).getTime();
+      return Number.isNaN(parsed) ? 0 : parsed;
+    };
+
+    return getTime(b.builtAt) - getTime(a.builtAt);
+  });
+
+  const formatBuildDate = (value?: string) => {
+    if (!value) return null;
+    const parsed = new Date(value);
+    if (Number.isNaN(parsed.getTime())) return null;
+    return parsed.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+  };
 
   return (
     <Layout socials={socials} seo={seo}>
@@ -35,64 +46,41 @@ export default function Projects({ page, socials, projects }: PageProps) {
           <Intro />
           <PostBody content={content} />
           <div className="grid grid-cols-1 gap-4 mb-12 max-w-4xl mx-auto mt-8">
-            {projectsToDisplay.map((project: ProjectProps) => (
-              <div key={project.id} className="pt-4 border-t-2 border-my-blue ">
+            {projectsToDisplay.map((project) => (
+              <div key={project.name} className="pt-4 border-t-2 border-my-blue ">
                 <h2 className="text-3xl font-bold mb-2">{project.name}</h2>
-                <p className="text-black mb-2">{project.description}</p>
-                <p className="text-black mb-2">
-                  Date started: {new Date(project.createdAt).toLocaleDateString('en-GB')}
-                </p>
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-500 block">
-                  {project.url}
-                </a>
-                <a
-                  href={project.homepageUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-500 block">
-                  {project.homepageUrl}
-                </a>
-                {(() => {
-                  const projectData = data.find((d) => d.name === project.name);
-
-                  return (
-                    projectData.screenshot && (
-                      <div className="mt-4">
-                        <Image
-                          src={projectData.screenshot}
-                          alt={projectData.name}
-                          width={800}
-                          height={400}
-                        />
-                      </div>
-                    )
-                  );
-                })()}
+                {project.screenshot && (
+                  <div className="mt-4">
+                    <Image
+                      src={project.screenshot}
+                      alt={`${project.name} screenshot`}
+                      width={800}
+                      height={400}
+                    />
+                  </div>
+                )}
+                {project.technologies && project.technologies.length > 0 && (
+                  <>
+                    <h3 className="text-xl font-bold mt-4">What technology did I use?</h3>
+                    <ul className="flex flex-wrap gap-2 mt-2">
+                      {project.technologies.map((tech) => (
+                        <li
+                          key={`${project.name}-${tech}`}
+                          className="bg-gray-100 text-sm px-3 py-1 rounded-full text-gray-800">
+                          {tech}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+                <h3 className="text-xl font-bold mt-4">When did I build it?</h3>
+                <p className="mt-2">{formatBuildDate(project.builtAt) || 'Coming soon...'}</p>
                 <h3 className="text-xl font-bold mt-4">Why did I build it?</h3>
-                <p className="mt-2">
-                  {(() => {
-                    const projectData = data.find((d) => d.name === project.name);
-                    return projectData ? projectData.why : 'Coming soon...';
-                  })()}
-                </p>
+                <p className="mt-2">{project.why || 'Coming soon...'}</p>
                 <h3 className="text-xl font-bold mt-4">What did I learn?</h3>
-                <p className="mt-2">
-                  {(() => {
-                    const projectData = data.find((d) => d.name === project.name);
-                    return projectData ? projectData.learn : 'Coming soon...';
-                  })()}
-                </p>
+                <p className="mt-2">{project.learn || 'Coming soon...'}</p>
                 <h3 className="text-xl font-bold mt-4">What would I do differently next time?</h3>
-                <p className="mt-2">
-                  {(() => {
-                    const projectData = data.find((d) => d.name === project.name);
-                    return projectData ? projectData.different : 'Coming soon...';
-                  })()}
-                </p>
+                <p className="mt-2">{project.different || 'Coming soon...'}</p>
               </div>
             ))}
           </div>
@@ -106,10 +94,9 @@ export const getStaticProps: GetStaticProps = async () => {
   try {
     const page = await getPage('783');
     const socials = await getSocials();
-    const projects = await getGithubProjects();
 
     return {
-      props: { page, socials, projects },
+      props: { page, socials },
       revalidate: 10,
     };
   } catch (error) {
@@ -119,7 +106,6 @@ export const getStaticProps: GetStaticProps = async () => {
       props: {
         page: { content: '', seo: {} },
         socials: [],
-        projects: [],
       },
       revalidate: 10,
     };
