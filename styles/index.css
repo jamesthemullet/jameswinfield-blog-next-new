@@ -1,112 +1,126 @@
-@tailwind base;
+@import 'tailwindcss';
 
-/* Write your own custom base styles here */
+@theme {
+  --color-accent-1: #fafafa;
+  --color-accent-2: #eaeaea;
+  --color-accent-7: #333333;
+  --color-my-green: #3bb273;
+  --color-my-red: #af1b3f;
+  --color-my-blue: #083d77;
+  --color-my-light: #efe6dd;
+  --color-my-yellow: #f3dfa2;
+  --color-success: #0070f3;
+  --color-cyan: #79ffe1;
 
-/* Start purging... */
-@tailwind components;
-/* Stop purging. */
+  --spacing-28: 7rem;
 
-/* Write you own custom component styles here */
+  --tracking-tighter: -0.04em;
+  --leading-tight: 1.2;
 
-/* Start purging... */
-@tailwind utilities;
-/* Stop purging. */
+  --text-5xl: 2.5rem;
+  --text-6xl: 2.75rem;
+  --text-7xl: 4.5rem;
+  --text-8xl: 6.25rem;
 
-/* Your own custom utilities */
-
-.has-text-align-left {
-  @apply text-left;
+  --shadow-small: 0 5px 10px rgba(0, 0, 0, 0.12);
+  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-.has-text-align-center {
-  @apply text-center;
-}
+@layer components {
+  .has-text-align-left {
+    @apply text-left;
+  }
 
-.has-text-align-right {
-  @apply text-right;
-}
+  .has-text-align-center {
+    @apply text-center;
+  }
 
-.has-large-font-size {
-  @apply text-4xl;
-}
+  .has-text-align-right {
+    @apply text-right;
+  }
 
-.alignfull {
-  @apply w-screen relative;
+  .has-large-font-size {
+    @apply text-4xl;
+  }
 
-  left: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  max-width: 100vw;
-  right: 50%;
-}
+  .alignfull {
+    @apply w-screen relative;
 
-.wp-block-image img {
-  @apply max-w-full mt-2;
-}
-.wp-block-image.aligncenter {
-  @apply text-center;
-}
-.wp-block-image.alignfull img,
-.wp-block-image.alignwide img {
-  @apply w-full;
-}
-.wp-block-image .alignleft,
-.wp-block-image .alignright,
-.wp-block-image .aligncenter,
-.wp-block-image.is-resized {
-  @apply table ml-0 mr-0;
-}
-.wp-block-image .alignleft > figcaption,
-.wp-block-image .alignright > figcaption,
-.wp-block-image .aligncenter > figcaption,
-.wp-block-image.is-resized > figcaption {
-  @apply table-caption;
+    left: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    max-width: 100vw;
+    right: 50%;
+  }
 
-  caption-side: bottom;
-}
+  .wp-block-image img {
+    @apply max-w-full mt-2;
+  }
+  .wp-block-image.aligncenter {
+    @apply text-center;
+  }
+  .wp-block-image.alignfull img,
+  .wp-block-image.alignwide img {
+    @apply w-full;
+  }
+  .wp-block-image .alignleft,
+  .wp-block-image .alignright,
+  .wp-block-image .aligncenter,
+  .wp-block-image.is-resized {
+    @apply table ml-0 mr-0;
+  }
+  .wp-block-image .alignleft > figcaption,
+  .wp-block-image .alignright > figcaption,
+  .wp-block-image .aligncenter > figcaption,
+  .wp-block-image.is-resized > figcaption {
+    @apply table-caption;
 
-.wp-block-image .alignleft {
-  @apply float-left mr-4;
-}
-.wp-block-image .alignright {
-  @apply float-right ml-4;
-}
-.wp-block-image .aligncenter {
-  @apply m-auto;
-}
+    caption-side: bottom;
+  }
 
-.wp-block-button a,
-.wp-block-file a.wp-block-file__button {
-  @apply bg-blue-500 text-white no-underline py-2 px-4;
-}
+  .wp-block-image .alignleft {
+    @apply float-left mr-4;
+  }
+  .wp-block-image .alignright {
+    @apply float-right ml-4;
+  }
+  .wp-block-image .aligncenter {
+    @apply m-auto;
+  }
 
-.wp-block-button a:hover,
-.wp-block-file a.wp-block-file__button:hover {
-  @apply bg-blue-400 cursor-pointer;
-}
+  .wp-block-button a,
+  .wp-block-file a.wp-block-file__button {
+    @apply bg-blue-500 text-white no-underline py-2 px-4;
+  }
 
-.wp-block-file a:first-of-type {
-  @apply mr-4;
-}
+  .wp-block-button a:hover,
+  .wp-block-file a.wp-block-file__button:hover {
+    @apply bg-blue-400 cursor-pointer;
+  }
 
-.wp-block-cover {
-  @apply flex flex-wrap justify-center items-center bg-cover bg-center overflow-hidden;
+  .wp-block-file a:first-of-type {
+    @apply mr-4;
+  }
 
-  min-height: 430px;
-}
+  .wp-block-cover {
+    @apply flex flex-wrap justify-center items-center bg-cover bg-center overflow-hidden;
 
-.wp-block-verse {
-  @apply font-sans;
-}
+    min-height: 430px;
+  }
 
-.wp-block-media-text {
-  @apply grid grid-cols-2 gap-4;
-}
+  .wp-block-verse {
+    @apply font-sans;
+  }
 
-.flexbox-row ul {
-  @apply flex flex-wrap justify-center items-center mt-4 mb-4;
-}
+  .wp-block-media-text {
+    @apply grid grid-cols-2 gap-4;
+  }
 
-.flexbox-row li {
-  @apply p-1 pl-3 pr-3 hover:underline;
+  .flexbox-row ul {
+    @apply flex flex-wrap justify-center items-center mt-4 mb-4;
+  }
+
+  .flexbox-row li {
+    @apply p-1 pl-3 pr-3 hover:underline;
+  }
 }
