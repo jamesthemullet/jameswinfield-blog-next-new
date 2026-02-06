@@ -7,12 +7,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0 --cache",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix --cache",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json,module.css}' --config ./.prettierrc",
-    "prepare": "husky install",
     "test": "jest"
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,css,md,json}": "eslint .",
-    "**/*.{ts,tsx}": "tsc-files --noEmit"
   },
   "dependencies": {
     "@axe-core/cli": "^4.6.0",
@@ -22,8 +17,6 @@
     "accented": "^1.2.0",
     "classnames": "^2.3.1",
     "date-fns": "^4.0.0",
-    "husky": "^9.0.0",
-    "lint-staged": "^16.0.0",
     "next": "latest",
     "react": "19.2.4",
     "react-dom": "19.2.4",

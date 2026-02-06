@@ -12,7 +12,7 @@
     "name": "World Of Winfield",
     "builtAt": "2023-05-21",
     "why": "I wanted to redesign my personal blog, as it was pretty dull-looking and I'm quite colourful in real life.",
-    "learn": "This was the project where I started using Github Actions for my pipeline checks, and also using Husky for pre-commit checks.",
+    "learn": "This was the project where I started using Github Actions for my pipeline checks.",
     "different": "Not sure I would do anything differently, though I think I did rush to try to complete it...I do need to do a little cleaning up.  Or maybe Co-Pilot needs to!",
     "screenshot": "/images/World-Of-Winfield-Site.png",
     "technologies": [
@@ -24,7 +24,6 @@
       "ESLint",
       "Prettier",
       "Emotion",
-      "Husky",
       "GitHub Actions",
       "Vercel"
     ]
