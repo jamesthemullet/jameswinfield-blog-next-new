@@ -1195,7 +1195,7 @@
   resolved "https://registry.yarnpkg.com/@pkgr/core/-/core-0.2.9.tgz#d229a7b7f9dac167a156992ef23c7f023653f53b"
   integrity sha512-QNqXyfVS2wm9hweSYD2O7F0G06uurj9kZ96TRQE5Y9hU7+tgdZwIkbAKc5Ocy1HxEY2kuDQa6cQ1WRs/O5LFKA==
 
-"@preact/signals-core@^1.12.2":
+"@preact/signals-core@^1.14.0":
   version "1.14.0"
   resolved "https://registry.yarnpkg.com/@preact/signals-core/-/signals-core-1.14.0.tgz#3a13742301a94161790e84d0f2cbf9b5455593f7"
   integrity sha512-AowtCcCU/33lFlh1zRFf/u+12rfrhtNakj7UpaGEsmMwUKpKWMVvcktOGcwBBNiB4lWrZWc01LhiyyzVklJyaQ==
@@ -1675,12 +1675,12 @@
   resolved "https://registry.yarnpkg.com/@unrs/resolver-binding-win32-x64-msvc/-/resolver-binding-win32-x64-msvc-1.11.1.tgz#538b1e103bf8d9864e7b85cc96fa8d6fb6c40777"
   integrity sha512-lrW200hZdbfRtztbygyaq/6jP6AKE8qQN2KvPcJ+x7wiD038YtnYtZ82IMNJ69GJibV7bwL3y9FgK+5w/pYt6g==
 
-accented@1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/accented/-/accented-1.2.4.tgz#85301d8fbae6151cd5453a090f468585e73e2f73"
-  integrity sha512-q7jerDQRF+sfmZzfPnIyuKd7mC0ep0Pj84Oza7amkvbqXWQ5xJjXoDTv8Ie46rRCQsgjUevcuSqeXZKBcyNf7w==
+accented@1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/accented/-/accented-1.2.5.tgz#f4ffc227e6511ddecf6647a4bfeef724a6dff170"
+  integrity sha512-oC/3j3aYuFe2b+t0VXW/Tv6PAX6EsN0qBnIYFlFJ8TD/28Eg1ddqK3YaP6RJTh5K77omB2k1qfK0Kj/RyjbUdw==
   dependencies:
-    "@preact/signals-core" "^1.12.2"
+    "@preact/signals-core" "^1.14.0"
     axe-core "^4.11.1"
 
 acorn-jsx@^5.3.2:
