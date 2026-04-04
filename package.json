@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@axe-core/cli": "4.11.1",
-    "@types/node": "24.12.1",
+    "@types/node": "24.12.2",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "accented": "1.2.5",
