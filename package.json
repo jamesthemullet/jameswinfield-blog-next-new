@@ -11,15 +11,15 @@
   },
   "dependencies": {
     "@axe-core/cli": "4.11.1",
-    "@types/node": "24.12.0",
+    "@types/node": "24.12.2",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "accented": "1.2.4",
+    "accented": "1.2.5",
     "classnames": "2.5.1",
     "date-fns": "4.1.0",
     "next": "16.2.3",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
     "tsc-files": "1.1.4",
     "typescript": "6.0.2"
   },
@@ -45,7 +45,7 @@
     "globals": "^17.0.0",
     "jest": "^30.0.0",
     "knip": "^6.0.0",
-    "postcss": "8.5.8",
+    "postcss": "8.5.9",
     "prettier": "3.8.1",
     "tailwindcss": "^4.0.0",
     "ts-jest": "^29.0.5"
