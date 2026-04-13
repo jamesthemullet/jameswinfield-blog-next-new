@@ -20,8 +20,10 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
 
   const json = await res.json();
   if (json.errors) {
-    // eslint-disable-next-line no-console
-    console.error(json.errors);
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.error(json.errors);
+    }
     throw new Error('Failed to fetch API');
   }
   return json.data;
@@ -413,7 +415,10 @@ export async function createComment(postId, name, email, authorUrl, content) {
   });
   const json = await res.json();
   if (json.errors) {
-    console.error(json.errors);
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.error(json.errors);
+    }
     throw new Error('Failed to create comment');
   }
 
