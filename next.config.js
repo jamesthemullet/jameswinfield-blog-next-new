@@ -15,7 +15,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: process.env.WORDPRESS_API_URL.match(/(?!(w+)\.)\w*(?:\w+\.)+\w+/)[0],
+        hostname: (process.env.WORDPRESS_API_URL.match(/(?!(w+)\.)\w*(?:\w+\.)+\w+/) || [])[0],
       },
       {
         protocol: 'https',
