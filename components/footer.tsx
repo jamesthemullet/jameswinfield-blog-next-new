@@ -1,3 +1,4 @@
+import DOMPurify from 'isomorphic-dompurify';
 import Container from './container';
 
 type FooterProps = {
@@ -12,7 +13,7 @@ export default function Footer({ socials }: FooterProps) {
       <Container>
         <div
           className="flexbox-row text-white text-xl font-bold"
-          dangerouslySetInnerHTML={{ __html: socials?.content }}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(socials?.content ?? '') }}
         />
       </Container>
     </footer>
