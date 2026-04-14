@@ -1,3 +1,4 @@
+import DOMPurify from 'isomorphic-dompurify';
 import Date from './date';
 
 type CommentsProps = {
@@ -27,7 +28,7 @@ export default function Comments({ comments }: CommentsProps) {
       <div className="max-w-2xl mx-auto">
         {comments.map(({ node }) => (
           <div key={node.id} className="mb-4 max-w-2xl mx-auto">
-            <div className="mb-4" dangerouslySetInnerHTML={{ __html: node.content }} />
+            <div className="mb-4" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(node.content) }} />
             <p>{node.author.node.name}</p>
             <Date dateString={node.date} />
           </div>

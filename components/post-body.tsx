@@ -1,3 +1,4 @@
+import DOMPurify from 'isomorphic-dompurify';
 import styles from './post-body.module.css';
 
 type PostBodyProps = {
@@ -17,7 +18,7 @@ export default function PostBody({ content }: PostBodyProps) {
   const newContentString = newContent.join('<br />');
   return (
     <div className="max-w-4xl mx-auto">
-      <div className={styles.content} dangerouslySetInnerHTML={{ __html: newContentString }} />
+      <div className={styles.content} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newContentString) }} />
     </div>
   );
 }
