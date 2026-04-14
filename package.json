@@ -17,6 +17,7 @@
     "accented": "1.2.5",
     "classnames": "2.5.1",
     "date-fns": "4.1.0",
+    "isomorphic-dompurify": "^3.8.0",
     "next": "16.2.3",
     "react": "19.2.5",
     "react-dom": "19.2.5",
