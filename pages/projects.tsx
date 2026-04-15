@@ -92,8 +92,7 @@ export default function Projects({ page, socials }: PageProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const page = await getPage('783');
-    const socials = await getSocials();
+    const [page, socials] = await Promise.all([getPage('783'), getSocials()]);
 
     return {
       props: { page, socials },

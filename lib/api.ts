@@ -1,7 +1,7 @@
 const API_URL = process.env.WORDPRESS_API_URL;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
+async function fetchAPI(query = '', { variables, revalidate = 3600 }: Record<string, any> = {}) {
   const headers = { 'Content-Type': 'application/json' };
 
   if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
@@ -9,6 +9,7 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
   }
 
   // WPGraphQL Plugin must be enabled
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const res = await fetch(API_URL, {
     headers,
     method: 'POST',
@@ -16,7 +17,8 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
       query,
       variables,
     }),
-  });
+    next: { revalidate },
+  } as any);
 
   const json = await res.json();
   if (json.errors) {
@@ -41,6 +43,7 @@ export async function getPreviewPost(id, idType = 'DATABASE_ID') {
     }`,
     {
       variables: { id, idType },
+      revalidate: 0,
     },
   );
   return data.post;

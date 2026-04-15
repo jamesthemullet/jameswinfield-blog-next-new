@@ -139,8 +139,10 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false, previewData }) => {
-  const data = await getPostAndMorePosts(params?.slug, preview, previewData);
-  const socials = await getSocials();
+  const [data, socials] = await Promise.all([
+    getPostAndMorePosts(params?.slug, preview, previewData),
+    getSocials(),
+  ]);
 
   return {
     props: {

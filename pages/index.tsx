@@ -24,8 +24,7 @@ export default function Index({ allPosts: { edges }, socials }: AllPostsProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPosts = await getPagesForHomePage();
-  const socials = await getSocials();
+  const [allPosts, socials] = await Promise.all([getPagesForHomePage(), getSocials()]);
 
   return {
     props: { allPosts, socials },
