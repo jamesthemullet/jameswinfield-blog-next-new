@@ -27,6 +27,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const socials = await getSocials();
   return {
     props: { page, socials },
-    revalidate: 10,
+    revalidate: 86400,
   };
 };
