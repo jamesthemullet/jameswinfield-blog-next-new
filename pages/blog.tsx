@@ -6,22 +6,17 @@ import Nav from '../components/nav';
 import Layout from '../components/layout';
 import { getAllPostsForHome, getSocials } from '../lib/api';
 import { AllPostsProps } from '../lib/types';
-import { useState, useEffect } from 'react';
+import { useMemo, useState } from 'react';
 
 export default function Index({ allPosts: { edges }, preview, socials }: AllPostsProps) {
   const [showAllPosts, setShowAllPosts] = useState(false);
-  const [postsToShow, setPostsToShow] = useState([]);
-  useEffect(() => {
-    if (showAllPosts) {
-      setPostsToShow(edges.slice(1));
-    } else {
-      const now = new Date();
-      const TwoYearsAgo = new Date(now.getFullYear() - 2, now.getMonth(), now.getDate());
-      setPostsToShow(
-        edges.slice(1).filter((a) => new Date(a.node.date).getTime() > TwoYearsAgo.getTime()),
-      );
-    }
-  }, [showAllPosts]);
+
+  const postsToShow = useMemo(() => {
+    if (showAllPosts) return edges.slice(1);
+    const now = new Date();
+    const twoYearsAgo = new Date(now.getFullYear() - 2, now.getMonth(), now.getDate());
+    return edges.slice(1).filter((a) => new Date(a.node.date).getTime() > twoYearsAgo.getTime());
+  }, [showAllPosts, edges]);
 
   const heroPost = edges[0]?.node;
 

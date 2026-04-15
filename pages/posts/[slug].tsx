@@ -13,8 +13,10 @@ import PostTitle from '../../components/post-title';
 import Tags from '../../components/tags';
 import { getAllPostsWithSlug, getPostAndMorePosts, getSocials } from '../../lib/api';
 import Nav from '../../components/nav';
-import Comments from '../../components/comments';
-import CommentForm from '../../components/commentForm';
+import dynamic from 'next/dynamic';
+
+const Comments = dynamic(() => import('../../components/comments'), { ssr: false });
+const CommentForm = dynamic(() => import('../../components/commentForm'), { ssr: false });
 import type { seoProps } from '../../lib/types';
 
 type PostProps = {
