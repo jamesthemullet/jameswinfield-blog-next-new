@@ -97,7 +97,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
     return {
       props: { page, socials },
-      revalidate: 10,
+      revalidate: 86400,
     };
   } catch (error) {
     console.error('Error fetching data for /projects:', error);
@@ -107,7 +107,7 @@ export const getStaticProps: GetStaticProps = async () => {
         page: { content: '', seo: {} },
         socials: [],
       },
-      revalidate: 10,
+      revalidate: 86400,
     };
   }
 };

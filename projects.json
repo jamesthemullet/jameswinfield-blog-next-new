@@ -5,8 +5,14 @@
     "why": "I got a bit annoyed at M&S for some reason I forget now, but realised that my portfolio was the same one as before I was ever an engineer",
     "learn": "I didn't do anything crazy for this, I just took a NextJS template and redesigned it a bit.  It was my second NextJS project, the other being a work project that was already set up, so I learnt a bit about how to set up a NextJS project from scratch.",
     "different": "Not sure I would have done much differently.  It was really good practice for the technologies we were moving to at M&S.  I realised that I wasn't a Tailwind convert as I was forever having to look up classnames which slowed me down.",
-    "screenshot": "/images/James-Winfield-Site.png",
-    "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "GraphQL", "Vercel"]
+    "screenshot": "/images/James-Winfield-Site.webp",
+    "technologies": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "GraphQL",
+      "Vercel"
+    ]
   },
   {
     "name": "World Of Winfield",
@@ -14,7 +20,7 @@
     "why": "I wanted to redesign my personal blog, as it was pretty dull-looking and I'm quite colourful in real life.",
     "learn": "This was the project where I started using Github Actions for my pipeline checks.",
     "different": "Not sure I would do anything differently, though I think I did rush to try to complete it...I do need to do a little cleaning up.  Or maybe Co-Pilot needs to!",
-    "screenshot": "/images/World-Of-Winfield-Site.png",
+    "screenshot": "/images/World-Of-Winfield-Site.webp",
     "technologies": [
       "Next.js",
       "React",
@@ -34,7 +40,7 @@
     "why": "When I was growing up, I wanted to become a meteorologist.  I was never quite good enough at physics (my maths was good enough) so it never came about.  But then when I started playing around with blogs, circa 2010, I made a weather forecasting one for the Reading area, where I lived at the time, which is mostly on Facebook and has 15,000 followers somehow.  This is kind of a Facebook escape really.",
     "learn": "I wanted to try Svelte, and this project taught me how to stitch SvelteKit into a WordPress/GraphQL back end.  I didn't enjoy Svelte as much as I do Astro.",
     "different": "I probably wouldn't use Svelte again, some things like comment recursion were a pain.  Also would like to develop more features for it.",
-    "screenshot": "/images/Reading-Weather-Site.png",
+    "screenshot": "/images/Reading-Weather-Site.webp",
     "technologies": [
       "SvelteKit",
       "Svelte 5",
@@ -53,8 +59,16 @@
     "why": "This was me finding a project to try out Astro, having heard good things about its performance and flexibility.",
     "learn": "This was my first time wiring an Astro front end to my hosted GraphQL API.",
     "different": "Nothing really...though I'm sure I'll discover something in the future.",
-    "screenshot": "/images/Roast-Dinners-Around-The-World.png",
-    "technologies": ["Astro", "React", "TypeScript", "GraphQL", "ESLint", "Prettier", "Vercel"]
+    "screenshot": "/images/Roast-Dinners-Around-The-World.webp",
+    "technologies": [
+      "Astro",
+      "React",
+      "TypeScript",
+      "GraphQL",
+      "ESLint",
+      "Prettier",
+      "Vercel"
+    ]
   },
   {
     "name": "PubDB API",
