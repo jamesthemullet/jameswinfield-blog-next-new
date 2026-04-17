@@ -23,8 +23,7 @@ export default function Timeline({ socials, page }: PageProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const page = await getPage('786');
-  const socials = await getSocials();
+  const [page, socials] = await Promise.all([getPage('786'), getSocials()]);
   return {
     props: { page, socials },
     revalidate: 86400,
