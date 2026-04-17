@@ -14,15 +14,10 @@ interface Props {
     };
   };
   slug?: string;
-  sizes?: string;
+  priority?: boolean;
 }
 
-export default function CoverImage({
-  title,
-  coverImage,
-  slug,
-  sizes = '(max-width: 768px) 100vw, 50vw',
-}: Props) {
+export default function CoverImage({ title, coverImage, slug, priority = false, sizes = '(max-width: 768px) 100vw, 50vw' }: Props) {
   const image = (
     <Image
       width={coverImage?.node.mediaDetails.width}
@@ -33,7 +28,7 @@ export default function CoverImage({
         'hover:shadow-medium transition-shadow duration-200': slug,
       })}
       sizes={sizes}
-      priority={true}
+      priority={priority}
     />
   );
 

@@ -149,7 +149,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false, 
       posts: data.posts,
       socials,
     },
-    revalidate: 10,
+    revalidate: 86400,
   };
 };
 
