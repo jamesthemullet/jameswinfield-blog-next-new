@@ -14,9 +14,10 @@ interface Props {
     };
   };
   slug?: string;
+  priority?: boolean;
 }
 
-export default function CoverImage({ title, coverImage, slug }: Props) {
+export default function CoverImage({ title, coverImage, slug, priority = false, sizes = '(max-width: 768px) 100vw, 50vw' }: Props) {
   const image = (
     <Image
       width={coverImage?.node.mediaDetails.width}
@@ -26,7 +27,8 @@ export default function CoverImage({ title, coverImage, slug }: Props) {
       className={cn('shadow-small', {
         'hover:shadow-medium transition-shadow duration-200': slug,
       })}
-      priority={true}
+      sizes={sizes}
+      priority={priority}
     />
   );
 

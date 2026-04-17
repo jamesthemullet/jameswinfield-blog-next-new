@@ -26,6 +26,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const [page, socials] = await Promise.all([getPage('786'), getSocials()]);
   return {
     props: { page, socials },
-    revalidate: 10,
+    revalidate: 86400,
   };
 };
