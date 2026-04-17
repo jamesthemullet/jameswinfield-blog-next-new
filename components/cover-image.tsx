@@ -17,7 +17,7 @@ interface Props {
   priority?: boolean;
 }
 
-export default function CoverImage({ title, coverImage, slug, priority = false }: Props) {
+export default function CoverImage({ title, coverImage, slug, priority = false, sizes = '(max-width: 768px) 100vw, 50vw' }: Props) {
   const image = (
     <Image
       width={coverImage?.node.mediaDetails.width}
@@ -27,6 +27,7 @@ export default function CoverImage({ title, coverImage, slug, priority = false }
       className={cn('shadow-small', {
         'hover:shadow-medium transition-shadow duration-200': slug,
       })}
+      sizes={sizes}
       priority={priority}
     />
   );
