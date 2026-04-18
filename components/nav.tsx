@@ -10,16 +10,20 @@ export default function Nav() {
     <>
       <div className="md:hidden flex items-center p-2 right-1 justify-end bg-my-blue">
         <button
-          onClick={() => {
-            setIsNavExpanded(!isNavExpanded);
-          }}
+          onClick={() => setIsNavExpanded(!isNavExpanded)}
+          onKeyDown={(e) => e.key === 'Escape' && setIsNavExpanded(false)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={isNavExpanded}
+          aria-controls="main-nav-menu"
           className="outline-none menu-button cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="w-8 h-8"
             fill="none"
             viewBox="0 0 24 24"
-            stroke="white">
+            stroke="white"
+            aria-hidden="true"
+            focusable="false">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -29,11 +33,13 @@ export default function Nav() {
           </svg>
         </button>
       </div>
-      <div
+      <nav
+        aria-label="Main navigation"
         className={`${
           isNavExpanded ? 'flex' : 'hidden lg:flex'
         } mt-[-1px] bg-my-blue sticky top-0 z-50 justify-center`}>
         <ul
+          id="main-nav-menu"
           className={`${
             isNavExpanded ? 'flex' : 'hidden lg:flex'
           } flex-col md:flex-row p-4 flex-wrap justify-center bg-my-blue absolute w-full transition ease-in-out `}>
@@ -74,7 +80,7 @@ export default function Nav() {
             </Link>
           </li>
         </ul>
-      </div>
+      </nav>
     </>
   );
 }
