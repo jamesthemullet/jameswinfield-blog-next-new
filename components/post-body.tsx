@@ -11,7 +11,7 @@ export default function PostBody({ content }: PostBodyProps) {
     if (p.includes('<figure')) {
       const match = p.match(/src="([^"]*)"/);
       if (match) {
-        return `<a href="${match[1]}" target="_blank">${p}</a>`;
+        return `<a href="${match[1]}" target="_blank" rel="noopener noreferrer" aria-label="View image in new tab">${p}</a>`;
       }
     }
     return p;

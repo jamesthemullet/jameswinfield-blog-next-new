@@ -79,9 +79,17 @@ export default function CommentForm({
       <h3 className="mb-4 text-2xl md:text-2xl font-bold tracking-tighter leading-tight">
         Add a Comment
       </h3>
-      {newCommentPosted && <p>Thank you for your comment!</p>}
-      {error && <p>There was an error submitting your comment. Please try again later.</p>}
-      <form onSubmit={handleSubmit}>
+      {newCommentPosted && (
+        <p role="status" aria-live="polite">
+          Thank you for your comment!
+        </p>
+      )}
+      {error && (
+        <p role="alert" aria-live="assertive">
+          There was an error submitting your comment. Please try again later.
+        </p>
+      )}
+      <form onSubmit={handleSubmit} noValidate>
         <div className="mb-4">
           <label htmlFor="authorName" className="block text-gray-700 font-bold mb-2">
             Name
@@ -94,8 +102,14 @@ export default function CommentForm({
             autoComplete="name"
             value={formData.authorName}
             onChange={handleInputChange}
+            aria-invalid={!!formErrors.authorName}
+            aria-describedby={formErrors.authorName ? 'authorName-error' : undefined}
           />
-          {formErrors.authorName && <p>{formErrors.authorName}</p>}
+          {formErrors.authorName && (
+            <p id="authorName-error" role="alert" className="text-red-600 text-sm mt-1">
+              {formErrors.authorName}
+            </p>
+          )}
         </div>
         <div className="mb-4">
           <label htmlFor="authorEmail" className="block text-gray-700 font-bold mb-2">
@@ -109,8 +123,14 @@ export default function CommentForm({
             autoComplete="email"
             value={formData.authorEmail}
             onChange={handleInputChange}
+            aria-invalid={!!formErrors.authorEmail}
+            aria-describedby={formErrors.authorEmail ? 'authorEmail-error' : undefined}
           />
-          {formErrors.authorEmail && <p>{formErrors.authorEmail}</p>}
+          {formErrors.authorEmail && (
+            <p id="authorEmail-error" role="alert" className="text-red-600 text-sm mt-1">
+              {formErrors.authorEmail}
+            </p>
+          )}
         </div>
         <div className="mb-4">
           <label htmlFor="authorUrl" className="block text-gray-700 font-bold mb-2">
@@ -134,8 +154,14 @@ export default function CommentForm({
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             name="content"
             value={formData.content}
-            onChange={handleInputChange}></textarea>
-          {formErrors.content && <p>{formErrors.content}</p>}
+            onChange={handleInputChange}
+            aria-invalid={!!formErrors.content}
+            aria-describedby={formErrors.content ? 'content-error' : undefined}></textarea>
+          {formErrors.content && (
+            <p id="content-error" role="alert" className="text-red-600 text-sm mt-1">
+              {formErrors.content}
+            </p>
+          )}
         </div>
         <button
           type="submit"
