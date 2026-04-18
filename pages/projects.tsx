@@ -47,7 +47,7 @@ export default function Projects({ page, socials }: PageProps) {
           <PostBody content={content} />
           <div className="grid grid-cols-1 gap-4 mb-12 max-w-4xl mx-auto mt-8">
             {projectsToDisplay.map((project) => (
-              <div key={project.name} className="pt-4 border-t-2 border-my-blue ">
+              <article key={project.name} className="pt-4 border-t-2 border-my-blue ">
                 <h2 className="text-3xl font-bold mb-2">{project.name}</h2>
                 {project.screenshot && (
                   <div className="mt-4">
@@ -81,7 +81,7 @@ export default function Projects({ page, socials }: PageProps) {
                 <p className="mt-2">{project.learn || 'Coming soon...'}</p>
                 <h3 className="text-xl font-bold mt-4">What would I do differently next time?</h3>
                 <p className="mt-2">{project.different || 'Coming soon...'}</p>
-              </div>
+              </article>
             ))}
           </div>
         </>

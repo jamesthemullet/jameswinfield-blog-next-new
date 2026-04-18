@@ -110,7 +110,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
       <Container>
         <Header />
         {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
+          <p role="status" aria-live="polite" className="text-2xl text-center py-8">Loading…</p>
         ) : (
           <>
             <article>

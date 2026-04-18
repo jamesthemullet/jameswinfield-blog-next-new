@@ -13,7 +13,7 @@ export default function PostPreview({
   slug,
 }: PostPreviewProps) {
   return (
-    <div>
+    <article>
       <div className="mb-5">
         {coverImage && <CoverImage title={title} coverImage={coverImage} slug={slug} />}
       </div>
@@ -29,6 +29,6 @@ export default function PostPreview({
       </div>
       <div className="text-lg leading-relaxed mb-4" dangerouslySetInnerHTML={{ __html: excerpt }} />
       <Avatar {...author} />
-    </div>
+    </article>
   );
 }
