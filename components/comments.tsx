@@ -27,11 +27,11 @@ export default function Comments({ comments }: CommentsProps) {
       </h2>
       <div className="max-w-2xl mx-auto">
         {comments.map(({ node }) => (
-          <div key={node.id} className="mb-4 max-w-2xl mx-auto">
+          <article key={node.id} className="mb-4 max-w-2xl mx-auto">
             <div className="mb-4" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(node.content) }} />
             <p>{node.author.node.name}</p>
             <Date dateString={node.date} />
-          </div>
+          </article>
         ))}
       </div>
     </section>
