@@ -90,83 +90,91 @@ export default function CommentForm({
         </p>
       )}
       <form onSubmit={handleSubmit} noValidate>
-        <div className="mb-4">
-          <label htmlFor="authorName" className="block text-gray-700 font-bold mb-2">
-            Name
-          </label>
-          <input
-            type="text"
-            id="authorName"
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            name="authorName"
-            autoComplete="name"
-            value={formData.authorName}
-            onChange={handleInputChange}
-            aria-invalid={!!formErrors.authorName}
-            aria-describedby={formErrors.authorName ? 'authorName-error' : undefined}
-          />
-          {formErrors.authorName && (
-            <p id="authorName-error" role="alert" className="text-red-600 text-sm mt-1">
-              {formErrors.authorName}
-            </p>
-          )}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="authorEmail" className="block text-gray-700 font-bold mb-2">
-            Email
-          </label>
-          <input
-            type="email"
-            id="authorEmail"
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            name="authorEmail"
-            autoComplete="email"
-            value={formData.authorEmail}
-            onChange={handleInputChange}
-            aria-invalid={!!formErrors.authorEmail}
-            aria-describedby={formErrors.authorEmail ? 'authorEmail-error' : undefined}
-          />
-          {formErrors.authorEmail && (
-            <p id="authorEmail-error" role="alert" className="text-red-600 text-sm mt-1">
-              {formErrors.authorEmail}
-            </p>
-          )}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="authorUrl" className="block text-gray-700 font-bold mb-2">
-            Website (optional)
-          </label>
-          <input
-            type="url"
-            id="authorUrl"
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            name="authorUrl"
-            value={formData.authorUrl}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="content" className="block text-gray-700 font-bold mb-2">
-            Comment
-          </label>
-          <textarea
-            id="content"
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            name="content"
-            value={formData.content}
-            onChange={handleInputChange}
-            aria-invalid={!!formErrors.content}
-            aria-describedby={formErrors.content ? 'content-error' : undefined}></textarea>
-          {formErrors.content && (
-            <p id="content-error" role="alert" className="text-red-600 text-sm mt-1">
-              {formErrors.content}
-            </p>
-          )}
-        </div>
+        <fieldset>
+          <legend className="sr-only">Comment details</legend>
+          <div className="mb-4">
+            <label htmlFor="authorName" className="block text-gray-700 font-bold mb-2">
+              Name
+            </label>
+            <input
+              type="text"
+              id="authorName"
+              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="authorName"
+              autoComplete="name"
+              value={formData.authorName}
+              onChange={handleInputChange}
+              aria-invalid={!!formErrors.authorName}
+              aria-describedby={formErrors.authorName ? 'authorName-error' : undefined}
+            />
+            {formErrors.authorName && (
+              <p id="authorName-error" role="alert" className="text-red-600 text-sm mt-1">
+                {formErrors.authorName}
+              </p>
+            )}
+          </div>
+          <div className="mb-4">
+            <label htmlFor="authorEmail" className="block text-gray-700 font-bold mb-2">
+              Email
+            </label>
+            <input
+              type="email"
+              id="authorEmail"
+              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="authorEmail"
+              autoComplete="email"
+              value={formData.authorEmail}
+              onChange={handleInputChange}
+              aria-invalid={!!formErrors.authorEmail}
+              aria-describedby={formErrors.authorEmail ? 'authorEmail-error' : undefined}
+            />
+            {formErrors.authorEmail && (
+              <p id="authorEmail-error" role="alert" className="text-red-600 text-sm mt-1">
+                {formErrors.authorEmail}
+              </p>
+            )}
+          </div>
+          <div className="mb-4">
+            <label htmlFor="authorUrl" className="block text-gray-700 font-bold mb-2">
+              Website (optional)
+            </label>
+            <input
+              type="url"
+              id="authorUrl"
+              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="authorUrl"
+              value={formData.authorUrl}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="content" className="block text-gray-700 font-bold mb-2">
+              Comment
+            </label>
+            <textarea
+              id="content"
+              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="content"
+              value={formData.content}
+              onChange={handleInputChange}
+              aria-invalid={!!formErrors.content}
+              aria-describedby={formErrors.content ? 'content-error' : undefined}></textarea>
+            {formErrors.content && (
+              <p id="content-error" role="alert" className="text-red-600 text-sm mt-1">
+                {formErrors.content}
+              </p>
+            )}
+          </div>
+        </fieldset>
         <button
           type="submit"
           disabled={loading}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          className={`font-bold py-2 px-4 rounded text-white transition-colors ${
+            loading
+              ? 'bg-blue-300 cursor-not-allowed'
+              : 'bg-blue-500 hover:bg-blue-700 cursor-pointer'
+          }`}
+          aria-disabled={loading}>
           {loading ? 'Submitting...' : 'Submit Comment'}
         </button>
       </form>

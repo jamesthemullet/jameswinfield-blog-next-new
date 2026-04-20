@@ -1,6 +1,7 @@
 import { defineConfig } from 'eslint/config';
 import react from 'eslint-plugin-react';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 import globals from 'globals';
 import tsParser from '@typescript-eslint/parser';
 import path from 'node:path';
@@ -47,6 +48,7 @@ export default defineConfig([
     plugins: {
       react,
       '@typescript-eslint': typescriptEslint,
+      'jsx-a11y': jsxA11y,
     },
     languageOptions: {
       globals: {
@@ -58,6 +60,7 @@ export default defineConfig([
       sourceType: 'module',
     },
     rules: {
+      ...jsxA11y.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off',
       'no-console': 1,
     },
