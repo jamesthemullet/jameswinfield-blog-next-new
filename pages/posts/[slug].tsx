@@ -141,20 +141,28 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false, previewData }) => {
-  const [data, socials] = await Promise.all([
-    getPostAndMorePosts(params?.slug, preview, previewData),
-    getSocials(),
-  ]);
+  try {
+    const [data, socials] = await Promise.all([
+      getPostAndMorePosts(params?.slug, preview, previewData),
+      getSocials(),
+    ]);
 
-  return {
-    props: {
-      preview,
-      post: data.post,
-      posts: data.posts,
-      socials,
-    },
-    revalidate: 86400,
-  };
+    if (!data?.post) {
+      return { notFound: true };
+    }
+
+    return {
+      props: {
+        preview,
+        post: data.post,
+        posts: data.posts,
+        socials,
+      },
+      revalidate: 86400,
+    };
+  } catch {
+    return { notFound: true };
+  }
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
