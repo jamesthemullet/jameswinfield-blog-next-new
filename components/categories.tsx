@@ -12,6 +12,7 @@ type CategoriesProps = {
 };
 
 export default function Categories({ categories }: CategoriesProps) {
+  if (!categories?.edges) return null;
   return (
     <span className="ml-1">
       under

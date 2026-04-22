@@ -122,7 +122,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
                 categories={post.categories}
               />
               <PostBody content={post.content} />
-              <footer>{post.tags.edges.length > 0 && <Tags tags={post.tags} />}</footer>
+              <footer>{post.tags?.edges?.length > 0 && <Tags tags={post.tags} />}</footer>
               <Comments comments={commentData} />
               <CommentForm
                 postId={post.databaseId}

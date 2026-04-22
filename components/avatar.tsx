@@ -8,8 +8,8 @@ export default function Avatar({ node }: AuthorProps) {
   return (
     <div className="flex items-center">
       <div className="w-12 h-12 relative mr-4">
-        {node?.avatar.url && (
-          <Image src={node?.avatar.url} fill sizes="48px" className="rounded-full object-cover" alt={name ?? ''} />
+        {node?.avatar?.url && (
+          <Image src={node.avatar.url} fill sizes="48px" className="rounded-full object-cover" alt={name ?? ''} />
         )}
       </div>
       <div className="text-xl font-bold">{name}</div>

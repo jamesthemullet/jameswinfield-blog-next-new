@@ -6,6 +6,7 @@ type PostBodyProps = {
 };
 
 export default function PostBody({ content }: PostBodyProps) {
+  if (!content) return null;
   const paragraphs = content.split(/<p>|<\/p>/g).filter((p) => p.length > 0);
   const newContent = paragraphs.map((p) => {
     if (p.includes('<figure')) {
