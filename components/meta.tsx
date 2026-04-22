@@ -29,7 +29,7 @@ export default function Meta({ seo, title }: seoProps) {
   const router = useRouter();
   const currentUrl = router.asPath;
   const siteAddress = 'https://www.jameswinfield.co.uk';
-  const defaultImageUrl = '/images/jameswinfieldcover.png';
+  const defaultImageUrl = `${siteAddress}/images/jameswinfieldcover.png`;
 
   const { opengraphImage, opengraphTitle, opengraphDescription, opengraphSiteName } = seo || {};
   return (
