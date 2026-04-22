@@ -1,9 +1,15 @@
-import DOMPurify from 'isomorphic-dompurify';
 import styles from './post-body.module.css';
 
 type PostBodyProps = {
   content: string;
 };
+
+function sanitize(html: string): string {
+  if (typeof window === 'undefined') return html;
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const DOMPurify = require('dompurify');
+  return DOMPurify.sanitize(html);
+}
 
 export default function PostBody({ content }: PostBodyProps) {
   if (!content) return null;
@@ -21,7 +27,7 @@ export default function PostBody({ content }: PostBodyProps) {
   const newContentString = newContent.join('<br />');
   return (
     <div className="max-w-4xl mx-auto">
-      <div className={styles.content} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newContentString) }} />
+      <div className={styles.content} dangerouslySetInnerHTML={{ __html: sanitize(newContentString) }} />
     </div>
   );
 }
