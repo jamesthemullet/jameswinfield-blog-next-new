@@ -18,12 +18,16 @@ interface Props {
 }
 
 export default function CoverImage({ title, coverImage, slug, priority = false, sizes = '(max-width: 768px) 100vw, 50vw' }: Props) {
+  if (!coverImage?.node?.sourceUrl) {
+    return null;
+  }
+
   const image = (
     <Image
-      width={coverImage?.node.mediaDetails.width}
-      height={coverImage?.node.mediaDetails.height}
+      width={coverImage.node.mediaDetails?.width}
+      height={coverImage.node.mediaDetails?.height}
       alt={`Cover Image for ${title}`}
-      src={coverImage?.node.sourceUrl}
+      src={coverImage.node.sourceUrl}
       className={cn('shadow-small', {
         'hover:shadow-medium transition-shadow duration-200': slug,
       })}
