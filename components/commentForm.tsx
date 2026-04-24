@@ -13,31 +13,30 @@ type CommentFormErrors = {
   content?: string;
 };
 
+const emptyFormData = {
+  authorName: '',
+  authorEmail: '',
+  authorUrl: '',
+  content: '',
+};
+
 export default function CommentForm({
   postId,
   setCommentData,
   newCommentPosted,
 }: CommentFormProps) {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [formData, setFormData] = useState({
-    authorName: '',
-    authorEmail: '',
-    authorUrl: '',
-    content: '',
-  });
+  const [error, setError] = useState<Error | null>(null);
+  const [formData, setFormData] = useState(emptyFormData);
   const [formErrors, setFormErrors] = useState<CommentFormErrors>({});
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
     const errors: CommentFormErrors = {};
     if (!formData.authorName) {
       errors.authorName = 'Please enter your name.';
@@ -51,25 +50,20 @@ export default function CommentForm({
       errors.content = 'Please enter your comment.';
     }
     setFormErrors(errors);
-    if (Object.keys(errors).length === 0) {
-      try {
-        const comment = await createComment(
-          postId,
-          formData.authorName,
-          formData.authorEmail,
-          formData.authorUrl,
-          formData.content,
-        );
-        setCommentData(comment);
-      } catch (error) {
-        setError(error);
-      }
-      setFormData({
-        authorName: '',
-        authorEmail: '',
-        authorUrl: '',
-        content: '',
-      });
+    if (Object.keys(errors).length > 0) return;
+    setLoading(true);
+    try {
+      const comment = await createComment(
+        postId,
+        formData.authorName,
+        formData.authorEmail,
+        formData.authorUrl,
+        formData.content,
+      );
+      setCommentData(comment);
+      setFormData(emptyFormData);
+    } catch (error) {
+      setError(error as Error);
     }
     setLoading(false);
   };
