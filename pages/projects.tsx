@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next';
+import { useState, useMemo } from 'react';
 import Container from '../components/container';
 import Nav from '../components/nav';
 import Intro from '../components/intro';
@@ -21,6 +22,8 @@ type ProjectProps = {
 
 export default function Projects({ page, socials }: PageProps) {
   const { content, seo } = page;
+  const [selectedTech, setSelectedTech] = useState<string | null>(null);
+
   const projectsToDisplay = [...(data as ProjectProps[])].sort((a, b) => {
     const getTime = (value?: string) => {
       if (!value) return 0;
@@ -30,6 +33,16 @@ export default function Projects({ page, socials }: PageProps) {
 
     return getTime(b.builtAt) - getTime(a.builtAt);
   });
+
+  const allTechnologies = useMemo(() => {
+    const techs = new Set<string>();
+    projectsToDisplay.forEach((p) => p.technologies?.forEach((t) => techs.add(t)));
+    return [...techs].sort();
+  }, []);
+
+  const filteredProjects = selectedTech
+    ? projectsToDisplay.filter((p) => p.technologies?.includes(selectedTech))
+    : projectsToDisplay;
 
   const formatBuildDate = (value?: string) => {
     if (!value) return null;
@@ -45,8 +58,31 @@ export default function Projects({ page, socials }: PageProps) {
         <>
           <Intro />
           <PostBody content={content} />
-          <div className="grid grid-cols-1 gap-4 mb-12 max-w-4xl mx-auto mt-8">
-            {projectsToDisplay.map((project) => (
+          <div className="flex flex-wrap gap-2 max-w-4xl mx-auto mt-8 mb-4">
+            <button
+              onClick={() => setSelectedTech(null)}
+              className={`text-sm px-3 py-1 rounded-full border transition-colors ${
+                selectedTech === null
+                  ? 'bg-my-blue text-white border-my-blue'
+                  : 'bg-gray-100 text-gray-800 border-transparent hover:bg-gray-200'
+              }`}>
+              All
+            </button>
+            {allTechnologies.map((tech) => (
+              <button
+                key={tech}
+                onClick={() => setSelectedTech(tech === selectedTech ? null : tech)}
+                className={`text-sm px-3 py-1 rounded-full border transition-colors ${
+                  selectedTech === tech
+                    ? 'bg-my-blue text-white border-my-blue'
+                    : 'bg-gray-100 text-gray-800 border-transparent hover:bg-gray-200'
+                }`}>
+                {tech}
+              </button>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 gap-4 mb-12 max-w-4xl mx-auto mt-4">
+            {filteredProjects.map((project) => (
               <article key={project.name} className="pt-4 border-t-2 border-my-blue ">
                 <h2 className="text-3xl font-bold mb-2">{project.name}</h2>
                 {project.screenshot && (
