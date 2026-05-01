@@ -6,11 +6,16 @@ type FooterProps = {
   };
 };
 
+function removeTwitterLinks(html: string): string {
+  return html.replace(/<a[^>]*href=["'][^"']*(?:twitter\.com|x\.com)[^"']*["'][^>]*>[\s\S]*?<\/a>/gi, '');
+}
+
 function sanitize(html: string): string {
-  if (typeof window === 'undefined') return html;
+  const filtered = removeTwitterLinks(html);
+  if (typeof window === 'undefined') return filtered;
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const DOMPurify = require('dompurify');
-  return DOMPurify.sanitize(html);
+  return DOMPurify.sanitize(filtered);
 }
 
 export default function Footer({ socials }: FooterProps) {
