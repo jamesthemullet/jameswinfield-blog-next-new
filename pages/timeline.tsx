@@ -1,8 +1,8 @@
-import { GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 import Container from '../components/container';
-import Nav from '../components/nav';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
+import Nav from '../components/nav';
 import PostBody from '../components/post-body';
 import { getPage, getSocials } from '../lib/api';
 import type { PageProps } from '../lib/types';
@@ -13,10 +13,8 @@ export default function Timeline({ socials, page }: PageProps) {
     <Layout socials={socials} seo={seo}>
       <Nav />
       <Container>
-        <>
-          <Intro />
-          <PostBody content={content} />
-        </>
+        <Intro />
+        <PostBody content={content} />
       </Container>
     </Layout>
   );

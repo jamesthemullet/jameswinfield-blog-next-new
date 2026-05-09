@@ -17,7 +17,13 @@ interface Props {
   priority?: boolean;
 }
 
-export default function CoverImage({ title, coverImage, slug, priority = false, sizes = '(max-width: 768px) 100vw, 50vw' }: Props) {
+export default function CoverImage({
+  title,
+  coverImage,
+  slug,
+  priority = false,
+  sizes = '(max-width: 768px) 100vw, 50vw',
+}: Props) {
   if (!coverImage?.node?.sourceUrl) {
     return null;
   }

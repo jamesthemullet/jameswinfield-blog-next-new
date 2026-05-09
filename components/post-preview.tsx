@@ -1,8 +1,8 @@
-import Avatar from './avatar';
-import Date from './date';
-import CoverImage from './cover-image';
 import Link from 'next/link';
 import type { PostPreviewProps } from '../lib/types';
+import Avatar from './avatar';
+import CoverImage from './cover-image';
+import Date from './date';
 
 export default function PostPreview({
   title,

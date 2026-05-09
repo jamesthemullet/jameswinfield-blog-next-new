@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import CommentForm from '../components/commentForm';
 import { createComment } from '../lib/api';
 
@@ -35,9 +35,15 @@ describe('CommentForm validation', () => {
 
   it('shows email format error when email is invalid', async () => {
     renderForm();
-    fireEvent.change(screen.getByLabelText('Name'), { target: { value: 'Alice', name: 'authorName' } });
-    fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'not-an-email', name: 'authorEmail' } });
-    fireEvent.change(screen.getByLabelText('Comment'), { target: { value: 'Hello', name: 'content' } });
+    fireEvent.change(screen.getByLabelText('Name'), {
+      target: { value: 'Alice', name: 'authorName' },
+    });
+    fireEvent.change(screen.getByLabelText('Email'), {
+      target: { value: 'not-an-email', name: 'authorEmail' },
+    });
+    fireEvent.change(screen.getByLabelText('Comment'), {
+      target: { value: 'Hello', name: 'content' },
+    });
     fireEvent.submit(screen.getByText('Submit Comment').closest('form')!);
     await waitFor(() => {
       expect(screen.getByText('Please enter a valid email address.')).toBeInTheDocument();
@@ -51,13 +57,25 @@ describe('CommentForm validation', () => {
     mockCreateComment.mockResolvedValue({ id: 42 } as any);
     renderForm({ setCommentData });
 
-    fireEvent.change(screen.getByLabelText('Name'), { target: { value: 'Alice', name: 'authorName' } });
-    fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'alice@example.com', name: 'authorEmail' } });
-    fireEvent.change(screen.getByLabelText('Comment'), { target: { value: 'Great post!', name: 'content' } });
+    fireEvent.change(screen.getByLabelText('Name'), {
+      target: { value: 'Alice', name: 'authorName' },
+    });
+    fireEvent.change(screen.getByLabelText('Email'), {
+      target: { value: 'alice@example.com', name: 'authorEmail' },
+    });
+    fireEvent.change(screen.getByLabelText('Comment'), {
+      target: { value: 'Great post!', name: 'content' },
+    });
     fireEvent.submit(screen.getByText('Submit Comment').closest('form')!);
 
     await waitFor(() => {
-      expect(mockCreateComment).toHaveBeenCalledWith(1, 'Alice', 'alice@example.com', '', 'Great post!');
+      expect(mockCreateComment).toHaveBeenCalledWith(
+        1,
+        'Alice',
+        'alice@example.com',
+        '',
+        'Great post!',
+      );
       expect(setCommentData).toHaveBeenCalledWith({ id: 42 });
     });
     expect((screen.getByLabelText('Name') as HTMLInputElement).value).toBe('');
@@ -69,9 +87,15 @@ describe('CommentForm validation', () => {
     mockCreateComment.mockRejectedValue(new Error('Network error'));
     renderForm();
 
-    fireEvent.change(screen.getByLabelText('Name'), { target: { value: 'Bob', name: 'authorName' } });
-    fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'bob@example.com', name: 'authorEmail' } });
-    fireEvent.change(screen.getByLabelText('Comment'), { target: { value: 'Test', name: 'content' } });
+    fireEvent.change(screen.getByLabelText('Name'), {
+      target: { value: 'Bob', name: 'authorName' },
+    });
+    fireEvent.change(screen.getByLabelText('Email'), {
+      target: { value: 'bob@example.com', name: 'authorEmail' },
+    });
+    fireEvent.change(screen.getByLabelText('Comment'), {
+      target: { value: 'Test', name: 'content' },
+    });
     fireEvent.submit(screen.getByText('Submit Comment').closest('form')!);
 
     await waitFor(() => {

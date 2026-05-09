@@ -27,7 +27,10 @@ export default function PostBody({ content }: PostBodyProps) {
   const newContentString = newContent.join('<br />');
   return (
     <div className="max-w-4xl mx-auto">
-      <div className={styles.content} dangerouslySetInnerHTML={{ __html: sanitize(newContentString) }} />
+      <div
+        className={styles.content}
+        dangerouslySetInnerHTML={{ __html: sanitize(newContentString) }}
+      />
     </div>
   );
 }

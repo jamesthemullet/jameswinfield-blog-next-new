@@ -47,7 +47,7 @@ export default function Nav() {
             <Link
               href="/"
               className={`hover:underline p-2 pl-4 pr-4 text-2xl font-bold text-white ${
-                router.pathname == '/' ? 'text-my-yellow' : ''
+                router.pathname === '/' ? 'text-my-yellow' : ''
               }`}>
               Me
             </Link>
@@ -56,7 +56,7 @@ export default function Nav() {
             <Link
               href="/blog"
               className={`hover:underline p-2 pl-4 pr-4 text-2xl font-bold text-white ${
-                router.pathname == '/blog' ? 'text-my-yellow' : ''
+                router.pathname === '/blog' ? 'text-my-yellow' : ''
               }`}>
               Blog
             </Link>
@@ -65,7 +65,7 @@ export default function Nav() {
             <Link
               href="/projects"
               className={`hover:underline p-2 pl-4 pr-4 text-2xl font-bold text-white ${
-                router.pathname == '/projects' ? 'text-my-yellow' : ''
+                router.pathname === '/projects' ? 'text-my-yellow' : ''
               }`}>
               Projects
             </Link>
@@ -74,7 +74,7 @@ export default function Nav() {
             <Link
               href="/timeline"
               className={`hover:underline p-2 pl-4 pr-4 text-2xl font-bold text-white ${
-                router.pathname == '/timeline' ? 'text-my-yellow' : ''
+                router.pathname === '/timeline' ? 'text-my-yellow' : ''
               }`}>
               Timeline
             </Link>
