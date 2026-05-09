@@ -1,7 +1,7 @@
+import type { ReactElement } from 'react';
+import type { seoProps } from '../lib/types';
 import Footer from './footer';
 import Meta from './meta';
-import { ReactElement } from 'react';
-import type { seoProps } from '../lib/types';
 
 type LayoutProps = {
   preview?: string;

@@ -1,4 +1,4 @@
-import { NextApiResponse } from 'next';
+import type { NextApiResponse } from 'next';
 
 export default async function exit(_, res: NextApiResponse) {
   // Exit the current user from "Preview Mode". This function accepts no args.

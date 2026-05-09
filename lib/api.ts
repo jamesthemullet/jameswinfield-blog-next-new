@@ -5,7 +5,7 @@ async function fetchAPI(query = '', { variables, revalidate = 3600 }: Record<str
   const headers = { 'Content-Type': 'application/json' };
 
   if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
-    headers['Authorization'] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
+    headers.Authorization = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
   }
 
   // WPGraphQL Plugin must be enabled
@@ -23,8 +23,6 @@ async function fetchAPI(query = '', { variables, revalidate = 3600 }: Record<str
   const json = await res.json();
   if (json.errors) {
     if (process.env.NODE_ENV === 'development') {
-      // eslint-disable-next-line no-console
-      console.error(json.errors);
     }
     throw new Error('Failed to fetch API');
   }
@@ -399,13 +397,13 @@ export async function createComment(postId, name, email, authorUrl, content) {
       authorEmail: email,
       authorUrl,
       content: content.toString(),
-      commentOn: parseInt(postId),
+      commentOn: parseInt(postId, 10),
     },
   };
   const headers = { 'Content-Type': 'application/json' };
 
   if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
-    headers['Authorization'] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
+    headers.Authorization = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
   }
 
   const res = await fetch(API_URL, {
@@ -419,8 +417,6 @@ export async function createComment(postId, name, email, authorUrl, content) {
   const json = await res.json();
   if (json.errors) {
     if (process.env.NODE_ENV === 'development') {
-      // eslint-disable-next-line no-console
-      console.error(json.errors);
     }
     throw new Error('Failed to create comment');
   }

@@ -1,22 +1,22 @@
-import { useRouter } from 'next/router';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import dynamic from 'next/dynamic';
 import ErrorPage from 'next/error';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Container from '../../components/container';
-import PostBody from '../../components/post-body';
-import MoreStories from '../../components/more-stories';
 import Header from '../../components/header';
+import Layout from '../../components/layout';
+import MoreStories from '../../components/more-stories';
+import Nav from '../../components/nav';
+import PostBody from '../../components/post-body';
 import PostHeader from '../../components/post-header';
 import SectionSeparator from '../../components/section-separator';
-import Layout from '../../components/layout';
-import PostTitle from '../../components/post-title';
 import Tags from '../../components/tags';
 import { getAllPostsWithSlug, getPostAndMorePosts, getSocials } from '../../lib/api';
-import Nav from '../../components/nav';
-import dynamic from 'next/dynamic';
 
 const Comments = dynamic(() => import('../../components/comments'), { ssr: false });
 const CommentForm = dynamic(() => import('../../components/commentForm'), { ssr: false });
+
 import type { seoProps } from '../../lib/types';
 
 type PostProps = {
@@ -110,7 +110,9 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
       <Container>
         <Header />
         {router.isFallback ? (
-          <p role="status" aria-live="polite" className="text-2xl text-center py-8">Loading…</p>
+          <p role="status" aria-live="polite" className="text-2xl text-center py-8">
+            Loading…
+          </p>
         ) : (
           <>
             <article>

@@ -1,10 +1,10 @@
-import { GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 import Container from '../components/container';
-import Nav from '../components/nav';
+import HomePageSection from '../components/home-page-section';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
+import Nav from '../components/nav';
 import { getPagesForHomePage, getSocials } from '../lib/api';
-import HomePageSection from '../components/home-page-section';
 import type { AllPostsProps } from '../lib/types';
 
 export default function Index({ allPosts: { edges }, socials }: AllPostsProps) {
@@ -12,12 +12,10 @@ export default function Index({ allPosts: { edges }, socials }: AllPostsProps) {
     <Layout preview={null} socials={socials} seo={null}>
       <Nav />
       <Container>
-        <>
-          <Intro />
-          {edges.map((section) => {
-            return <HomePageSection {...section?.node} key={section?.node.id} />;
-          })}
-        </>
+        <Intro />
+        {edges.map((section) => {
+          return <HomePageSection {...section?.node} key={section?.node.id} />;
+        })}
       </Container>
     </Layout>
   );

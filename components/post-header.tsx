@@ -1,9 +1,9 @@
+import type { PostHeaderProps } from '../lib/types';
 import Avatar from './avatar';
-import Date from './date';
-import CoverImage from './cover-image';
-import PostTitle from './post-title';
 import Categories from './categories';
-import { PostHeaderProps } from '../lib/types';
+import CoverImage from './cover-image';
+import Date from './date';
+import PostTitle from './post-title';
 
 export default function PostHeader({
   title,

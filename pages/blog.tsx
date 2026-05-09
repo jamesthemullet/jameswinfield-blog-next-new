@@ -1,12 +1,12 @@
-import { GetStaticProps } from 'next';
-import Container from '../components/container';
-import MoreStories from '../components/more-stories';
-import HeroPost from '../components/hero-post';
-import Nav from '../components/nav';
-import Layout from '../components/layout';
-import { getAllPostsForHome, getSocials } from '../lib/api';
-import { AllPostsProps } from '../lib/types';
+import type { GetStaticProps } from 'next';
 import { useMemo, useState } from 'react';
+import Container from '../components/container';
+import HeroPost from '../components/hero-post';
+import Layout from '../components/layout';
+import MoreStories from '../components/more-stories';
+import Nav from '../components/nav';
+import { getAllPostsForHome, getSocials } from '../lib/api';
+import type { AllPostsProps } from '../lib/types';
 
 export default function Index({ allPosts: { edges }, preview, socials }: AllPostsProps) {
   const [showAllPosts, setShowAllPosts] = useState(false);

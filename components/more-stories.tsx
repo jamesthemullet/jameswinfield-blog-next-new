@@ -1,5 +1,5 @@
+import type { MoreStoriesProps } from '../lib/types';
 import PostPreview from './post-preview';
-import { MoreStoriesProps } from '../lib/types';
 
 export default function MoreStories({ posts }: MoreStoriesProps) {
   return (

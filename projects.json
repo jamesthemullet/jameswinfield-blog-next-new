@@ -6,13 +6,7 @@
     "learn": "I didn't do anything crazy for this, I just took a NextJS template and redesigned it a bit.  It was my second NextJS project, the other being a work project that was already set up, so I learnt a bit about how to set up a NextJS project from scratch.",
     "different": "Not sure I would have done much differently.  It was really good practice for the technologies we were moving to at M&S.  I realised that I wasn't a Tailwind convert as I was forever having to look up classnames which slowed me down.",
     "screenshot": "/images/James-Winfield-Site.webp",
-    "technologies": [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "GraphQL",
-      "Vercel"
-    ]
+    "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "GraphQL", "Vercel"]
   },
   {
     "name": "World Of Winfield",
@@ -60,15 +54,7 @@
     "learn": "This was my first time wiring an Astro front end to my hosted GraphQL API.",
     "different": "Nothing really...though I'm sure I'll discover something in the future.",
     "screenshot": "/images/Roast-Dinners-Around-The-World.webp",
-    "technologies": [
-      "Astro",
-      "React",
-      "TypeScript",
-      "GraphQL",
-      "ESLint",
-      "Prettier",
-      "Vercel"
-    ]
+    "technologies": ["Astro", "React", "TypeScript", "GraphQL", "ESLint", "Prettier", "Vercel"]
   },
   {
     "name": "PubDB API",
