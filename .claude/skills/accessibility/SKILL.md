@@ -55,6 +55,36 @@ Output exactly this structure:
 **Next suggestion:** <the next candidate worth tackling in this or another category, with file path>
 ```
 
+## Step 5 — Create a pull request
+
+After making the fix and outputting the report, always create a pull request:
+
+1. Stage and commit the changed file(s):
+   ```
+   git add <file>
+   git commit -m "<short imperative summary of the fix>\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+   ```
+2. Push the branch: `git push`
+3. Create the PR with `gh pr create` (or update the existing one if the branch already has an open PR). Use this body template:
+
+```
+## Summary
+
+- <one bullet: what was wrong and who it affected>
+- <one bullet: what was changed>
+
+**WCAG criterion:** <e.g. 1.4.3 Contrast (Minimum) — Level AA>
+
+## Test plan
+
+- [ ] <manual verification step>
+- [ ] Run `npx axe http://localhost:3000` and confirm no new violations
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+```
+
+If the branch already has an open PR (gh pr create exits with an error), just output the existing PR URL — the pushed commit is already included.
+
 ## Known project patterns
 
 - **Skip link:** `layout.tsx` already has a `Skip to main content` link targeting `#main-content` — do not flag this as missing
@@ -65,7 +95,7 @@ Output exactly this structure:
 - **Avatar images:** `avatar.tsx` uses the author name as `alt` — acceptable; flag only if `alt` is an empty string when a name is available
 - **Tailwind `sr-only`:** `className="sr-only"` is the correct way to visually hide text for screen readers in this project — prefer this over `aria-label` when wrapping text content
 - **Focus styles:** `focus:outline-2 focus:outline-blue-500` is the project's standard focus style — flag input/button/link elements that are missing it
-- **Custom colours:** `my-blue` = `#1a3a5c` (dark navy), `my-yellow` = `#f5a623` (amber), `my-green`, `my-red`, `my-light` — check contrast against white (`#fff`) and each other when used together
+- **Custom colours:** `my-blue` = `#083d77` (dark navy), `my-yellow` = `#f3dfa2` (light cream), `my-green` = `#3bb273`, `my-red` = `#af1b3f`, `my-light` = `#efe6dd` — check contrast against white (`#fff`) and each other when used together
 - **`post-body.module.css`:** prose styling for post body — check heading levels and link colour contrast inside posts
 - **`accented` package:** decorates characters in development to help spot issues — not a testing tool to invoke, it is a runtime helper
 - **`@axe-core/cli`:** can be run against a live dev server with `npx axe http://localhost:3000` — use only if you need automated validation; manual code review is preferred for a focused fix
