@@ -1470,12 +1470,12 @@
   dependencies:
     undici-types "~7.19.0"
 
-"@types/node@24.12.4":
-  version "24.12.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-24.12.4.tgz#2709745569811dcbdc57c097fafdd387c6330382"
-  integrity sha512-GUUEShf+PBCGW2KaXwcIt3Yk+e3pkKwWKb9GSyM9WQVE+ep2jzmHdGsHzu4wgcZy5fN9FBdVzjpBQsYlpfpgLA==
+"@types/node@24.13.0":
+  version "24.13.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-24.13.0.tgz#8d357bbaeafccd6369d9de428467d69befdccb19"
+  integrity sha512-5vtOqGQr4NJKeEzV441FcOi2MeG9UTWq9LqVLGneDdu4vlX17H8kQ2PA2UmNwCUGPVDj4oBjNhS7ReVEIWJJrg==
   dependencies:
-    undici-types "~7.16.0"
+    undici-types "~7.18.0"
 
 "@types/react-dom@19.2.3":
   version "19.2.3"
@@ -1735,9 +1735,9 @@ axe-core@^4.11.4, axe-core@~4.11.4:
   integrity sha512-KunSNx+TVpkAw/6ULfhnx+HWRecjqZGTOyquAoWHYLRSdK1tB5Ihce1ZW+UY3fj33bYAFWPu7W/GRSmmrCGuxA==
 
 axios@^1.12.0, axios@^1.13.5:
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.16.1.tgz#517e29291d19d6e8cf919ff264f4fe157261ba12"
-  integrity sha512-caYkukvroVPO8KrzuJEb50Hm07KwfBZPEC3VeFHTsqWHvKTsy54hjJz9BS/cdaypROE2rH6xvm9mHX4fgWkr3A==
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.17.0.tgz#ae5a1164a4f719942cd73c67e6a3f62d3ccb8f2b"
+  integrity sha512-J8SwNxprqqpbfenehxWYXE7CW+wM1BB4w3+N+g+/Wx40xM4rsLrfPmHHxSWIxJLYDgSY/HqlFPIYb2/S3rxafw==
   dependencies:
     follow-redirects "^1.16.0"
     form-data "^4.0.5"
@@ -2134,9 +2134,9 @@ dom-accessibility-api@^0.6.3:
   integrity sha512-7ZgogeTnjuHbo+ct10G9Ffp0mif17idi0IyWNVA/wcwcm7NPOD/WEHVP3n7n3MhXqxoIYm8d6MuZohYWIZ4T3w==
 
 dompurify@^3.4.1:
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-3.4.7.tgz#e2702ea4fd5d83467f1baef62309466ce7d44a82"
-  integrity sha512-2jBxDJY4RR06tQNy4w5FlFH7kfxsQZlufd0sbv+chfHCxeJwrFw2baUDsSwvBISD4K4RDbd0PTfy3uNXsR6siA==
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-3.4.8.tgz#6c54f8c207160e7f83fcb7f4fd05a82ac36b1cdc"
+  integrity sha512-yb1cEmaOum7wFvOCSQxyfgVlv5D47Rc30iZWoMpbDIWTnJ6grDDQyu2KFJzB2k7u0pMuJcQ1zphH//fFnw2tjQ==
   optionalDependencies:
     "@types/trusted-types" "^2.0.7"
 
@@ -2217,9 +2217,9 @@ es-errors@^1.3.0:
   integrity sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==
 
 es-object-atoms@^1.0.0, es-object-atoms@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/es-object-atoms/-/es-object-atoms-1.1.1.tgz#1c4f2c4837327597ce69d2ca190a7fdd172338c1"
-  integrity sha512-FGgH2h8zKNim9ljj7dankFPcICIK9Cp5bm+c2gQSYePhpaG5+esrLODihIorn+Pe6FGJzWhXQotPv73jTaldXA==
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/es-object-atoms/-/es-object-atoms-1.1.2.tgz#a2d0b373205724dfa525d23b0c3e1b1ca582c99b"
+  integrity sha512-HWcBoN6NileqtSydK2FqHbS/LoDd2pqrnQHLyJzBj4kOp/ky2MWMN694xOfkK8/SnUsW2DH7EfyVlydKCsm1Zw==
   dependencies:
     es-errors "^1.3.0"
 
@@ -2557,9 +2557,9 @@ has-tostringtag@^1.0.2:
     has-symbols "^1.0.3"
 
 hasown@^2.0.2:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/hasown/-/hasown-2.0.3.tgz#5e5c2b15b60370a4c7930c383dfb76bf17bc403c"
-  integrity sha512-ej4AhfhfL2Q2zpMmLo7U1Uv9+PyhIZpgQLGT1F9miIGmiCJIoCgSmczFdrc97mWT4kVY72KA+WnnhJ5pghSvSg==
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/hasown/-/hasown-2.0.4.tgz#8c62d8cb90beb2aad5d0a5b67581ad9854c3f003"
+  integrity sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==
   dependencies:
     function-bind "^1.1.2"
 
@@ -3258,15 +3258,14 @@ jszip@^3.10.1:
     setimmediate "^1.0.5"
 
 knip@^6.0.0:
-  version "6.15.0"
-  resolved "https://registry.yarnpkg.com/knip/-/knip-6.15.0.tgz#b0feb5be6582a309e15e0f47a55afed100fc006d"
-  integrity sha512-uBaKFEGcu/HG4EY2gWFBMr+fBF43Jftoc2riJX51TKME1Z46C8UQIbNEusenYbEWihphxe2PY0Kns0yPvPYz4A==
+  version "6.16.1"
+  resolved "https://registry.yarnpkg.com/knip/-/knip-6.16.1.tgz#ca3c83a46d7a8770a0debce14ba23240c572a02c"
+  integrity sha512-TKMn1rxgH6h9vXR9Y0B+Cq7AdPTr9EI02IwoT65NzqYUkvoDQAaJ/aPybiFpAhZ1px6cNYYwXf86iHkBgzCo9w==
   dependencies:
     fdir "^6.5.0"
     formatly "^0.3.0"
     get-tsconfig "4.14.0"
     jiti "^2.7.0"
-    minimist "^1.2.8"
     oxc-parser "^0.133.0"
     oxc-resolver "^11.20.0"
     picomatch "^4.0.4"
@@ -3475,7 +3474,7 @@ minimatch@^10.0.0, minimatch@^3.0.4, minimatch@^3.1.1, minimatch@^9.0.4:
   dependencies:
     brace-expansion "^5.0.5"
 
-minimist@^1.2.5, minimist@^1.2.8:
+minimist@^1.2.5:
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.8.tgz#c1a464e7693302e082a075cee0c057741ac4772c"
   integrity sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==
@@ -4398,10 +4397,10 @@ unbash@^3.0.0:
   resolved "https://registry.yarnpkg.com/unbash/-/unbash-3.0.0.tgz#57efd0217212ee4abcb820372c87b64ad3af687d"
   integrity sha512-FeFPZ/WFT0mbRCuydiZzpPFlrYN8ZUpphQKoq4EeElVIYjYyGzPMxQR/simUwCOJIyVhpFk4RbtyO7RuMpMnHA==
 
-undici-types@~7.16.0:
-  version "7.16.0"
-  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-7.16.0.tgz#ffccdff36aea4884cbfce9a750a0580224f58a46"
-  integrity sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==
+undici-types@~7.18.0:
+  version "7.18.2"
+  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-7.18.2.tgz#29357a89e7b7ca4aef3bf0fd3fd0cd73884229e9"
+  integrity sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==
 
 undici-types@~7.19.0:
   version "7.19.2"
