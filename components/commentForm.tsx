@@ -13,6 +13,9 @@ type CommentFormErrors = {
   content?: string;
 };
 
+const inputClassName =
+  'appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-2 focus:outline-blue-500';
+
 const emptyFormData = {
   authorName: '',
   authorEmail: '',
@@ -93,7 +96,7 @@ export default function CommentForm({
             <input
               type="text"
               id="authorName"
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-2 focus:outline-blue-500"
+              className={inputClassName}
               name="authorName"
               autoComplete="name"
               value={formData.authorName}
@@ -114,7 +117,7 @@ export default function CommentForm({
             <input
               type="email"
               id="authorEmail"
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-2 focus:outline-blue-500"
+              className={inputClassName}
               name="authorEmail"
               autoComplete="email"
               value={formData.authorEmail}
@@ -135,7 +138,7 @@ export default function CommentForm({
             <input
               type="url"
               id="authorUrl"
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-2 focus:outline-blue-500"
+              className={inputClassName}
               name="authorUrl"
               value={formData.authorUrl}
               onChange={handleInputChange}
@@ -147,7 +150,7 @@ export default function CommentForm({
             </label>
             <textarea
               id="content"
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-2 focus:outline-blue-500"
+              className={inputClassName}
               name="content"
               value={formData.content}
               onChange={handleInputChange}

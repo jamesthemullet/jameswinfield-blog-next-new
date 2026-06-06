@@ -2,7 +2,7 @@
 name: quality
 description: Incrementally improve code quality for this project. Use when the user invokes /quality or asks to improve, clean up, or fix code quality issues. Rotates through four categories — strict typing, code duplication, bad patterns, dead code — making one focused fix per invocation.
 disable-model-invocation: true
-allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Agent
 ---
 
 # /quality — Incremental Code Quality Improvement
@@ -37,7 +37,25 @@ Read the relevant source files in `components/`, `pages/`, `lib/`. Identify the 
 
 Make the fix. Keep scope tight — one issue, one or two files. Do not refactor beyond what is needed to address the specific finding.
 
-## Step 4 — Report
+## Step 4 — Commit and open a PR
+
+1. Create a new branch named `quality/<short-slug>` (e.g. `quality/extract-input-classname`).
+2. Stage only the changed file(s) and commit with a concise message following the repo's style.
+3. Push the branch and open a PR using `gh pr create`. Use this body format:
+
+```
+## Summary
+- <one bullet describing the change>
+
+## Category
+<chosen category name>
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+```
+
+4. Return the PR URL.
+
+## Step 5 — Report
 
 Output exactly this structure:
 
@@ -48,6 +66,7 @@ Output exactly this structure:
 **File:** <path:line>
 **Issue:** <one sentence describing the problem>
 **Fix:** <what was changed and why>
+**PR:** <URL>
 **Next suggestion:** <the next candidate worth tackling in this category, with file path>
 ```
 
