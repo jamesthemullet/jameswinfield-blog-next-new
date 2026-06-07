@@ -65,13 +65,39 @@ After writing the test:
 
 If tests fail, fix them before reporting done.
 
-## Step 5 — Report
+## Step 5 — Create a pull request
+
+Once tests pass, commit the new test file and open a PR:
+
+1. Create a new branch: `git checkout -b test/<short-description>` (e.g. `test/nav-active-link`)
+2. Stage and commit the new test file only: `git add <new-file> && git commit -m "Add unit tests for <feature>"`
+3. Push the branch: `git push -u origin HEAD`
+4. Create the PR with `gh pr create` using this format:
+
+```
+gh pr create --title "<concise title>" --body "$(cat <<'EOF'
+## Summary
+- <what behaviour is now tested>
+- <which branches/states are covered>
+
+## Test plan
+- [ ] `yarn jest --testPathPatterns=<new-file> --no-coverage` passes
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+EOF
+)"
+```
+
+Return the PR URL to the user.
+
+## Step 6 — Report
 
 State concisely:
 
 - Which type you chose (unit/e2e) and why
 - What feature/behaviour the new test covers
 - Whether the tests passed
+- The PR URL
 - What the highest-value next gap is (one sentence)
 
 If no improvement is justifiable (all meaningful paths are already tested), say so clearly and explain why.
