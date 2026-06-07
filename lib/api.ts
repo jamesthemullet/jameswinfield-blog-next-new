@@ -1,7 +1,9 @@
 const API_URL = process.env.WORDPRESS_API_URL;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-async function fetchAPI(query = '', { variables, revalidate = 3600 }: Record<string, any> = {}) {
+async function fetchAPI(
+  query = '',
+  { variables, revalidate = 3600 }: { variables?: Record<string, unknown>; revalidate?: number } = {},
+) {
   const headers = { 'Content-Type': 'application/json' };
 
   if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
