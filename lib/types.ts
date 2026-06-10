@@ -124,6 +124,19 @@ export type HeroPostProps = {
   slug: string;
 };
 
+export type Job = {
+  id: string;
+  title: string;
+  company: string;
+  location: string;
+  salaryMin: number | null;
+  salaryMax: number | null;
+  description: string;
+  url: string;
+  created: string;
+  source: string;
+};
+
 export type seoProps = {
   canonical: string;
   focuskw: string;

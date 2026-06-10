@@ -79,6 +79,15 @@ export default function Nav() {
               Timeline
             </Link>
           </li>
+          <li>
+            <Link
+              href="/jobs"
+              className={`hover:underline p-2 pl-4 pr-4 text-2xl font-bold text-white ${
+                router.pathname === '/jobs' ? 'text-my-yellow' : ''
+              }`}>
+              Jobs
+            </Link>
+          </li>
         </ul>
       </nav>
     </>
