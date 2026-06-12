@@ -28,7 +28,11 @@
     "picomatch": "^4.0.0",
     "handlebars": "^4.7.9",
     "minimatch": "^10.0.0",
-    "axios": "^1.13.5"
+    "axios": "^1.13.5",
+    "ip-address": "^10.1.1",
+    "ws": "^8.20.1",
+    "tmp": "^0.2.6",
+    "postcss": "^8.5.10"
   },
   "devDependencies": {
     "@axe-core/cli": "4.11.3",
