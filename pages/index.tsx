@@ -22,10 +22,17 @@ export default function Index({ allPosts: { edges }, socials }: AllPostsProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [allPosts, socials] = await Promise.all([getPagesForHomePage(), getSocials()]);
+  try {
+    const [allPosts, socials] = await Promise.all([getPagesForHomePage(), getSocials()]);
 
-  return {
-    props: { allPosts, socials },
-    revalidate: 3600,
-  };
+    return {
+      props: { allPosts, socials },
+      revalidate: 3600,
+    };
+  } catch (_error) {
+    return {
+      props: { allPosts: { edges: [] }, socials: null },
+      revalidate: 3600,
+    };
+  }
 };

@@ -22,6 +22,15 @@ async function fetchAPI(
     next: { revalidate },
   } as any);
 
+  if (!res.ok) {
+    throw new Error(`WordPress API responded with ${res.status} ${res.statusText}`);
+  }
+
+  const contentType = res.headers.get('content-type') ?? '';
+  if (!contentType.includes('application/json')) {
+    throw new Error(`WordPress API returned non-JSON response (${contentType})`);
+  }
+
   const json = await res.json();
   if (json.errors) {
     if (process.env.NODE_ENV === 'development') {
