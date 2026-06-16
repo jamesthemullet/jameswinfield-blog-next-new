@@ -42,7 +42,7 @@ export default function Nav() {
           id="main-nav-menu"
           className={`${
             isNavExpanded ? 'flex' : 'hidden lg:flex'
-          } flex-col md:flex-row p-4 flex-wrap justify-center bg-my-blue absolute w-full transition ease-in-out `}>
+          } flex-col md:flex-row p-4 flex-wrap justify-center bg-my-blue absolute lg:relative w-full transition ease-in-out `}>
           <li>
             <Link
               href="/"

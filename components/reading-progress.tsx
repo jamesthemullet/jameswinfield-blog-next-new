@@ -23,7 +23,7 @@ export default function ReadingProgress() {
       aria-valuemin={0}
       aria-valuemax={100}
       aria-label="Reading progress"
-      className="fixed top-0 left-0 z-50 h-[3px] bg-my-yellow transition-[width] duration-100"
+      className="fixed top-0 left-0 z-[51] h-[3px] bg-my-yellow transition-[width] duration-100"
       style={{ width: `${progress}%` }}
     />
   );
