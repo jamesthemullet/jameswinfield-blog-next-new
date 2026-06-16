@@ -298,29 +298,6 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
       post(id: $id, idType: $idType) {
         ...PostFields
         content
-        seo {
-          metaDesc
-          focuskw
-          title
-          canonical
-          metaKeywords
-          opengraphTitle
-          opengraphDescription
-          opengraphUrl
-          opengraphSiteName
-          opengraphImage {
-            uri
-            altText
-            mediaDetails {
-              file
-              height
-              width
-            }
-            mediaItemUrl
-            sourceUrl
-            srcSet
-          }
-        }
         ${
           // Only some of the fields of a revision are considered as there are some inconsistencies
           isRevision
