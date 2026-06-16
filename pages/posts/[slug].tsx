@@ -13,6 +13,7 @@ import PostBody from '../../components/post-body';
 import PostHeader from '../../components/post-header';
 import SectionSeparator from '../../components/section-separator';
 import Tags from '../../components/tags';
+import PostHiringCta from '../../components/post-hiring-cta';
 import { getAllPostsWithSlug, getPostAndMorePosts, getSocials } from '../../lib/api';
 
 const Comments = dynamic(() => import('../../components/comments'), { ssr: false });
@@ -127,6 +128,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
               />
               <PostBody content={post.content} />
               <footer>{post.tags?.edges?.length > 0 && <Tags tags={post.tags} />}</footer>
+              <PostHiringCta />
               <Comments comments={commentData} />
               <CommentForm
                 postId={post.databaseId}
