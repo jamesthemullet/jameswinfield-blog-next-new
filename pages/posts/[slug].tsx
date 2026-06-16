@@ -8,6 +8,7 @@ import Header from '../../components/header';
 import Layout from '../../components/layout';
 import MoreStories from '../../components/more-stories';
 import Nav from '../../components/nav';
+import ReadingProgress from '../../components/reading-progress';
 import PostBody from '../../components/post-body';
 import PostHeader from '../../components/post-header';
 import SectionSeparator from '../../components/section-separator';
@@ -106,6 +107,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
 
   return (
     <Layout preview={preview} socials={socials} seo={post?.seo} title={post?.title}>
+      <ReadingProgress />
       <Nav />
       <Container>
         <Header />
