@@ -24,21 +24,23 @@ export default function Projects({ page, socials }: PageProps) {
   const { content, seo } = page;
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
 
-  const projectsToDisplay = [...(data as ProjectProps[])].sort((a, b) => {
-    const getTime = (value?: string) => {
-      if (!value) return 0;
-      const parsed = new Date(value).getTime();
-      return Number.isNaN(parsed) ? 0 : parsed;
-    };
+  const getTime = (value?: string) => {
+    if (!value) return 0;
+    const parsed = new Date(value).getTime();
+    return Number.isNaN(parsed) ? 0 : parsed;
+  };
 
-    return getTime(b.builtAt) - getTime(a.builtAt);
-  });
+  const projectsToDisplay = useMemo(
+    () => [...(data as ProjectProps[])].sort((a, b) => getTime(b.builtAt) - getTime(a.builtAt)),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
 
   const allTechnologies = useMemo(() => {
     const techs = new Set<string>();
     projectsToDisplay.forEach((p) => p.technologies?.forEach((t) => techs.add(t)));
     return [...techs].sort();
-  }, [projectsToDisplay.forEach]);
+  }, [projectsToDisplay]);
 
   const filteredProjects = selectedTech
     ? projectsToDisplay.filter((p) => p.technologies?.includes(selectedTech))

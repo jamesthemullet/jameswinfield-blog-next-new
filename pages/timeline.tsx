@@ -21,9 +21,16 @@ export default function Timeline({ socials, page }: PageProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [page, socials] = await Promise.all([getPage('786'), getSocials()]);
-  return {
-    props: { page, socials },
-    revalidate: 86400,
-  };
+  try {
+    const [page, socials] = await Promise.all([getPage('786'), getSocials()]);
+    return {
+      props: { page, socials },
+      revalidate: 86400,
+    };
+  } catch (_error) {
+    return {
+      props: { page: { content: '', seo: {} }, socials: null },
+      revalidate: 86400,
+    };
+  }
 };

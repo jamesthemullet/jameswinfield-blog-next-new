@@ -54,10 +54,17 @@ export default function Index({ allPosts: { edges }, preview, socials }: AllPost
 }
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const [allPosts, socials] = await Promise.all([getAllPostsForHome(preview), getSocials()]);
+  try {
+    const [allPosts, socials] = await Promise.all([getAllPostsForHome(preview), getSocials()]);
 
-  return {
-    props: { allPosts, preview, socials },
-    revalidate: 3600,
-  };
+    return {
+      props: { allPosts, preview, socials },
+      revalidate: 3600,
+    };
+  } catch (_error) {
+    return {
+      props: { allPosts: { edges: [] }, preview, socials: null },
+      revalidate: 3600,
+    };
+  }
 };

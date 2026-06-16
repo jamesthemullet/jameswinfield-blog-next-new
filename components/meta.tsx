@@ -77,6 +77,8 @@ export default function Meta({ seo, title }: seoProps) {
       />
       <meta property="og:image:width" content={opengraphImage?.mediaDetails?.width} />
       <meta property="og:image:height" content={opengraphImage?.mediaDetails?.height} />
+      <link rel="preconnect" href="https://www.googletagmanager.com" />
+      <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta
         name="description"
