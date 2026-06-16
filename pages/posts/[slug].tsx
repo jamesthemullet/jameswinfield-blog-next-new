@@ -168,10 +168,13 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false, 
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = await getAllPostsWithSlug();
-
-  return {
-    paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
-    fallback: 'blocking',
-  };
+  try {
+    const allPosts = await getAllPostsWithSlug();
+    return {
+      paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
+      fallback: 'blocking',
+    };
+  } catch {
+    return { paths: [], fallback: 'blocking' };
+  }
 };
