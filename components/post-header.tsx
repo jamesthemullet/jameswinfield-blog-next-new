@@ -1,4 +1,5 @@
 import type { PostHeaderProps } from '../lib/types';
+import { readingTime } from '../lib/utils';
 import Avatar from './avatar';
 import Categories from './categories';
 import CoverImage from './cover-image';
@@ -11,6 +12,7 @@ export default function PostHeader({
   date,
   author,
   categories,
+  content,
 }: PostHeaderProps) {
   return (
     <>
@@ -27,6 +29,7 @@ export default function PostHeader({
         </div>
         <div className="mb-6 text-lg">
           Posted <Date dateString={date} />
+          <span className="ml-4 text-gray-500">{readingTime(content)} min read</span>
           <Categories categories={categories} />
         </div>
       </div>

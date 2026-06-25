@@ -106,6 +106,7 @@ export type PostHeaderProps = {
       };
     };
   };
+  content: string;
 };
 
 export type MoreStoriesProps = {
