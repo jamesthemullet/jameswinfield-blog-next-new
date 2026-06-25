@@ -125,6 +125,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
                 date={post.date}
                 author={post.author}
                 categories={post.categories}
+                content={post.content}
               />
               <PostBody content={post.content} />
               <footer>{post.tags?.edges?.length > 0 && <Tags tags={post.tags} />}</footer>
