@@ -1,5 +1,6 @@
 import type { GetStaticProps } from 'next';
 import Container from '../components/container';
+import HireCta from '../components/hire-cta';
 import HomePageSection from '../components/home-page-section';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
@@ -13,6 +14,7 @@ export default function Index({ allPosts: { edges }, socials }: AllPostsProps) {
       <Nav />
       <Container>
         <Intro />
+        <HireCta available={true} />
         {edges.map((section) => {
           return <HomePageSection {...section?.node} key={section?.node.id} />;
         })}
@@ -22,10 +24,17 @@ export default function Index({ allPosts: { edges }, socials }: AllPostsProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [allPosts, socials] = await Promise.all([getPagesForHomePage(), getSocials()]);
+  try {
+    const [allPosts, socials] = await Promise.all([getPagesForHomePage(), getSocials()]);
 
-  return {
-    props: { allPosts, socials },
-    revalidate: 3600,
-  };
+    return {
+      props: { allPosts, socials },
+      revalidate: 3600,
+    };
+  } catch (_error) {
+    return {
+      props: { allPosts: { edges: [] }, socials: null },
+      revalidate: 3600,
+    };
+  }
 };

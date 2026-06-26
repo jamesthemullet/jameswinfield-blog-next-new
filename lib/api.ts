@@ -22,6 +22,15 @@ async function fetchAPI(
     next: { revalidate },
   } as any);
 
+  if (!res.ok) {
+    throw new Error(`WordPress API responded with ${res.status} ${res.statusText}`);
+  }
+
+  const contentType = res.headers.get('content-type') ?? '';
+  if (!contentType.includes('application/json')) {
+    throw new Error(`WordPress API returned non-JSON response (${contentType})`);
+  }
+
   const json = await res.json();
   if (json.errors) {
     if (process.env.NODE_ENV === 'development') {
@@ -289,29 +298,6 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
       post(id: $id, idType: $idType) {
         ...PostFields
         content
-        seo {
-          metaDesc
-          focuskw
-          title
-          canonical
-          metaKeywords
-          opengraphTitle
-          opengraphDescription
-          opengraphUrl
-          opengraphSiteName
-          opengraphImage {
-            uri
-            altText
-            mediaDetails {
-              file
-              height
-              width
-            }
-            mediaItemUrl
-            sourceUrl
-            srcSet
-          }
-        }
         ${
           // Only some of the fields of a revision are considered as there are some inconsistencies
           isRevision

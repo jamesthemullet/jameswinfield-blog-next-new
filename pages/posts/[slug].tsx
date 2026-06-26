@@ -8,10 +8,12 @@ import Header from '../../components/header';
 import Layout from '../../components/layout';
 import MoreStories from '../../components/more-stories';
 import Nav from '../../components/nav';
+import ReadingProgress from '../../components/reading-progress';
 import PostBody from '../../components/post-body';
 import PostHeader from '../../components/post-header';
 import SectionSeparator from '../../components/section-separator';
 import Tags from '../../components/tags';
+import PostHiringCta from '../../components/post-hiring-cta';
 import { getAllPostsWithSlug, getPostAndMorePosts, getSocials } from '../../lib/api';
 
 const Comments = dynamic(() => import('../../components/comments'), { ssr: false });
@@ -106,6 +108,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
 
   return (
     <Layout preview={preview} socials={socials} seo={post?.seo} title={post?.title}>
+      <ReadingProgress />
       <Nav />
       <Container>
         <Header />
@@ -122,9 +125,11 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
                 date={post.date}
                 author={post.author}
                 categories={post.categories}
+                content={post.content}
               />
               <PostBody content={post.content} />
               <footer>{post.tags?.edges?.length > 0 && <Tags tags={post.tags} />}</footer>
+              <PostHiringCta />
               <Comments comments={commentData} />
               <CommentForm
                 postId={post.databaseId}
@@ -168,10 +173,13 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false, 
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = await getAllPostsWithSlug();
-
-  return {
-    paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
-    fallback: 'blocking',
-  };
+  try {
+    const allPosts = await getAllPostsWithSlug();
+    return {
+      paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
+      fallback: 'blocking',
+    };
+  } catch {
+    return { paths: [], fallback: 'blocking' };
+  }
 };
