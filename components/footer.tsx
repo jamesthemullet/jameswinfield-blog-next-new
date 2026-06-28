@@ -1,3 +1,4 @@
+import { sanitize } from '../lib/sanitize';
 import Container from './container';
 
 type FooterProps = {
@@ -5,13 +6,6 @@ type FooterProps = {
     content: string;
   };
 };
-
-function sanitize(html: string): string {
-  if (typeof window === 'undefined') return html;
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const DOMPurify = require('dompurify');
-  return DOMPurify.sanitize(html);
-}
 
 export default function Footer({ socials }: FooterProps) {
   return (

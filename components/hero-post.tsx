@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { HeroPostProps } from '../lib/types';
+import { sanitize } from '../lib/sanitize';
 import Avatar from './avatar';
 import CoverImage from './cover-image';
 import Date from './date';
@@ -31,7 +32,7 @@ export default function HeroPost({
             <Link
               href={`/posts/${slug}`}
               className="hover:underline"
-              dangerouslySetInnerHTML={{ __html: title }}
+              dangerouslySetInnerHTML={{ __html: sanitize(title) }}
             />
           </h3>
           <div className="mb-4 md:mb-0 text-lg">
@@ -41,7 +42,7 @@ export default function HeroPost({
         <div>
           <div
             className="text-lg leading-relaxed mb-4"
-            dangerouslySetInnerHTML={{ __html: excerpt }}
+            dangerouslySetInnerHTML={{ __html: sanitize(excerpt) }}
           />
           <Avatar {...author} />
         </div>
