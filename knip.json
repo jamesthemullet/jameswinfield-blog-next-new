@@ -4,6 +4,5 @@
     "interface": true,
     "type": true
   },
-  "ignoreBinaries": ["wait-on"],
-  "tags": ["-lintignore"]
+"tags": ["-lintignore"]
 }
