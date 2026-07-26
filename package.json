@@ -18,9 +18,9 @@
     "classnames": "2.5.1",
     "date-fns": "4.4.0",
     "isomorphic-dompurify": "^3.18.0",
-    "next": "16.2.10",
-    "react": "19.2.7",
-    "react-dom": "19.2.7",
+    "next": "16.2.11",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "typescript": "6.0.3"
   },
   "resolutions": {
@@ -32,7 +32,7 @@
     "ip-address": "^10.1.1",
     "ws": "^8.20.1",
     "tmp": "^0.2.6",
-    "postcss": "8.5.20"
+    "postcss": "8.5.23"
   },
   "devDependencies": {
     "@axe-core/cli": "4.12.1",
@@ -48,7 +48,7 @@
     "jest": "^30.0.0",
     "jest-environment-jsdom": "^30.3.0",
     "knip": "^6.0.0",
-    "postcss": "8.5.20",
+    "postcss": "8.5.23",
     "tailwindcss": "^4.0.0",
     "ts-jest": "^29.0.5"
   }
