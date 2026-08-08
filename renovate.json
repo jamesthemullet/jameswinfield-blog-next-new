@@ -1,6 +1,6 @@
 {
   "extends": ["config:recommended"],
-  "prConcurrentLimit": 1,
+  "prConcurrentLimit": 3,
   "prHourlyLimit": 10,
   "minimumReleaseAge": "1 day",
   "packageRules": [
