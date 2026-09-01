@@ -11,7 +11,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 
 ## 1. Test coverage — unit gaps and e2e
 
-- [x] Add unit tests for `lib/api.ts` (mock `fetch`/GraphQL client) covering `createComment` success/error paths and `getPreviewPost`'s ID vs SLUG branching — currently 0% coverage on the site's core data-fetching layer (found: 2026-09-01) (resolved: 2026-09-01, PR #TBD)
+- [x] Add unit tests for `lib/api.ts` (mock `fetch`/GraphQL client) covering `createComment` success/error paths and `getPreviewPost`'s ID vs SLUG branching — currently 0% coverage on the site's core data-fetching layer (found: 2026-09-01) (resolved: 2026-09-01, PR #295)
 - [ ] Add a unit test for `components/comments.tsx` verifying DOMPurify sanitization actually strips unsafe HTML from rendered comment content (found: 2026-09-01)
 - [ ] Add a unit test for the `postsToShow`/"Show Older Blog Posts" date-filtering logic in `pages/blog.tsx` (lines ~42-50) — pure logic, no network dependency (found: 2026-09-01)
 - [ ] Add unit tests for `pages/api/preview.ts` and `pages/api/exit-preview.ts` (mock `getPreviewPost`, assert 401 paths and the `setPreviewData`/307 redirect path) — currently untested auth-style branching logic (found: 2026-09-01)
