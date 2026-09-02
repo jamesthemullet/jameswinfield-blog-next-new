@@ -36,8 +36,18 @@ jobs:
         with:
           node-version: 24.x
       - run: yarn install
+      - name: Cache Playwright browsers
+        uses: actions/cache@v6
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps chromium
+      - name: Install Playwright OS dependencies
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
       - name: Run e2e tests
         run: yarn test:e2e
       - name: Upload Playwright report
