@@ -51,6 +51,7 @@
     "@types/jest": "^30.0.0",
     "accented": "1.4.0",
     "autoprefixer": "10.5.4",
+    "dompurify": "3.4.13",
     "jest": "^30.0.0",
     "jest-environment-jsdom": "^30.3.0",
     "knip": "^6.0.0",
