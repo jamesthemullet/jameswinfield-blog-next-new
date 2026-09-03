@@ -7,16 +7,15 @@ import MoreStories from '../components/more-stories';
 import Nav from '../components/nav';
 import { getAllPostsForHome, getSocials } from '../lib/api';
 import type { AllPostsProps } from '../lib/types';
+import { filterRecentPosts } from '../lib/utils';
 
 export default function Index({ allPosts: { edges }, preview, socials }: AllPostsProps) {
   const [showAllPosts, setShowAllPosts] = useState(false);
 
-  const postsToShow = useMemo(() => {
-    if (showAllPosts) return edges.slice(1);
-    const now = new Date();
-    const twoYearsAgo = new Date(now.getFullYear() - 2, now.getMonth(), now.getDate());
-    return edges.slice(1).filter((a) => new Date(a.node.date).getTime() > twoYearsAgo.getTime());
-  }, [showAllPosts, edges]);
+  const postsToShow = useMemo(
+    () => filterRecentPosts(edges.slice(1), showAllPosts),
+    [showAllPosts, edges],
+  );
 
   const heroPost = edges[0]?.node;
 
