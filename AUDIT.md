@@ -17,7 +17,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - [ ] Add a unit test for `components/comments.tsx` verifying DOMPurify sanitization actually strips unsafe HTML from rendered comment content (found: 2026-09-01)
 - [ ] Add a unit test for the `postsToShow`/"Show Older Blog Posts" date-filtering logic in `pages/blog.tsx` (lines ~42-50) — pure logic, no network dependency (found: 2026-09-01)
 - [x] Add unit tests for `pages/api/preview.ts` and `pages/api/exit-preview.ts` (mock `getPreviewPost`, assert 401 paths and the `setPreviewData`/307 redirect path) — currently untested auth-style branching logic (found: 2026-09-01) (resolved: 2026-09-04, PR #302)
-- [x] Add a unit test for the tech-filter logic in `pages/projects.tsx` (`selectedTech` state, `filteredProjects`, `formatBuildDate`) — static-data logic independent of WordPress, currently 0% coverage (found: 2026-09-01) (resolved: 2026-09-05, PR #TBD)
+- [x] Add a unit test for the tech-filter logic in `pages/projects.tsx` (`selectedTech` state, `filteredProjects`, `formatBuildDate`) — static-data logic independent of WordPress, currently 0% coverage (found: 2026-09-01) (resolved: 2026-09-05, PR #303)
 - [ ] Add e2e coverage (`e2e/navigation.spec.ts` or a new spec) for: (a) clicking from the post list into an individual post and asserting the post page renders a heading and body, (b) mobile nav Escape-key close behavior (`components/nav.tsx` `onKeyDown` handler, currently untested), (c) a smoke assertion that at least one project card renders on `/projects` — split into separate specs/PRs per flow (found: 2026-09-01)
 
 ## 2. Accessibility
