@@ -9,6 +9,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - 2026-09-01 — initial audit. 32 findings (6 test coverage/e2e, 2 security, 6 SEO/metadata, 3 content alignment, 15 code quality). Categories 2 (Accessibility), 3 (Performance), and 5 (Responsive/UX) were **blocked**: no `.env.local` / `WORDPRESS_API_URL` configured locally, so the app can't render real content for a browser-driven pass. Re-run once a WordPress endpoint is available locally.
 - 2026-09-01 — scheduled maintenance run resolved item 1.1 (unit tests for `lib/api.ts`'s `createComment` and `getPreviewPost`).
 - 2026-09-04 — scheduled maintenance run resolved item 1.3 (unit tests for `pages/api/preview.ts` and `pages/api/exit-preview.ts`).
+- 2026-09-05 — scheduled maintenance run resolved item 1.5 (unit tests for `pages/projects.tsx`'s tech-filter logic).
 
 ## 1. Test coverage — unit gaps and e2e
 
@@ -16,7 +17,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - [ ] Add a unit test for `components/comments.tsx` verifying DOMPurify sanitization actually strips unsafe HTML from rendered comment content (found: 2026-09-01)
 - [ ] Add a unit test for the `postsToShow`/"Show Older Blog Posts" date-filtering logic in `pages/blog.tsx` (lines ~42-50) — pure logic, no network dependency (found: 2026-09-01)
 - [x] Add unit tests for `pages/api/preview.ts` and `pages/api/exit-preview.ts` (mock `getPreviewPost`, assert 401 paths and the `setPreviewData`/307 redirect path) — currently untested auth-style branching logic (found: 2026-09-01) (resolved: 2026-09-04, PR #302)
-- [ ] Add a unit test for the tech-filter logic in `pages/projects.tsx` (`selectedTech` state, `filteredProjects`, `formatBuildDate`) — static-data logic independent of WordPress, currently 0% coverage (found: 2026-09-01)
+- [x] Add a unit test for the tech-filter logic in `pages/projects.tsx` (`selectedTech` state, `filteredProjects`, `formatBuildDate`) — static-data logic independent of WordPress, currently 0% coverage (found: 2026-09-01) (resolved: 2026-09-05, PR #TBD)
 - [ ] Add e2e coverage (`e2e/navigation.spec.ts` or a new spec) for: (a) clicking from the post list into an individual post and asserting the post page renders a heading and body, (b) mobile nav Escape-key close behavior (`components/nav.tsx` `onKeyDown` handler, currently untested), (c) a smoke assertion that at least one project card renders on `/projects` — split into separate specs/PRs per flow (found: 2026-09-01)
 
 ## 2. Accessibility
