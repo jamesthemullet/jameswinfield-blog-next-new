@@ -125,6 +125,16 @@ export type HeroPostProps = {
   slug: string;
 };
 
+export type ProjectProps = {
+  name: string;
+  builtAt?: string;
+  why: string;
+  learn: string;
+  different: string;
+  screenshot?: string;
+  technologies?: string[];
+};
+
 export type seoProps = {
   canonical: string;
   focuskw: string;
