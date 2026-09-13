@@ -36,6 +36,7 @@ export function formatBuildDate(value?: string): string | null {
   const parsed = new Date(value);
   if (Number.isNaN(parsed.getTime())) return null;
   return parsed.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+}
 
 export function filterRecentPosts<T extends { node: { date: string } }>(
   posts: T[],
