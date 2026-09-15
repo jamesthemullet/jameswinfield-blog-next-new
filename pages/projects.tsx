@@ -7,51 +7,24 @@ import Layout from '../components/layout';
 import Nav from '../components/nav';
 import PostBody from '../components/post-body';
 import { getPage, getSocials } from '../lib/api';
-import type { PageProps } from '../lib/types';
+import type { PageProps, ProjectProps } from '../lib/types';
+import {
+  filterProjectsByTech,
+  formatBuildDate,
+  getAllTechnologies,
+  sortProjectsByBuildDate,
+} from '../lib/utils';
 import data from '../projects.json';
-
-type ProjectProps = {
-  name: string;
-  builtAt?: string;
-  why: string;
-  learn: string;
-  different: string;
-  screenshot?: string;
-  technologies?: string[];
-};
 
 export default function Projects({ page, socials }: PageProps) {
   const { content, seo } = page;
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
 
-  const getTime = (value?: string) => {
-    if (!value) return 0;
-    const parsed = new Date(value).getTime();
-    return Number.isNaN(parsed) ? 0 : parsed;
-  };
+  const projectsToDisplay = useMemo(() => sortProjectsByBuildDate(data as ProjectProps[]), []);
 
-  const projectsToDisplay = useMemo(
-    () => [...(data as ProjectProps[])].sort((a, b) => getTime(b.builtAt) - getTime(a.builtAt)),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
+  const allTechnologies = useMemo(() => getAllTechnologies(projectsToDisplay), [projectsToDisplay]);
 
-  const allTechnologies = useMemo(() => {
-    const techs = new Set<string>();
-    projectsToDisplay.forEach((p) => p.technologies?.forEach((t) => techs.add(t)));
-    return [...techs].sort();
-  }, [projectsToDisplay]);
-
-  const filteredProjects = selectedTech
-    ? projectsToDisplay.filter((p) => p.technologies?.includes(selectedTech))
-    : projectsToDisplay;
-
-  const formatBuildDate = (value?: string) => {
-    if (!value) return null;
-    const parsed = new Date(value);
-    if (Number.isNaN(parsed.getTime())) return null;
-    return parsed.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
-  };
+  const filteredProjects = filterProjectsByTech(projectsToDisplay, selectedTech);
 
   return (
     <Layout socials={socials} seo={seo}>
