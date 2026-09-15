@@ -31,7 +31,8 @@ export default function Meta({ seo, title }: seoProps) {
   const siteAddress = 'https://www.jameswinfield.co.uk';
   const defaultImageUrl = `${siteAddress}/images/jameswinfieldcover.png`;
 
-  const { opengraphImage, opengraphTitle, opengraphDescription, opengraphSiteName } = seo || {};
+  const { opengraphImage, opengraphTitle, opengraphDescription, opengraphSiteName, canonical } =
+    seo || {};
   return (
     <Head>
       <title>
@@ -71,6 +72,7 @@ export default function Meta({ seo, title }: seoProps) {
         content={opengraphSiteName ? opengraphSiteName : 'James Winfield'}
       />
       <meta property="og:url" content={`${siteAddress}${currentUrl}`} />
+      <link rel="canonical" href={canonical ? canonical : `${siteAddress}${currentUrl}`} />
       <meta
         property="og:image"
         content={opengraphImage?.mediaItemUrl ? opengraphImage?.mediaItemUrl : defaultImageUrl}
