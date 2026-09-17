@@ -27,6 +27,9 @@ export default function Index({ allPosts: { edges }, preview, socials }: AllPost
       title="Portfolio of James Winfield: My Journey To Becoming A Senior Software Engineer">
       <Nav />
       <Container>
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tighter leading-tight mb-8 md:mb-12">
+          Blog
+        </h1>
         {heroPost && (
           <HeroPost
             title={heroPost.title}
