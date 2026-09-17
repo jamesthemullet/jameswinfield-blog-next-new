@@ -14,6 +14,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - 2026-09-15 — scheduled maintenance run resolved the SEO/metadata canonical `<link>` tag item in `components/meta.tsx`.
 - 2026-09-05 — scheduled maintenance run resolved item 1.5 (unit tests for `pages/projects.tsx`'s tech-filter logic).
 - 2026-09-16 — scheduled maintenance run resolved the duplicate/broken RSS `<link>` tag item in `components/meta.tsx` (removed; the correct one already exists in `pages/_document.tsx`).
+- 2026-09-17 — scheduled maintenance run resolved the missing `<h1>` item on `pages/blog.tsx`.
 
 ## 1. Test coverage — unit gaps and e2e
 
@@ -37,7 +38,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - [x] Add a `<link rel="canonical">` tag in `components/meta.tsx` — the `seoProps` type already declares `seo.canonical` but it's never rendered; pages currently rely on `og:url` alone (found: 2026-09-01) (resolved: 2026-09-15, PR #313)
 - [x] Fix the RSS `<link>` tag in `components/meta.tsx:82` — it points to `/feed.xml`, which doesn't exist; the real feed is at `/api/rss` (already correctly linked separately in `pages/_document.tsx:7`), so this tag should be corrected or removed as a duplicate (found: 2026-09-01) (resolved: 2026-09-16, PR #315)
 - [ ] Add `sitemap.xml` and `robots.txt` — neither exists anywhere in the repo (no static file, no `pages/sitemap.xml.ts`, no `next-sitemap` config), so search engines have no crawl directives or sitemap discovery path (found: 2026-09-01)
-- [ ] Add an `<h1>` to `pages/blog.tsx` — the page currently jumps straight to an `<h3>` (`hero-post.tsx`) then `<h2>` ("More Stories"), with zero h1s, unlike every other route (found: 2026-09-01)
+- [x] Add an `<h1>` to `pages/blog.tsx` — the page currently jumps straight to an `<h3>` (`hero-post.tsx`) then `<h2>` ("More Stories"), with zero h1s, unlike every other route (found: 2026-09-01) (resolved: 2026-09-17, PR #318)
 - [ ] Add page-specific `<h1>` content for `/projects` and `/timeline` — both currently reuse `components/intro.tsx`'s hardcoded "James Winfield." h1 from the homepage instead of a route-relevant heading (found: 2026-09-01)
 - [ ] Add JSON-LD structured data (`Article`/`BlogPosting`) to `pages/posts/[slug].tsx` — published date and author are currently visual-only with no `application/ld+json` block, so rich results aren't available to search engines (found: 2026-09-01)
 
