@@ -13,7 +13,7 @@ export default function Timeline({ socials, page }: PageProps) {
     <Layout socials={socials} seo={seo}>
       <Nav />
       <Container>
-        <Intro />
+        <Intro heading="Timeline." />
         <PostBody content={content} />
       </Container>
     </Layout>

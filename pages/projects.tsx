@@ -30,7 +30,7 @@ export default function Projects({ page, socials }: PageProps) {
     <Layout socials={socials} seo={seo}>
       <Nav />
       <Container>
-        <Intro />
+        <Intro heading="Projects." />
         <PostBody content={content} />
         <div className="flex flex-wrap gap-2 max-w-4xl mx-auto mt-8 mb-4">
           <button
