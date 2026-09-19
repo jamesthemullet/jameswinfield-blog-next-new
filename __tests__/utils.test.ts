@@ -1,4 +1,4 @@
-import { filterRecentPosts } from '../lib/utils';
+import { buildArticleJsonLd, filterRecentPosts } from '../lib/utils';
 
 type Post = { node: { date: string } };
 
@@ -39,5 +39,55 @@ describe('filterRecentPosts', () => {
     const posts = [post(new Date().toISOString())];
 
     expect(filterRecentPosts(posts, false)).toEqual(posts);
+  });
+});
+
+describe('buildArticleJsonLd', () => {
+  it('includes the required BlogPosting fields', () => {
+    const jsonLd = buildArticleJsonLd({
+      title: 'My Post',
+      url: 'https://www.jameswinfield.co.uk/posts/my-post',
+      datePublished: '2026-01-01T00:00:00Z',
+    });
+
+    expect(jsonLd).toEqual({
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: 'My Post',
+      datePublished: '2026-01-01T00:00:00Z',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://www.jameswinfield.co.uk/posts/my-post',
+      },
+    });
+  });
+
+  it('adds description, author, and image when provided', () => {
+    const jsonLd = buildArticleJsonLd({
+      title: 'My Post',
+      url: 'https://www.jameswinfield.co.uk/posts/my-post',
+      datePublished: '2026-01-01T00:00:00Z',
+      description: 'A great post',
+      authorName: 'James Winfield',
+      imageUrl: 'https://www.jameswinfield.co.uk/image.png',
+    });
+
+    expect(jsonLd).toMatchObject({
+      description: 'A great post',
+      author: { '@type': 'Person', name: 'James Winfield' },
+      image: ['https://www.jameswinfield.co.uk/image.png'],
+    });
+  });
+
+  it('omits optional fields that are not provided', () => {
+    const jsonLd = buildArticleJsonLd({
+      title: 'My Post',
+      url: 'https://www.jameswinfield.co.uk/posts/my-post',
+      datePublished: '2026-01-01T00:00:00Z',
+    });
+
+    expect(jsonLd).not.toHaveProperty('description');
+    expect(jsonLd).not.toHaveProperty('author');
+    expect(jsonLd).not.toHaveProperty('image');
   });
 });

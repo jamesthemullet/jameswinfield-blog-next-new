@@ -17,6 +17,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - 2026-09-17 — scheduled maintenance run resolved the sitemap.xml/robots.txt item (added `pages/api/sitemap.ts` and `public/robots.txt`).
 - 2026-09-17 — scheduled maintenance run resolved the missing `<h1>` item on `pages/blog.tsx`.
 - 2026-09-18 — scheduled maintenance run resolved the page-specific `<h1>` item for `/projects` and `/timeline`.
+- 2026-09-19 — scheduled maintenance run resolved the JSON-LD structured data item for `pages/posts/[slug].tsx`.
 
 ## 1. Test coverage — unit gaps and e2e
 
@@ -42,7 +43,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - [x] Add `sitemap.xml` and `robots.txt` — neither exists anywhere in the repo (no static file, no `pages/sitemap.xml.ts`, no `next-sitemap` config), so search engines have no crawl directives or sitemap discovery path (found: 2026-09-01) (resolved: 2026-09-17, PR #316)
 - [x] Add an `<h1>` to `pages/blog.tsx` — the page currently jumps straight to an `<h3>` (`hero-post.tsx`) then `<h2>` ("More Stories"), with zero h1s, unlike every other route (found: 2026-09-01) (resolved: 2026-09-17, PR #318)
 - [x] Add page-specific `<h1>` content for `/projects` and `/timeline` — both currently reuse `components/intro.tsx`'s hardcoded "James Winfield." h1 from the homepage instead of a route-relevant heading (found: 2026-09-01) (resolved: 2026-09-18, PR #319)
-- [ ] Add JSON-LD structured data (`Article`/`BlogPosting`) to `pages/posts/[slug].tsx` — published date and author are currently visual-only with no `application/ld+json` block, so rich results aren't available to search engines (found: 2026-09-01)
+- [x] Add JSON-LD structured data (`Article`/`BlogPosting`) to `pages/posts/[slug].tsx` — published date and author are currently visual-only with no `application/ld+json` block, so rich results aren't available to search engines (found: 2026-09-01) (resolved: 2026-09-19, PR #321)
 
 ## 5. Responsive / UX
 
