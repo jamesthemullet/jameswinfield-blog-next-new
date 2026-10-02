@@ -47,3 +47,24 @@ export function filterRecentPosts<T extends { node: { date: string } }>(
   const twoYearsAgo = new Date(now.getFullYear() - 2, now.getMonth(), now.getDate());
   return posts.filter((post) => new Date(post.node.date).getTime() > twoYearsAgo.getTime());
 }
+
+export function buildArticleJsonLd(params: {
+  title: string;
+  url: string;
+  datePublished: string;
+  description?: string;
+  authorName?: string;
+  imageUrl?: string;
+}): Record<string, unknown> {
+  const { title, url, datePublished, description, authorName, imageUrl } = params;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    datePublished,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    ...(description ? { description } : {}),
+    ...(authorName ? { author: { '@type': 'Person', name: authorName } } : {}),
+    ...(imageUrl ? { image: [imageUrl] } : {}),
+  };
+}
