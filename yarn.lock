@@ -2032,9 +2032,9 @@ baseline-browser-mapping@^2.9.19:
   integrity sha512-PCLz/LXGBsNTErbtB6i5u4eLpHeMfi93aUv5duMmj6caNu6IphS4q6UevDnL36sZQv9lrP11dbPKGMaXPwMKfQ==
 
 basic-ftp@^5.3.1, basic-ftp@^6.0.0:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/basic-ftp/-/basic-ftp-6.2.1.tgz#4e48a39c87baee0314e1a0fa9bcca73b1e251e53"
-  integrity sha512-bK67isD+lKq46AU8vNtjvMaT2ZqAOAmNCbxUHlFBRD4k15NWxyEjmaKtZPlgce58So4BNTjITGQOVTjL9y0ECA==
+  version "6.2.2"
+  resolved "https://registry.yarnpkg.com/basic-ftp/-/basic-ftp-6.2.2.tgz#ac1968e4908bb1aa27f6a9a59add3131f26534ed"
+  integrity sha512-LIkJcf/F6bTTfvE3k2YcTxrJsLKKVXiEpHZYkQP6JoqTb7khng7c13ckRTDQbqRh5IkehVH3F00sSlAa2F6DwA==
 
 bidi-js@^1.0.3:
   version "1.0.3"
