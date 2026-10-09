@@ -26,7 +26,7 @@
   "resolutions": {
     "basic-ftp": "^6.0.0",
     "picomatch": "^4.0.0",
-    "handlebars": "^4.7.9",
+    "handlebars": "^4.7.10",
     "minimatch": "^10.0.0",
     "axios": "^1.13.5",
     "ip-address": "^10.1.1",
@@ -34,11 +34,13 @@
     "tmp": "^0.2.6",
     "postcss": "8.5.29",
     "js-yaml": "^5.0.0",
-    "sharp": "^0.35.0",
-    "brace-expansion": "^5.0.8",
-    "adm-zip": "^0.6.0",
+    "sharp": "^0.35.5",
+    "brace-expansion": "^5.0.11",
+    "adm-zip": "^0.6.1",
     "nanoid": "^6.0.0",
-    "undici": "^8.0.0"
+    "undici": "^8.10.2",
+    "browserslist": "^4.28.7",
+    "source-map-js": "^1.2.2"
   },
   "devDependencies": {
     "@axe-core/cli": "4.13.0",
