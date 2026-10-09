@@ -8,14 +8,24 @@ audit adds new findings to the bottom of each section and leaves checked items a
 
 - 2026-09-01 — initial audit. 32 findings (6 test coverage/e2e, 2 security, 6 SEO/metadata, 3 content alignment, 15 code quality). Categories 2 (Accessibility), 3 (Performance), and 5 (Responsive/UX) were **blocked**: no `.env.local` / `WORDPRESS_API_URL` configured locally, so the app can't render real content for a browser-driven pass. Re-run once a WordPress endpoint is available locally.
 - 2026-09-01 — scheduled maintenance run resolved item 1.1 (unit tests for `lib/api.ts`'s `createComment` and `getPreviewPost`).
+- 2026-09-03 — scheduled maintenance run resolved item 1.3 (unit tests for the `postsToShow` date-filtering logic in `pages/blog.tsx`, extracted to `lib/utils.ts`'s `filterRecentPosts`).
+- 2026-09-02 — scheduled maintenance run resolved the `components/comments.tsx` DOMPurify sanitization unit test item.
+- 2026-09-04 — scheduled maintenance run resolved item 1.3 (unit tests for `pages/api/preview.ts` and `pages/api/exit-preview.ts`).
+- 2026-09-15 — scheduled maintenance run resolved the SEO/metadata canonical `<link>` tag item in `components/meta.tsx`.
+- 2026-09-05 — scheduled maintenance run resolved item 1.5 (unit tests for `pages/projects.tsx`'s tech-filter logic).
+- 2026-09-16 — scheduled maintenance run resolved the duplicate/broken RSS `<link>` tag item in `components/meta.tsx` (removed; the correct one already exists in `pages/_document.tsx`).
+- 2026-09-17 — scheduled maintenance run resolved the sitemap.xml/robots.txt item (added `pages/api/sitemap.ts` and `public/robots.txt`).
+- 2026-09-17 — scheduled maintenance run resolved the missing `<h1>` item on `pages/blog.tsx`.
+- 2026-09-18 — scheduled maintenance run resolved the page-specific `<h1>` item for `/projects` and `/timeline`.
+- 2026-09-19 — scheduled maintenance run resolved the JSON-LD structured data item for `pages/posts/[slug].tsx`.
 
 ## 1. Test coverage — unit gaps and e2e
 
 - [x] Add unit tests for `lib/api.ts` (mock `fetch`/GraphQL client) covering `createComment` success/error paths and `getPreviewPost`'s ID vs SLUG branching — currently 0% coverage on the site's core data-fetching layer (found: 2026-09-01) (resolved: 2026-09-01, PR #295)
-- [ ] Add a unit test for `components/comments.tsx` verifying DOMPurify sanitization actually strips unsafe HTML from rendered comment content (found: 2026-09-01)
-- [ ] Add a unit test for the `postsToShow`/"Show Older Blog Posts" date-filtering logic in `pages/blog.tsx` (lines ~42-50) — pure logic, no network dependency (found: 2026-09-01)
-- [ ] Add unit tests for `pages/api/preview.ts` and `pages/api/exit-preview.ts` (mock `getPreviewPost`, assert 401 paths and the `setPreviewData`/307 redirect path) — currently untested auth-style branching logic (found: 2026-09-01)
-- [ ] Add a unit test for the tech-filter logic in `pages/projects.tsx` (`selectedTech` state, `filteredProjects`, `formatBuildDate`) — static-data logic independent of WordPress, currently 0% coverage (found: 2026-09-01)
+- [x] Add a unit test for the `postsToShow`/"Show Older Blog Posts" date-filtering logic in `pages/blog.tsx` (lines ~42-50) — pure logic, no network dependency (found: 2026-09-01) (resolved: 2026-09-03, PR #300)
+- [x] Add a unit test for `components/comments.tsx` verifying DOMPurify sanitization actually strips unsafe HTML from rendered comment content (found: 2026-09-01) (resolved: 2026-09-02, PR #296)
+- [x] Add unit tests for `pages/api/preview.ts` and `pages/api/exit-preview.ts` (mock `getPreviewPost`, assert 401 paths and the `setPreviewData`/307 redirect path) — currently untested auth-style branching logic (found: 2026-09-01) (resolved: 2026-09-04, PR #302)
+- [x] Add a unit test for the tech-filter logic in `pages/projects.tsx` (`selectedTech` state, `filteredProjects`, `formatBuildDate`) — static-data logic independent of WordPress, currently 0% coverage (found: 2026-09-01) (resolved: 2026-09-05, PR #303)
 - [ ] Add e2e coverage (`e2e/navigation.spec.ts` or a new spec) for: (a) clicking from the post list into an individual post and asserting the post page renders a heading and body, (b) mobile nav Escape-key close behavior (`components/nav.tsx` `onKeyDown` handler, currently untested), (c) a smoke assertion that at least one project card renders on `/projects` — split into separate specs/PRs per flow (found: 2026-09-01)
 
 ## 2. Accessibility
@@ -28,12 +38,12 @@ audit adds new findings to the bottom of each section and leaves checked items a
 
 ## 4. SEO / metadata
 
-- [ ] Add a `<link rel="canonical">` tag in `components/meta.tsx` — the `seoProps` type already declares `seo.canonical` but it's never rendered; pages currently rely on `og:url` alone (found: 2026-09-01)
-- [ ] Fix the RSS `<link>` tag in `components/meta.tsx:82` — it points to `/feed.xml`, which doesn't exist; the real feed is at `/api/rss` (already correctly linked separately in `pages/_document.tsx:7`), so this tag should be corrected or removed as a duplicate (found: 2026-09-01)
-- [ ] Add `sitemap.xml` and `robots.txt` — neither exists anywhere in the repo (no static file, no `pages/sitemap.xml.ts`, no `next-sitemap` config), so search engines have no crawl directives or sitemap discovery path (found: 2026-09-01)
-- [ ] Add an `<h1>` to `pages/blog.tsx` — the page currently jumps straight to an `<h3>` (`hero-post.tsx`) then `<h2>` ("More Stories"), with zero h1s, unlike every other route (found: 2026-09-01)
-- [ ] Add page-specific `<h1>` content for `/projects` and `/timeline` — both currently reuse `components/intro.tsx`'s hardcoded "James Winfield." h1 from the homepage instead of a route-relevant heading (found: 2026-09-01)
-- [ ] Add JSON-LD structured data (`Article`/`BlogPosting`) to `pages/posts/[slug].tsx` — published date and author are currently visual-only with no `application/ld+json` block, so rich results aren't available to search engines (found: 2026-09-01)
+- [x] Add a `<link rel="canonical">` tag in `components/meta.tsx` — the `seoProps` type already declares `seo.canonical` but it's never rendered; pages currently rely on `og:url` alone (found: 2026-09-01) (resolved: 2026-09-15, PR #313)
+- [x] Fix the RSS `<link>` tag in `components/meta.tsx:82` — it points to `/feed.xml`, which doesn't exist; the real feed is at `/api/rss` (already correctly linked separately in `pages/_document.tsx:7`), so this tag should be corrected or removed as a duplicate (found: 2026-09-01) (resolved: 2026-09-16, PR #315)
+- [x] Add `sitemap.xml` and `robots.txt` — neither exists anywhere in the repo (no static file, no `pages/sitemap.xml.ts`, no `next-sitemap` config), so search engines have no crawl directives or sitemap discovery path (found: 2026-09-01) (resolved: 2026-09-17, PR #316)
+- [x] Add an `<h1>` to `pages/blog.tsx` — the page currently jumps straight to an `<h3>` (`hero-post.tsx`) then `<h2>` ("More Stories"), with zero h1s, unlike every other route (found: 2026-09-01) (resolved: 2026-09-17, PR #318)
+- [x] Add page-specific `<h1>` content for `/projects` and `/timeline` — both currently reuse `components/intro.tsx`'s hardcoded "James Winfield." h1 from the homepage instead of a route-relevant heading (found: 2026-09-01) (resolved: 2026-09-18, PR #319)
+- [x] Add JSON-LD structured data (`Article`/`BlogPosting`) to `pages/posts/[slug].tsx` — published date and author are currently visual-only with no `application/ld+json` block, so rich results aren't available to search engines (found: 2026-09-01) (resolved: 2026-09-19, PR #321)
 
 ## 5. Responsive / UX
 

@@ -15,6 +15,7 @@ module.exports = {
           moduleResolution: 'node',
           rootDir: '.',
           ignoreDeprecations: '6.0',
+          downlevelIteration: true,
         },
       },
     ],

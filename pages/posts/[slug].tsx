@@ -1,6 +1,7 @@
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
 import ErrorPage from 'next/error';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Container from '../../components/container';
@@ -15,6 +16,7 @@ import SectionSeparator from '../../components/section-separator';
 import Tags from '../../components/tags';
 import PostHiringCta from '../../components/post-hiring-cta';
 import { getAllPostsWithSlug, getPostAndMorePosts, getSocials } from '../../lib/api';
+import { buildArticleJsonLd } from '../../lib/utils';
 
 const Comments = dynamic(() => import('../../components/comments'), { ssr: false });
 const CommentForm = dynamic(() => import('../../components/commentForm'), { ssr: false });
@@ -106,8 +108,28 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
     return <ErrorPage statusCode={404} />;
   }
 
+  const articleJsonLd =
+    post?.slug && post?.title
+      ? buildArticleJsonLd({
+          title: post.title,
+          url: `https://www.jameswinfield.co.uk/posts/${post.slug}`,
+          datePublished: post.date,
+          description: post.seo?.metaDesc,
+          authorName: post.author?.node?.name,
+          imageUrl: post.featuredImage?.node?.sourceUrl,
+        })
+      : null;
+
   return (
     <Layout preview={preview} socials={socials} seo={post?.seo} title={post?.title}>
+      {articleJsonLd && (
+        <Head>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+          />
+        </Head>
+      )}
       <ReadingProgress />
       <Nav />
       <Container>
