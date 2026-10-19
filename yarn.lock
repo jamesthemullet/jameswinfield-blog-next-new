@@ -1836,13 +1836,13 @@
   resolved "https://registry.yarnpkg.com/@unrs/resolver-binding-win32-x64-msvc/-/resolver-binding-win32-x64-msvc-1.12.2.tgz#72da0da48d72b1e87831b9c0308931d3f4669027"
   integrity sha512-nAB74NfSNKknqQ1RrYj6uz8FcXEomu/MATJZxh/x+BArzN2U3JbOYC0APYzUIGhVY3m5hRxA8VPNdPBoG8txlA==
 
-accented@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/accented/-/accented-1.5.0.tgz#1a40a06fbefca537ad635f893934aebb73181ac5"
-  integrity sha512-dNMzJsZA8N0J8U43fbH0ytgIyq0oZQX1xvxTPX3N+GZHE1bX+vsC8k4+BhbYm2foUheMLaBrAtfpAshjHwfeig==
+accented@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/accented/-/accented-1.6.0.tgz#012ed67de3241c36956294d16a7b67181cfe9451"
+  integrity sha512-zOSQmrKab3wwKhCmtqtfqhd23eazltKUyXA0AFg/wYjJDU+mS/QKC3i+SXAPOILMjzvBG3hQJOXWodY3PK5F2w==
   dependencies:
     "@preact/signals-core" "^1.14.4"
-    axe-core "~4.13.0"
+    axe-core "~4.14.0"
 
 adm-zip@^0.6.0, adm-zip@^0.6.1:
   version "0.6.1"
@@ -1947,11 +1947,6 @@ autoprefixer@10.6.1:
     fraction.js "^5.3.4"
     picocolors "^1.1.1"
     postcss-value-parser "^4.2.0"
-
-axe-core@~4.13.0:
-  version "4.13.0"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.13.0.tgz#f868ecb1bd61d982321760e51d841ab497ab86d0"
-  integrity sha512-UzGt8zg7Ny8djbYMhxl2zuEevVa7r2gJjYY5Lwr1xM7+XU2nd6CkIWFTVcCIbAP63vSz71NaVyyuSk9lHKcy0A==
 
 axe-core@~4.14.0:
   version "4.14.0"
