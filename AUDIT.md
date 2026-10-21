@@ -52,7 +52,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 
 ## 6. Security
 
-- [x] Use a timing-safe comparison (`crypto.timingSafeEqual`) instead of `!==` for the preview secret check in `pages/api/preview.ts:11` — currently a plain string comparison, theoretically vulnerable to a timing side-channel; low practical risk but a one-line fix given it's the only gate on draft content (found: 2026-09-01) (resolved: 2026-10-21, PR #TBD)
+- [x] Use a timing-safe comparison (`crypto.timingSafeEqual`) instead of `!==` for the preview secret check in `pages/api/preview.ts:11` — currently a plain string comparison, theoretically vulnerable to a timing side-channel; low practical risk but a one-line fix given it's the only gate on draft content (found: 2026-09-01) (resolved: 2026-10-21, PR #339)
 - [ ] Restrict draft enumeration via the preview route: `pages/api/preview.ts` never checks `post.status` against an authorized scope, and WordPress `DATABASE_ID`s are small sequential integers, so anyone holding the single shared preview secret can iterate `?secret=...&id=1,2,3...` to view every draft on the site rather than just one intended post. Consider a signed per-post token instead of a single shared secret (found: 2026-09-01)
 
 ## 7. Content and feature alignment
