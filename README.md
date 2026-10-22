@@ -62,3 +62,9 @@ To preview unpublished WordPress posts, visit:
 ```
 http://localhost:3000/api/preview?secret=<WORDPRESS_PREVIEW_SECRET>&id=<post-id>
 ```
+
+Alternatively, pass `slug` instead of `id` to look the post up by its slug:
+
+```
+http://localhost:3000/api/preview?secret=<WORDPRESS_PREVIEW_SECRET>&slug=<post-slug>
+```
