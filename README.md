@@ -51,7 +51,9 @@ The site runs at [http://localhost:3000](http://localhost:3000).
 | `yarn test` | Run unit tests |
 | `yarn test:e2e` | Run Playwright end-to-end tests |
 | `yarn lint` | Lint the codebase |
+| `yarn lint:fix` | Lint the codebase and auto-fix issues |
 | `yarn format` | Format with Prettier |
+| `yarn knip` | Check for unused files, exports, and dependencies |
 
 ## Preview mode
 

@@ -18,6 +18,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - 2026-09-17 — scheduled maintenance run resolved the missing `<h1>` item on `pages/blog.tsx`.
 - 2026-09-18 — scheduled maintenance run resolved the page-specific `<h1>` item for `/projects` and `/timeline`.
 - 2026-09-19 — scheduled maintenance run resolved the JSON-LD structured data item for `pages/posts/[slug].tsx`.
+- 2026-10-22 — scheduled maintenance run resolved item 7 (documented the `lint:fix` and `knip` scripts in `README.md`'s Scripts table).
 
 ## 1. Test coverage — unit gaps and e2e
 
@@ -56,7 +57,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 
 ## 7. Content and feature alignment
 
-- [ ] Document the missing `lint:fix` and `knip` scripts in `README.md`'s Scripts table — both exist in `package.json` but aren't mentioned (found: 2026-09-01)
+- [x] Document the missing `lint:fix` and `knip` scripts in `README.md`'s Scripts table — both exist in `package.json` but aren't mentioned (found: 2026-09-01) (resolved: 2026-10-22, PR #TBD)
 - [ ] Document the `slug=` alternative for preview mode in `README.md` — it currently only documents `?secret=...&id=<post-id>`, but `pages/api/preview.ts` also accepts `slug` as an alternative to `id` (found: 2026-09-01)
 - [ ] Add a "Features" section to `README.md` covering shipped-but-undocumented features: RSS feed (`/api/rss`), comments, the projects page (`projects.json`-backed with tech filtering), the reading-progress bar, and the hiring/CTA components — all working, just absent from the README (found: 2026-09-01)
 
