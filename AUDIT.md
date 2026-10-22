@@ -59,7 +59,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 ## 7. Content and feature alignment
 
 - [x] Document the missing `lint:fix` and `knip` scripts in `README.md`'s Scripts table — both exist in `package.json` but aren't mentioned (found: 2026-09-01) (resolved: 2026-10-22, PR #340)
-- [x] Document the `slug=` alternative for preview mode in `README.md` — it currently only documents `?secret=...&id=<post-id>`, but `pages/api/preview.ts` also accepts `slug` as an alternative to `id` (found: 2026-09-01) (resolved: 2026-10-22, PR TBD)
+- [x] Document the `slug=` alternative for preview mode in `README.md` — it currently only documents `?secret=...&id=<post-id>`, but `pages/api/preview.ts` also accepts `slug` as an alternative to `id` (found: 2026-09-01) (resolved: 2026-10-22, PR #341)
 - [ ] Add a "Features" section to `README.md` covering shipped-but-undocumented features: RSS feed (`/api/rss`), comments, the projects page (`projects.json`-backed with tech filtering), the reading-progress bar, and the hiring/CTA components — all working, just absent from the README (found: 2026-09-01)
 
 ## 8. Code quality
