@@ -55,6 +55,14 @@ The site runs at [http://localhost:3000](http://localhost:3000).
 | `yarn format` | Format with Prettier |
 | `yarn knip` | Check for unused files, exports, and dependencies |
 
+## Features
+
+- **RSS feed** — available at [`/api/rss`](http://localhost:3000/api/rss), generated from the latest WordPress posts
+- **Comments** — readers can comment on posts; content is sanitized with DOMPurify before rendering
+- **Projects page** — `/projects` lists portfolio projects from `projects.json`, with client-side filtering by technology
+- **Reading progress bar** — shows scroll progress through a blog post (`components/reading-progress.tsx`)
+- **Hiring call-to-action** — `components/hire-cta.tsx` and `components/post-hiring-cta.tsx` prompt visitors to get in touch, with Google Analytics event tracking
+
 ## Preview mode
 
 To preview unpublished WordPress posts, visit:
