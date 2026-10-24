@@ -65,7 +65,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 
 ## 8. Code quality
 
-- [x] Replace `} as any)` in `lib/api.ts:23` with a correctly-typed `RequestInit` shape instead of casting away the type mismatch on the `fetch` config (found: 2026-09-01) (resolved: 2026-10-24, PR #TBD)
+- [x] Replace `} as any)` in `lib/api.ts:23` with a correctly-typed `RequestInit` shape instead of casting away the type mismatch on the `fetch` config (found: 2026-09-01) (resolved: 2026-10-24, PR #345)
 - [ ] Add explicit return types and parameter types to the exported functions in `lib/api.ts` (`getPreviewPost`, `getPage`, `getAllPostsForHome`, `getPostAndMorePosts`, `createComment`) — all currently rely on implicit `any` parameters, on the module every page's `getStaticProps` depends on (found: 2026-09-01)
 - [ ] Type the `comment` parameter in `components/commentForm.tsx:6`'s `setCommentData` prop instead of leaving it implicit `any` (found: 2026-09-01)
 - [ ] Type the `newData` parameter in `pages/posts/[slug].tsx:91`'s `handleCommentDataChange` instead of leaving it implicit `any` (found: 2026-09-01)
