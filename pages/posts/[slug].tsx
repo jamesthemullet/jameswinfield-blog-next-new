@@ -15,7 +15,12 @@ import PostHeader from '../../components/post-header';
 import SectionSeparator from '../../components/section-separator';
 import Tags from '../../components/tags';
 import PostHiringCta from '../../components/post-hiring-cta';
-import { getAllPostsWithSlug, getPostAndMorePosts, getSocials } from '../../lib/api';
+import {
+  getAllPostsWithSlug,
+  getPostAndMorePosts,
+  getSocials,
+  type PostPreviewData,
+} from '../../lib/api';
 import { buildArticleJsonLd } from '../../lib/utils';
 
 const Comments = dynamic(() => import('../../components/comments'), { ssr: false });
@@ -172,7 +177,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
 export const getStaticProps: GetStaticProps = async ({ params, preview = false, previewData }) => {
   try {
     const [data, socials] = await Promise.all([
-      getPostAndMorePosts(params?.slug, preview, previewData),
+      getPostAndMorePosts(params?.slug as string, preview, previewData as PostPreviewData),
       getSocials(),
     ]);
 

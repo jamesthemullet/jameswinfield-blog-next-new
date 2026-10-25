@@ -1,4 +1,49 @@
+import type { seoProps } from './types';
+
 const API_URL = process.env.WORDPRESS_API_URL;
+
+type WPIdType = 'DATABASE_ID' | 'SLUG' | 'URI';
+
+type PreviewPost = {
+  databaseId: number;
+  slug: string;
+  status: string;
+} | null;
+
+type PageData = {
+  slug: string;
+  content: string;
+  title: string;
+  seo: seoProps;
+};
+
+export type PostPreviewData = {
+  post?: {
+    id: number;
+    slug: string;
+    status: string;
+  };
+};
+
+type PostNode = Record<string, unknown>;
+
+type PostsConnection = {
+  edges: { node: PostNode }[];
+};
+
+type PostAndMorePosts = {
+  post: PostNode & { slug: string };
+  posts: PostsConnection;
+};
+
+type CommentResult = {
+  author: { node: { email: string; id: string; name: string; url: string } };
+  content: string;
+  commentId: string;
+  databaseId: number;
+  date: string;
+  id: string;
+};
 
 async function fetchAPI(
   query = '',
@@ -40,7 +85,10 @@ async function fetchAPI(
   return json.data;
 }
 
-export async function getPreviewPost(id, idType = 'DATABASE_ID') {
+export async function getPreviewPost(
+  id: string | number,
+  idType: WPIdType = 'DATABASE_ID',
+): Promise<PreviewPost> {
   const data = await fetchAPI(
     `
     query PreviewPost($id: ID!, $idType: PostIdType!) {
@@ -58,7 +106,7 @@ export async function getPreviewPost(id, idType = 'DATABASE_ID') {
   return data.post;
 }
 
-export async function getPage(id, idType = 'DATABASE_ID') {
+export async function getPage(id: string | number, idType: WPIdType = 'DATABASE_ID'): Promise<PageData> {
   const data = await fetchAPI(
     `
     query Page($id: ID!, $idType: PageIdType!) {
@@ -157,7 +205,7 @@ export async function getAllPostsWithSlug() {
   return data?.posts;
 }
 
-export async function getAllPostsForHome(preview) {
+export async function getAllPostsForHome(preview: boolean): Promise<PostsConnection | undefined> {
   const data = await fetchAPI(
     `
     query AllPosts {
@@ -203,7 +251,11 @@ export async function getAllPostsForHome(preview) {
   return data?.posts;
 }
 
-export async function getPostAndMorePosts(slug, preview, previewData) {
+export async function getPostAndMorePosts(
+  slug: string,
+  preview: boolean,
+  previewData: PostPreviewData,
+): Promise<PostAndMorePosts> {
   const postPreview = preview && previewData?.post;
   // The slug may be the id of an unpublished post
   const isId = Number.isInteger(Number(slug));
@@ -355,7 +407,13 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
   return data;
 }
 
-export async function createComment(postId, name, email, authorUrl, content) {
+export async function createComment(
+  postId: string | number,
+  name: string,
+  email: string,
+  authorUrl: string,
+  content: string,
+): Promise<CommentResult> {
   const query = `
     mutation CreateComment($input: CreateCommentInput!) {
       createComment(input: $input) {
@@ -385,7 +443,7 @@ export async function createComment(postId, name, email, authorUrl, content) {
       authorEmail: email,
       authorUrl,
       content: content.toString(),
-      commentOn: parseInt(postId, 10),
+      commentOn: parseInt(String(postId), 10),
     },
   };
   const headers = { 'Content-Type': 'application/json' };
