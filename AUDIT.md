@@ -21,6 +21,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - 2026-10-21 — scheduled maintenance run resolved the timing-safe preview secret comparison item in `pages/api/preview.ts`.
 - 2026-10-22 — scheduled maintenance run resolved item 7 (documented the `lint:fix` and `knip` scripts in `README.md`'s Scripts table).
 - 2026-10-22 — scheduled maintenance run resolved item 7 (documented the `slug=` alternative for preview mode in `README.md`).
+- 2026-10-26 — scheduled maintenance run resolved item 8 (typed the `comment` parameter in `components/commentForm.tsx`'s `setCommentData` prop).
 
 ## 1. Test coverage — unit gaps and e2e
 
@@ -67,7 +68,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 
 - [ ] Replace `} as any)` in `lib/api.ts:23` with a correctly-typed `RequestInit` shape instead of casting away the type mismatch on the `fetch` config (found: 2026-09-01)
 - [ ] Add explicit return types and parameter types to the exported functions in `lib/api.ts` (`getPreviewPost`, `getPage`, `getAllPostsForHome`, `getPostAndMorePosts`, `createComment`) — all currently rely on implicit `any` parameters, on the module every page's `getStaticProps` depends on (found: 2026-09-01)
-- [ ] Type the `comment` parameter in `components/commentForm.tsx:6`'s `setCommentData` prop instead of leaving it implicit `any` (found: 2026-09-01)
+- [x] Type the `comment` parameter in `components/commentForm.tsx:6`'s `setCommentData` prop instead of leaving it implicit `any` (found: 2026-09-01) (resolved: 2026-10-26, PR #pending)
 - [ ] Type the `newData` parameter in `pages/posts/[slug].tsx:91`'s `handleCommentDataChange` instead of leaving it implicit `any` (found: 2026-09-01)
 - [ ] Deduplicate `CoverImageProps` and `featuredImageProps` in `lib/types.ts:14-34` — two separately-declared types with identical shapes that can silently drift out of sync (found: 2026-09-01)
 - [ ] Reconcile the locally-redeclared `seoProps` type in `components/meta.tsx:4-26` with the exported `seoProps` in `lib/types.ts:128-147` — they have different shapes, so a change to one won't be caught as a mismatch against `Layout`'s `seo` prop (found: 2026-09-01)

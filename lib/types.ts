@@ -135,6 +135,22 @@ export type ProjectProps = {
   technologies?: string[];
 };
 
+export type CreatedComment = {
+  author: {
+    node: {
+      email: string;
+      id: string;
+      name: string;
+      url: string;
+    };
+  };
+  content: string;
+  commentId: string;
+  databaseId: number;
+  date: string;
+  id: string;
+};
+
 export type seoProps = {
   canonical: string;
   focuskw: string;
