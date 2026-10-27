@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { createComment } from '../lib/api';
+import type { CreatedComment } from '../lib/types';
 
 type CommentFormProps = {
   postId: number;
-  setCommentData: (comment) => void;
+  setCommentData: (comment: CreatedComment) => void;
   newCommentPosted: boolean;
 };
 
