@@ -18,9 +18,12 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - 2026-09-17 — scheduled maintenance run resolved the missing `<h1>` item on `pages/blog.tsx`.
 - 2026-09-18 — scheduled maintenance run resolved the page-specific `<h1>` item for `/projects` and `/timeline`.
 - 2026-09-19 — scheduled maintenance run resolved the JSON-LD structured data item for `pages/posts/[slug].tsx`.
+- 2026-10-21 — scheduled maintenance run resolved the timing-safe preview secret comparison item in `pages/api/preview.ts`.
 - 2026-10-22 — scheduled maintenance run resolved item 7 (documented the `lint:fix` and `knip` scripts in `README.md`'s Scripts table).
 - 2026-10-22 — scheduled maintenance run resolved item 7 (documented the `slug=` alternative for preview mode in `README.md`).
 - 2026-10-24 — scheduled maintenance run resolved item 8.1 (replaced the `as any` cast on the `fetch` config in `lib/api.ts`).
+- 2026-10-25 — scheduled maintenance run resolved item 8.2 (added explicit parameter and return types to `lib/api.ts`'s exported functions).
+- 2026-10-23 — scheduled maintenance run resolved item 7 (added a "Features" section to `README.md`).
 
 ## 1. Test coverage — unit gaps and e2e
 
@@ -54,19 +57,19 @@ audit adds new findings to the bottom of each section and leaves checked items a
 
 ## 6. Security
 
-- [ ] Use a timing-safe comparison (`crypto.timingSafeEqual`) instead of `!==` for the preview secret check in `pages/api/preview.ts:11` — currently a plain string comparison, theoretically vulnerable to a timing side-channel; low practical risk but a one-line fix given it's the only gate on draft content (found: 2026-09-01)
+- [x] Use a timing-safe comparison (`crypto.timingSafeEqual`) instead of `!==` for the preview secret check in `pages/api/preview.ts:11` — currently a plain string comparison, theoretically vulnerable to a timing side-channel; low practical risk but a one-line fix given it's the only gate on draft content (found: 2026-09-01) (resolved: 2026-10-21, PR #339)
 - [ ] Restrict draft enumeration via the preview route: `pages/api/preview.ts` never checks `post.status` against an authorized scope, and WordPress `DATABASE_ID`s are small sequential integers, so anyone holding the single shared preview secret can iterate `?secret=...&id=1,2,3...` to view every draft on the site rather than just one intended post. Consider a signed per-post token instead of a single shared secret (found: 2026-09-01)
 
 ## 7. Content and feature alignment
 
 - [x] Document the missing `lint:fix` and `knip` scripts in `README.md`'s Scripts table — both exist in `package.json` but aren't mentioned (found: 2026-09-01) (resolved: 2026-10-22, PR #340)
 - [x] Document the `slug=` alternative for preview mode in `README.md` — it currently only documents `?secret=...&id=<post-id>`, but `pages/api/preview.ts` also accepts `slug` as an alternative to `id` (found: 2026-09-01) (resolved: 2026-10-22, PR #341)
-- [ ] Add a "Features" section to `README.md` covering shipped-but-undocumented features: RSS feed (`/api/rss`), comments, the projects page (`projects.json`-backed with tech filtering), the reading-progress bar, and the hiring/CTA components — all working, just absent from the README (found: 2026-09-01)
+- [x] Add a "Features" section to `README.md` covering shipped-but-undocumented features: RSS feed (`/api/rss`), comments, the projects page (`projects.json`-backed with tech filtering), the reading-progress bar, and the hiring/CTA components — all working, just absent from the README (found: 2026-09-01) (resolved: 2026-10-23, PR #343)
 
 ## 8. Code quality
 
-- [x] Replace `} as any)` in `lib/api.ts:23` with a correctly-typed `RequestInit` shape instead of casting away the type mismatch on the `fetch` config (found: 2026-09-01) (resolved: 2026-10-24, PR #345)
-- [ ] Add explicit return types and parameter types to the exported functions in `lib/api.ts` (`getPreviewPost`, `getPage`, `getAllPostsForHome`, `getPostAndMorePosts`, `createComment`) — all currently rely on implicit `any` parameters, on the module every page's `getStaticProps` depends on (found: 2026-09-01)
+- [x] Replace `} as any)` in `lib/api.ts:23` with a correctly-typed `RequestInit` shape instead of casting away the type mismatch on the `fetch` config (found: 2026-09-01)
+- [x] Add explicit return types and parameter types to the exported functions in `lib/api.ts` (`getPreviewPost`, `getPage`, `getAllPostsForHome`, `getPostAndMorePosts`, `createComment`) — all currently rely on implicit `any` parameters, on the module every page's `getStaticProps` depends on (found: 2026-09-01) (resolved: 2026-10-25, PR #347)
 - [ ] Type the `comment` parameter in `components/commentForm.tsx:6`'s `setCommentData` prop instead of leaving it implicit `any` (found: 2026-09-01)
 - [ ] Type the `newData` parameter in `pages/posts/[slug].tsx:91`'s `handleCommentDataChange` instead of leaving it implicit `any` (found: 2026-09-01)
 - [ ] Deduplicate `CoverImageProps` and `featuredImageProps` in `lib/types.ts:14-34` — two separately-declared types with identical shapes that can silently drift out of sync (found: 2026-09-01)

@@ -1,5 +1,23 @@
+import { timingSafeEqual } from 'node:crypto';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getPreviewPost } from '../../lib/api';
+
+function isValidSecret(provided: unknown, expected: string): boolean {
+  if (typeof provided !== 'string') {
+    return false;
+  }
+
+  const providedBuffer = Buffer.from(provided);
+  const expectedBuffer = Buffer.from(expected);
+
+  // timingSafeEqual throws on mismatched lengths, so that case must be
+  // rejected before comparing rather than via a length check on the inputs.
+  if (providedBuffer.length !== expectedBuffer.length) {
+    return false;
+  }
+
+  return timingSafeEqual(providedBuffer, expectedBuffer);
+}
 
 export default async function preview(req: NextApiRequest, res: NextApiResponse) {
   const { secret, id, slug } = req.query;
@@ -8,14 +26,14 @@ export default async function preview(req: NextApiRequest, res: NextApiResponse)
   // This secret should only be known by this API route
   if (
     !process.env.WORDPRESS_PREVIEW_SECRET ||
-    secret !== process.env.WORDPRESS_PREVIEW_SECRET ||
+    !isValidSecret(secret, process.env.WORDPRESS_PREVIEW_SECRET) ||
     (!id && !slug)
   ) {
     return res.status(401).json({ message: 'Invalid token' });
   }
 
   // Fetch WordPress to check if the provided `id` or `slug` exists
-  const post = await getPreviewPost(id || slug, id ? 'DATABASE_ID' : 'SLUG');
+  const post = await getPreviewPost((id || slug) as string, id ? 'DATABASE_ID' : 'SLUG');
 
   // If the post doesn't exist prevent preview mode from being enabled
   if (!post) {

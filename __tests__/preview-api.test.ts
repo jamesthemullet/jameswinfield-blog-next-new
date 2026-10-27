@@ -43,6 +43,16 @@ describe('pages/api/preview', () => {
     expect(getPreviewPost).not.toHaveBeenCalled();
   });
 
+  it('returns 401 when the secret has a different length than expected', async () => {
+    const { req, res } = mockReqRes({ secret: 'wrong-but-longer-secret', id: '1' });
+
+    await preview(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(401);
+    expect(res.json).toHaveBeenCalledWith({ message: 'Invalid token' });
+    expect(getPreviewPost).not.toHaveBeenCalled();
+  });
+
   it('returns 401 when neither id nor slug is provided', async () => {
     const { req, res } = mockReqRes({ secret: 'shh-secret' });
 
