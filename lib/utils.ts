@@ -68,3 +68,40 @@ export function buildArticleJsonLd(params: {
     ...(imageUrl ? { image: [imageUrl] } : {}),
   };
 }
+
+type RelatedPostCandidate = {
+  node: {
+    slug: string;
+    tags?: { edges: { node: { name: string } }[] };
+    categories?: { edges: { node: { name: string } }[] };
+  };
+};
+
+function extractNames(edges?: { node: { name: string } }[]): string[] {
+  return (edges ?? []).map(({ node }) => node.name);
+}
+
+export function getRelatedPosts<T extends RelatedPostCandidate>(
+  currentPost: RelatedPostCandidate,
+  candidatePosts: T[],
+  limit = 3,
+): T[] {
+  const currentTags = extractNames(currentPost.node.tags?.edges);
+  const currentCategories = extractNames(currentPost.node.categories?.edges);
+
+  return candidatePosts
+    .filter((candidate) => candidate.node.slug !== currentPost.node.slug)
+    .map((candidate) => {
+      const sharedTags = extractNames(candidate.node.tags?.edges).filter((tag) =>
+        currentTags.includes(tag),
+      ).length;
+      const sharedCategories = extractNames(candidate.node.categories?.edges).filter((category) =>
+        currentCategories.includes(category),
+      ).length;
+      return { candidate, score: sharedTags * 2 + sharedCategories };
+    })
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map(({ candidate }) => candidate);
+}

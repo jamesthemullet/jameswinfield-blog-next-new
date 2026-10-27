@@ -1,4 +1,4 @@
-import { buildArticleJsonLd, filterRecentPosts } from '../lib/utils';
+import { buildArticleJsonLd, filterRecentPosts, getRelatedPosts } from '../lib/utils';
 
 type Post = { node: { date: string } };
 
@@ -89,5 +89,95 @@ describe('buildArticleJsonLd', () => {
     expect(jsonLd).not.toHaveProperty('description');
     expect(jsonLd).not.toHaveProperty('author');
     expect(jsonLd).not.toHaveProperty('image');
+  });
+});
+
+type RelatedPost = {
+  node: {
+    slug: string;
+    tags?: { edges: { node: { name: string } }[] };
+    categories?: { edges: { node: { name: string } }[] };
+  };
+};
+
+function relatedPost(slug: string, tags: string[] = [], categories: string[] = []): RelatedPost {
+  return {
+    node: {
+      slug,
+      tags: { edges: tags.map((name) => ({ node: { name } })) },
+      categories: { edges: categories.map((name) => ({ node: { name } })) },
+    },
+  };
+}
+
+describe('getRelatedPosts', () => {
+  it('matches posts that share a tag', () => {
+    const current = relatedPost('current', ['nextjs']);
+    const match = relatedPost('match', ['nextjs']);
+    const unrelated = relatedPost('unrelated', ['cooking']);
+
+    expect(getRelatedPosts(current, [match, unrelated])).toEqual([match]);
+  });
+
+  it('excludes the current post from its own related list', () => {
+    const current = relatedPost('current', ['nextjs']);
+    const candidates = [current, relatedPost('match', ['nextjs'])];
+
+    const related = getRelatedPosts(current, candidates);
+
+    expect(related.map((post) => post.node.slug)).toEqual(['match']);
+  });
+
+  it('ranks posts with more shared tags higher', () => {
+    const current = relatedPost('current', ['nextjs', 'react', 'typescript']);
+    const oneShared = relatedPost('one-shared', ['nextjs']);
+    const twoShared = relatedPost('two-shared', ['nextjs', 'react']);
+
+    const related = getRelatedPosts(current, [oneShared, twoShared]);
+
+    expect(related.map((post) => post.node.slug)).toEqual(['two-shared', 'one-shared']);
+  });
+
+  it('falls back to shared categories when there is no tag overlap', () => {
+    const current = relatedPost('current', [], ['travel']);
+    const match = relatedPost('match', [], ['travel']);
+    const unrelated = relatedPost('unrelated', [], ['cooking']);
+
+    expect(getRelatedPosts(current, [match, unrelated])).toEqual([match]);
+  });
+
+  it('weights a shared tag above a shared category', () => {
+    const current = relatedPost('current', ['nextjs'], ['travel']);
+    const tagMatch = relatedPost('tag-match', ['nextjs'], ['cooking']);
+    const categoryMatch = relatedPost('category-match', ['vue'], ['travel']);
+
+    const related = getRelatedPosts(current, [categoryMatch, tagMatch]);
+
+    expect(related.map((post) => post.node.slug)).toEqual(['tag-match', 'category-match']);
+  });
+
+  it('returns an empty array when nothing shares a tag or category', () => {
+    const current = relatedPost('current', ['nextjs'], ['travel']);
+    const unrelated = relatedPost('unrelated', ['cooking'], ['food']);
+
+    expect(getRelatedPosts(current, [unrelated])).toEqual([]);
+  });
+
+  it('respects the limit', () => {
+    const current = relatedPost('current', ['nextjs']);
+    const candidates = [
+      relatedPost('a', ['nextjs']),
+      relatedPost('b', ['nextjs']),
+      relatedPost('c', ['nextjs']),
+    ];
+
+    expect(getRelatedPosts(current, candidates, 2)).toHaveLength(2);
+  });
+
+  it('handles posts with no tags or categories at all', () => {
+    const current = relatedPost('current');
+    const candidate = relatedPost('candidate');
+
+    expect(getRelatedPosts(current, [candidate])).toEqual([]);
   });
 });
