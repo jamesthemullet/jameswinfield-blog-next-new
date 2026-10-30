@@ -26,7 +26,7 @@ import { buildArticleJsonLd } from '../../lib/utils';
 const Comments = dynamic(() => import('../../components/comments'), { ssr: false });
 const CommentForm = dynamic(() => import('../../components/commentForm'), { ssr: false });
 
-import type { seoProps } from '../../lib/types';
+import type { CreatedComment, seoProps } from '../../lib/types';
 
 type PostProps = {
   post: {
@@ -95,7 +95,7 @@ export default function Post({ post, posts, preview, socials }: PostProps) {
   const [newCommentPosted, setNewCommentPosted] = useState(false);
   const router = useRouter();
   const morePosts = posts?.edges;
-  const handleCommentDataChange = (newData) => {
+  const handleCommentDataChange = (newData: CreatedComment) => {
     const newComment = {
       node: {
         author: newData.author,
