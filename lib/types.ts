@@ -22,21 +22,10 @@ type CoverImageProps = {
   };
 };
 
-type featuredImageProps = {
-  node: {
-    sourceUrl: string;
-    featuredImage: string;
-    mediaDetails: {
-      width: number;
-      height: number;
-    };
-  };
-};
-
 type NodeProps = {
   title: string;
   slug: string;
-  featuredImage: featuredImageProps;
+  featuredImage: CoverImageProps;
   date: string;
   excerpt: string;
   author: AuthorProps;
