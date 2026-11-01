@@ -1,31 +1,13 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import type { seoProps } from '../lib/types';
 
-type seoProps = {
-  seo?: {
-    canonical: string;
-    focuskw: string;
-    metaDesc: string;
-    metaKeywords: string;
-    opengraphDescription: string;
-    opengraphImage: {
-      uri: string;
-      altText: string;
-      mediaItemUrl: string;
-      mediaDetails: {
-        width: string;
-        height: string;
-      };
-    };
-    opengraphTitle: string;
-    opengraphUrl: string;
-    opengraphSiteName: string;
-    title: string;
-  };
+type MetaProps = {
+  seo?: seoProps;
   title?: string;
 };
 
-export default function Meta({ seo, title }: seoProps) {
+export default function Meta({ seo, title }: MetaProps) {
   const router = useRouter();
   const currentUrl = router.asPath;
   const siteAddress = 'https://www.jameswinfield.co.uk';
