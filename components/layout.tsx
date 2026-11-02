@@ -1,11 +1,11 @@
-import type { ReactElement } from 'react';
+import type { ReactNode } from 'react';
 import type { seoProps } from '../lib/types';
 import Footer from './footer';
 import Meta from './meta';
 
 type LayoutProps = {
   preview?: string;
-  children?: ReactElement[];
+  children?: ReactNode;
   socials: {
     content: string;
   };
