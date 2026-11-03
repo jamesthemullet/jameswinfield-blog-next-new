@@ -29,6 +29,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - 2026-10-31 — scheduled maintenance run resolved item 8 (deduplicated `CoverImageProps` and `featuredImageProps` in `lib/types.ts`).
 - 2026-11-01 — scheduled maintenance run resolved item 8 (reconciled `components/meta.tsx`'s locally-redeclared `seoProps` with the exported one in `lib/types.ts`).
 - 2026-11-02 — scheduled maintenance run resolved item 8 (widened `children?: ReactElement[]` to `React.ReactNode` in `components/layout.tsx`).
+- 2026-11-03 — scheduled maintenance run resolved item 8 (replaced the ad hoc `gtag` casts in `components/hire-cta.tsx` and `components/post-hiring-cta.tsx` with a shared `Window.gtag` type declaration).
 
 ## 1. Test coverage — unit gaps and e2e
 
@@ -80,7 +81,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - [x] Deduplicate `CoverImageProps` and `featuredImageProps` in `lib/types.ts:14-34` — two separately-declared types with identical shapes that can silently drift out of sync (found: 2026-09-01) (resolved: 2026-10-31, PR #354)
 - [x] Reconcile the locally-redeclared `seoProps` type in `components/meta.tsx:4-26` with the exported `seoProps` in `lib/types.ts:128-147` — they have different shapes, so a change to one won't be caught as a mismatch against `Layout`'s `seo` prop (found: 2026-09-01) (resolved: 2026-11-01, PR #356)
 - [x] Widen `children?: ReactElement[]` to `React.ReactNode` in `components/layout.tsx:8` — the narrower type doesn't match what pages actually pass (conditionals, fragments, strings, `null`) (found: 2026-09-01) (resolved: 2026-11-02, PR #358)
-- [ ] Replace the ad hoc `Window & { gtag?: Function }` casts in `components/hire-cta.tsx:20,22` and `components/post-hiring-cta.tsx:17,19` with a single shared, properly-typed `gtag` declaration (a correct signature already exists in `pages/_app.tsx:23`) (found: 2026-09-01)
+- [x] Replace the ad hoc `Window & { gtag?: Function }` casts in `components/hire-cta.tsx:20,22` and `components/post-hiring-cta.tsx:17,19` with a single shared, properly-typed `gtag` declaration (a correct signature already exists in `pages/_app.tsx:23`) (found: 2026-09-01) (resolved: 2026-11-03, PR #TBD)
 - [ ] Extract the duplicated `gtag` tracking logic in `components/hire-cta.tsx:17-27` and `components/post-hiring-cta.tsx:14-24` into a shared `lib/analytics.ts` helper — identical except for the event name string (found: 2026-09-01)
 - [ ] Extract a shared constant for the repeated ISR `revalidate` magic numbers (`3600` in `pages/index.tsx`, `pages/blog.tsx`; `86400` in `pages/timeline.tsx`, `pages/projects.tsx`, `pages/posts/[slug].tsx`; plus `lib/api.ts:5`'s own default) so changing the site's revalidation policy doesn't require hunting down every call site (found: 2026-09-01)
 - [ ] Extract the production domain (duplicated as a literal in `components/meta.tsx:31` and `pages/api/rss.ts:17`) and the `mailto:hello@jameswinfield.co.uk` address (duplicated in `components/hire-cta.tsx:15` and `components/post-hiring-cta.tsx:12`) into shared constants (found: 2026-09-01)
