@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from '../lib/constants';
+
 export default function PostHiringCta() {
   return (
     <div className="max-w-2xl mx-auto mt-12 mb-4 pt-8 border-t border-accent-2">
@@ -7,7 +9,7 @@ export default function PostHiringCta() {
         your team, I&apos;d love to hear from you.
       </p>
       <a
-        href="mailto:hello@jameswinfield.co.uk"
+        href={`mailto:${CONTACT_EMAIL}`}
         className="text-lg font-bold underline hover:text-my-blue transition-colors"
         onClick={() => {
           if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
