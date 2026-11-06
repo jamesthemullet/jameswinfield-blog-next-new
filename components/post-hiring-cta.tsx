@@ -1,3 +1,5 @@
+import { trackEvent } from '../lib/analytics';
+
 export default function PostHiringCta() {
   return (
     <div className="max-w-2xl mx-auto mt-12 mb-4 pt-8 border-t border-accent-2">
@@ -9,11 +11,7 @@ export default function PostHiringCta() {
       <a
         href="mailto:hello@jameswinfield.co.uk"
         className="text-lg font-bold underline hover:text-my-blue transition-colors"
-        onClick={() => {
-          if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-            window.gtag('event', 'hiring_cta_click');
-          }
-        }}>
+        onClick={() => trackEvent('hiring_cta_click')}>
         Let&apos;s talk &rarr;
       </a>
     </div>
