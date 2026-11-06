@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from '../lib/constants';
+
 type Props = {
   available?: boolean;
 };
@@ -11,7 +13,7 @@ export default function HireCta({ available = true }: Props) {
         Possibly open to senior front-end engineering roles &middot; React, TypeScript, Next.js
       </p>
       <a
-        href="mailto:hello@jameswinfield.co.uk"
+        href={`mailto:${CONTACT_EMAIL}`}
         className="inline-block bg-my-blue text-white font-bold text-sm px-5 py-3 rounded hover:opacity-90 transition-opacity whitespace-nowrap"
         onClick={() => {
           if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
