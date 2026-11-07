@@ -6,6 +6,7 @@ import Layout from '../components/layout';
 import MoreStories from '../components/more-stories';
 import Nav from '../components/nav';
 import { getAllPostsForHome, getSocials } from '../lib/api';
+import { REVALIDATE_FREQUENT } from '../lib/constants';
 import type { AllPostsProps } from '../lib/types';
 import { filterRecentPosts } from '../lib/utils';
 
@@ -61,12 +62,12 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 
     return {
       props: { allPosts, preview, socials },
-      revalidate: 3600,
+      revalidate: REVALIDATE_FREQUENT,
     };
   } catch (_error) {
     return {
       props: { allPosts: { edges: [] }, preview, socials: null },
-      revalidate: 3600,
+      revalidate: REVALIDATE_FREQUENT,
     };
   }
 };

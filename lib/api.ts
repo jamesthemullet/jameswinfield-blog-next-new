@@ -1,3 +1,4 @@
+import { REVALIDATE_FREQUENT } from './constants';
 import type { seoProps } from './types';
 
 const API_URL = process.env.WORDPRESS_API_URL;
@@ -48,7 +49,10 @@ type CommentResult = {
 
 async function fetchAPI(
   query = '',
-  { variables, revalidate = 3600 }: { variables?: Record<string, unknown>; revalidate?: number } = {},
+  {
+    variables,
+    revalidate = REVALIDATE_FREQUENT,
+  }: { variables?: Record<string, unknown>; revalidate?: number } = {},
 ) {
   const headers: Record<string, string> = { 'Content-Type': 'application/json' };
 

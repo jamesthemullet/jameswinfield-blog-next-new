@@ -6,6 +6,7 @@ import Intro from '../components/intro';
 import Layout from '../components/layout';
 import Nav from '../components/nav';
 import { getPagesForHomePage, getSocials } from '../lib/api';
+import { REVALIDATE_FREQUENT } from '../lib/constants';
 import type { AllPostsProps } from '../lib/types';
 
 export default function Index({ allPosts: { edges }, socials }: AllPostsProps) {
@@ -29,12 +30,12 @@ export const getStaticProps: GetStaticProps = async () => {
 
     return {
       props: { allPosts, socials },
-      revalidate: 3600,
+      revalidate: REVALIDATE_FREQUENT,
     };
   } catch (_error) {
     return {
       props: { allPosts: { edges: [] }, socials: null },
-      revalidate: 3600,
+      revalidate: REVALIDATE_FREQUENT,
     };
   }
 };

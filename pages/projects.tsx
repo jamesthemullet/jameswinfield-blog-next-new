@@ -7,6 +7,7 @@ import Layout from '../components/layout';
 import Nav from '../components/nav';
 import PostBody from '../components/post-body';
 import { getPage, getSocials } from '../lib/api';
+import { REVALIDATE_INFREQUENT } from '../lib/constants';
 import type { PageProps, ProjectProps } from '../lib/types';
 import {
   filterProjectsByTech,
@@ -105,7 +106,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
     return {
       props: { page, socials },
-      revalidate: 86400,
+      revalidate: REVALIDATE_INFREQUENT,
     };
   } catch (_error) {
     return {
@@ -113,7 +114,7 @@ export const getStaticProps: GetStaticProps = async () => {
         page: { content: '', seo: {} },
         socials: [],
       },
-      revalidate: 86400,
+      revalidate: REVALIDATE_INFREQUENT,
     };
   }
 };

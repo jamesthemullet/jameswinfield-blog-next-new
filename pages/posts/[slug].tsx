@@ -21,6 +21,7 @@ import {
   getSocials,
   type PostPreviewData,
 } from '../../lib/api';
+import { REVALIDATE_INFREQUENT } from '../../lib/constants';
 import { buildArticleJsonLd } from '../../lib/utils';
 
 const Comments = dynamic(() => import('../../components/comments'), { ssr: false });
@@ -192,7 +193,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false, 
         posts: data.posts,
         socials,
       },
-      revalidate: 86400,
+      revalidate: REVALIDATE_INFREQUENT,
     };
   } catch {
     return { notFound: true };
