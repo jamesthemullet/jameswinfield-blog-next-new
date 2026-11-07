@@ -16,6 +16,16 @@ import {
 } from '../lib/utils';
 import data from '../projects.json';
 
+const basePillClass = 'text-sm px-3 py-1 rounded-full border transition-colors';
+
+function pillClass(isActive: boolean): string {
+  return `${basePillClass} ${
+    isActive
+      ? 'bg-my-blue text-white border-my-blue'
+      : 'bg-gray-100 text-gray-800 border-transparent hover:bg-gray-200'
+  }`;
+}
+
 export default function Projects({ page, socials }: PageProps) {
   const { content, seo } = page;
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
@@ -35,22 +45,14 @@ export default function Projects({ page, socials }: PageProps) {
         <div className="flex flex-wrap gap-2 max-w-4xl mx-auto mt-8 mb-4">
           <button
             onClick={() => setSelectedTech(null)}
-            className={`text-sm px-3 py-1 rounded-full border transition-colors ${
-              selectedTech === null
-                ? 'bg-my-blue text-white border-my-blue'
-                : 'bg-gray-100 text-gray-800 border-transparent hover:bg-gray-200'
-            }`}>
+            className={pillClass(selectedTech === null)}>
             All
           </button>
           {allTechnologies.map((tech) => (
             <button
               key={tech}
               onClick={() => setSelectedTech(tech === selectedTech ? null : tech)}
-              className={`text-sm px-3 py-1 rounded-full border transition-colors ${
-                selectedTech === tech
-                  ? 'bg-my-blue text-white border-my-blue'
-                  : 'bg-gray-100 text-gray-800 border-transparent hover:bg-gray-200'
-              }`}>
+              className={pillClass(tech === selectedTech)}>
               {tech}
             </button>
           ))}
