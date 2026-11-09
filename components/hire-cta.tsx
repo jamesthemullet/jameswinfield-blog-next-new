@@ -1,4 +1,5 @@
 import { CONTACT_EMAIL } from '../lib/constants';
+import { trackEvent } from '../lib/analytics';
 
 type Props = {
   available?: boolean;
@@ -15,11 +16,7 @@ export default function HireCta({ available = true }: Props) {
       <a
         href={`mailto:${CONTACT_EMAIL}`}
         className="inline-block bg-my-blue text-white font-bold text-sm px-5 py-3 rounded hover:opacity-90 transition-opacity whitespace-nowrap"
-        onClick={() => {
-          if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-            window.gtag('event', 'hire_cta_click');
-          }
-        }}>
+        onClick={() => trackEvent('hire_cta_click')}>
         Get in touch
       </a>
     </div>

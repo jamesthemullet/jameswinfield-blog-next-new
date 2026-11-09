@@ -1,4 +1,5 @@
 import { CONTACT_EMAIL } from '../lib/constants';
+import { trackEvent } from '../lib/analytics';
 
 export default function PostHiringCta() {
   return (
@@ -11,11 +12,7 @@ export default function PostHiringCta() {
       <a
         href={`mailto:${CONTACT_EMAIL}`}
         className="text-lg font-bold underline hover:text-my-blue transition-colors"
-        onClick={() => {
-          if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-            window.gtag('event', 'hiring_cta_click');
-          }
-        }}>
+        onClick={() => trackEvent('hiring_cta_click')}>
         Let&apos;s talk &rarr;
       </a>
     </div>

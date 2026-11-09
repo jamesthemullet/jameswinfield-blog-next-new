@@ -5,6 +5,7 @@ import Layout from '../components/layout';
 import Nav from '../components/nav';
 import PostBody from '../components/post-body';
 import { getPage, getSocials } from '../lib/api';
+import { REVALIDATE_INFREQUENT } from '../lib/constants';
 import type { PageProps } from '../lib/types';
 
 export default function Timeline({ socials, page }: PageProps) {
@@ -25,12 +26,12 @@ export const getStaticProps: GetStaticProps = async () => {
     const [page, socials] = await Promise.all([getPage('786'), getSocials()]);
     return {
       props: { page, socials },
-      revalidate: 86400,
+      revalidate: REVALIDATE_INFREQUENT,
     };
   } catch (_error) {
     return {
       props: { page: { content: '', seo: {} }, socials: null },
-      revalidate: 86400,
+      revalidate: REVALIDATE_INFREQUENT,
     };
   }
 };
