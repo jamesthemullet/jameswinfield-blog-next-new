@@ -1,3 +1,4 @@
+import { CONTACT_EMAIL } from '../lib/constants';
 import { trackEvent } from '../lib/analytics';
 
 type Props = {
@@ -13,7 +14,7 @@ export default function HireCta({ available = true }: Props) {
         Possibly open to senior front-end engineering roles &middot; React, TypeScript, Next.js
       </p>
       <a
-        href="mailto:hello@jameswinfield.co.uk"
+        href={`mailto:${CONTACT_EMAIL}`}
         className="inline-block bg-my-blue text-white font-bold text-sm px-5 py-3 rounded hover:opacity-90 transition-opacity whitespace-nowrap"
         onClick={() => trackEvent('hire_cta_click')}>
         Get in touch

@@ -1,9 +1,10 @@
+import { WORDS_PER_MINUTE } from './constants';
 import type { ProjectProps } from './types';
 
 export function readingTime(html: string): number {
   const text = html.replace(/<[^>]+>/g, ' ');
   const words = text.trim().split(/\s+/).filter(Boolean).length;
-  return Math.ceil(words / 230);
+  return Math.ceil(words / WORDS_PER_MINUTE);
 }
 
 function getBuildTime(value?: string): number {
