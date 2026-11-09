@@ -32,6 +32,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - 2026-11-03 — scheduled maintenance run resolved item 8 (replaced the ad hoc `gtag` casts in `components/hire-cta.tsx` and `components/post-hiring-cta.tsx` with a shared `Window.gtag` type declaration).
 - 2026-11-05 — scheduled maintenance run resolved item 8 (extracted shared `REVALIDATE_FREQUENT`/`REVALIDATE_INFREQUENT` constants in `lib/constants.ts` for the repeated ISR `revalidate` magic numbers).
 - 2026-11-04 — scheduled maintenance run resolved item 8 (extracted the duplicated `gtag` tracking logic in `components/hire-cta.tsx` and `components/post-hiring-cta.tsx` into a shared `lib/analytics.ts` `trackEvent` helper).
+- 2026-11-09 — scheduled maintenance run resolved item 8 (named the hardcoded reading-speed constant in `lib/utils.ts` as `WORDS_PER_MINUTE` in `lib/constants.ts`).
 
 ## 1. Test coverage — unit gaps and e2e
 
@@ -89,6 +90,6 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - [ ] Extract the production domain (duplicated as a literal in `components/meta.tsx:31` and `pages/api/rss.ts:17`) and the `mailto:hello@jameswinfield.co.uk` address (duplicated in `components/hire-cta.tsx:15` and `components/post-hiring-cta.tsx:12`) into shared constants (found: 2026-09-01)
 - [ ] Extract a `pillClass(isActive: boolean)` helper for the duplicated filter-pill Tailwind class-string ternaries in `pages/projects.tsx:63-70` and `:73-81`, mirroring the existing `linkClass` pattern in `components/nav.tsx:14-16` (found: 2026-09-01)
 - [ ] Fix the empty `if (process.env.NODE_ENV === 'development') { }` blocks in `lib/api.ts:35-38` and `lib/api.ts:406-409` — GraphQL error details are currently discarded entirely instead of being logged, making API failures hard to debug even in development (found: 2026-09-01)
-- [ ] Name the hardcoded reading-speed constant in `lib/utils.ts:4` (`Math.ceil(words / 230)`) as `WORDS_PER_MINUTE = 230` instead of an inline magic number (found: 2026-09-01)
+- [x] Name the hardcoded reading-speed constant in `lib/utils.ts:4` (`Math.ceil(words / 230)`) as `WORDS_PER_MINUTE = 230` instead of an inline magic number (found: 2026-09-01) (resolved: 2026-11-09, PR #TBD)
 - [ ] Replace `key={index}` with a stable identifier (e.g. `category.node.name` / `tag.node.name`) in `components/categories.tsx:21` and `components/tags.tsx:10` to avoid incorrect list reconciliation if order changes (found: 2026-09-01)
 - [ ] Remove the unnecessary `useMemo` + `eslint-disable-next-line react-hooks/exhaustive-deps` in `pages/projects.tsx:35` — it sorts a static top-level import (`data`) that never changes, so a plain module-level `const` would remove both the hook and the lint suppression (found: 2026-09-01)
