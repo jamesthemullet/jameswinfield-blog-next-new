@@ -1,3 +1,5 @@
+export const SITE_URL = 'https://www.jameswinfield.co.uk';
+export const CONTACT_EMAIL = 'hello@jameswinfield.co.uk';
 /** ISR revalidation period, in seconds, for pages backed by frequently-changing content (home, blog). */
 export const REVALIDATE_FREQUENT = 3600;
 

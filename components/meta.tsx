@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { SITE_URL } from '../lib/constants';
 import type { seoProps } from '../lib/types';
 
 type MetaProps = {
@@ -10,7 +11,7 @@ type MetaProps = {
 export default function Meta({ seo, title }: MetaProps) {
   const router = useRouter();
   const currentUrl = router.asPath;
-  const siteAddress = 'https://www.jameswinfield.co.uk';
+  const siteAddress = SITE_URL;
   const defaultImageUrl = `${siteAddress}/images/jameswinfieldcover.png`;
 
   const { opengraphImage, opengraphTitle, opengraphDescription, opengraphSiteName, canonical } =

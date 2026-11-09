@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getAllPostsForHome } from '../../lib/api';
+import { SITE_URL } from '../../lib/constants';
 
 function escapeXml(str: string): string {
   return str
@@ -14,7 +15,7 @@ export default async function rss(req: NextApiRequest, res: NextApiResponse) {
   const posts = await getAllPostsForHome(false);
   const edges = posts?.edges ?? [];
 
-  const siteUrl = 'https://www.jameswinfield.co.uk';
+  const siteUrl = SITE_URL;
 
   const items = edges
     .map(({ node }: { node: { title: string; slug: string; date: string; excerpt: string } }) => {
