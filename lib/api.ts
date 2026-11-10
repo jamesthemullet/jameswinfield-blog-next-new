@@ -83,6 +83,8 @@ async function fetchAPI(
   const json = await res.json();
   if (json.errors) {
     if (process.env.NODE_ENV === 'development') {
+      // biome-ignore lint/suspicious/noConsole: surface GraphQL error details for local debugging
+      console.error(json.errors);
     }
     throw new Error('Failed to fetch API');
   }
@@ -467,6 +469,8 @@ export async function createComment(
   const json = await res.json();
   if (json.errors) {
     if (process.env.NODE_ENV === 'development') {
+      // biome-ignore lint/suspicious/noConsole: surface GraphQL error details for local debugging
+      console.error(json.errors);
     }
     throw new Error('Failed to create comment');
   }
