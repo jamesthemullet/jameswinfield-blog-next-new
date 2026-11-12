@@ -27,13 +27,13 @@ function pillClass(isActive: boolean): string {
   }`;
 }
 
+const projectsToDisplay = sortProjectsByBuildDate(data as ProjectProps[]);
+
 export default function Projects({ page, socials }: PageProps) {
   const { content, seo } = page;
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
 
-  const projectsToDisplay = useMemo(() => sortProjectsByBuildDate(data as ProjectProps[]), []);
-
-  const allTechnologies = useMemo(() => getAllTechnologies(projectsToDisplay), [projectsToDisplay]);
+  const allTechnologies = useMemo(() => getAllTechnologies(projectsToDisplay), []);
 
   const filteredProjects = filterProjectsByTech(projectsToDisplay, selectedTech);
 

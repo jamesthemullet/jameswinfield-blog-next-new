@@ -37,6 +37,7 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - 2026-11-07 — scheduled maintenance run resolved item 8 (extracted a `pillClass` helper for the duplicated filter-pill class-string ternaries in `pages/projects.tsx`).
 - 2026-11-09 — scheduled maintenance run resolved item 8 (named the hardcoded reading-speed constant in `lib/utils.ts` as `WORDS_PER_MINUTE` in `lib/constants.ts`).
 - 2026-11-10 — scheduled maintenance run resolved item 8 (replaced `key={index}` with a stable identifier in `components/categories.tsx` and `components/tags.tsx`).
+- 2026-11-11 — scheduled maintenance run resolved item 8 (hoisted the `projectsToDisplay` sort in `pages/projects.tsx` out of `useMemo` into a module-level `const`, since it only sorts a static top-level import).
 
 ## 1. Test coverage — unit gaps and e2e
 
@@ -96,4 +97,4 @@ audit adds new findings to the bottom of each section and leaves checked items a
 - [x] Fix the empty `if (process.env.NODE_ENV === 'development') { }` blocks in `lib/api.ts:35-38` and `lib/api.ts:406-409` — GraphQL error details are currently discarded entirely instead of being logged, making API failures hard to debug even in development (found: 2026-09-01)
 - [x] Name the hardcoded reading-speed constant in `lib/utils.ts:4` (`Math.ceil(words / 230)`) as `WORDS_PER_MINUTE = 230` instead of an inline magic number (found: 2026-09-01) (resolved: 2026-11-09, PR #370)
 - [x] Replace `key={index}` with a stable identifier (e.g. `category.node.name` / `tag.node.name`) in `components/categories.tsx:21` and `components/tags.tsx:10` to avoid incorrect list reconciliation if order changes (found: 2026-09-01) (resolved: 2026-11-10, PR #371)
-- [ ] Remove the unnecessary `useMemo` + `eslint-disable-next-line react-hooks/exhaustive-deps` in `pages/projects.tsx:35` — it sorts a static top-level import (`data`) that never changes, so a plain module-level `const` would remove both the hook and the lint suppression (found: 2026-09-01)
+- [x] Remove the unnecessary `useMemo` + `eslint-disable-next-line react-hooks/exhaustive-deps` in `pages/projects.tsx:35` — it sorts a static top-level import (`data`) that never changes, so a plain module-level `const` would remove both the hook and the lint suppression (found: 2026-09-01) (resolved: 2026-11-11, PR #372)
